@@ -1,0 +1,3287 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>LignoX — سیستم‌عامل صنعت مبلمان</title>
+
+  <meta
+    name="description"
+    content="LignoX؛ سیستم‌عامل عملیاتی صنعت مبلمان برای برنامه‌ریزی، کنترل تولید و تصمیم‌گیری مبتنی بر داده."
+  />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet"
+  />
+
+  <style>
+
+    :root {
+      --black: #101114;
+      --black-2: #191b20;
+
+      --yellow: #f5c542;
+      --yellow-dark: #dcae20;
+
+      --white: #ffffff;
+      --bg: #f7f7f5;
+      --bg-2: #eeeeeb;
+
+      --line: #deded9;
+      --line-dark: #cfcfca;
+
+      --text: #111216;
+      --muted: #73757b;
+      --muted-light: #999ba0;
+
+      --green: #20a66a;
+      --red: #d95757;
+      --blue: #5278d8;
+
+      --radius: 20px;
+    }
+
+
+    /* =========================
+       RESET
+    ========================== */
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: "Vazirmatn", sans-serif;
+      overflow-x: hidden;
+    }
+
+    body::selection {
+      background: var(--yellow);
+      color: var(--black);
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      font-family: inherit;
+    }
+
+
+    .container {
+      width: min(1220px, calc(100% - 40px));
+      margin: auto;
+    }
+
+
+    /* =========================
+       NAVIGATION
+    ========================== */
+
+    nav {
+      position: fixed;
+      top: 0;
+      right: 0;
+      left: 0;
+
+      height: 76px;
+
+      z-index: 100;
+
+      background: rgba(247,247,245,.88);
+      backdrop-filter: blur(20px);
+
+      border-bottom: 1px solid rgba(0,0,0,.06);
+    }
+
+    .nav-inner {
+      height: 100%;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+
+      font-size: 21px;
+      font-weight: 900;
+
+      letter-spacing: -.5px;
+    }
+
+
+    .logo-mark {
+      width: 34px;
+      height: 34px;
+
+      border-radius: 9px;
+
+      background: var(--black);
+      color: var(--yellow);
+
+      display: grid;
+      place-items: center;
+
+      font-size: 17px;
+      font-weight: 900;
+    }
+
+
+    .logo small {
+      color: var(--muted);
+      font-size: 8px;
+      font-weight: 600;
+
+      margin-right: 2px;
+    }
+
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+
+      color: #64666c;
+      font-size: 12px;
+    }
+
+
+    .nav-links a {
+      transition: .2s ease;
+    }
+
+
+    .nav-links a:hover {
+      color: var(--black);
+    }
+
+
+    .nav-contact {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+
+    .phone {
+      color: var(--muted);
+      font-size: 11px;
+
+      direction: ltr;
+    }
+
+
+    .nav-button {
+      padding: 11px 18px;
+
+      border-radius: 10px;
+
+      background: var(--black);
+      color: white;
+
+      font-size: 11px;
+      font-weight: 700;
+
+      transition: .25s ease;
+    }
+
+
+    .nav-button:hover {
+      background: var(--yellow);
+      color: var(--black);
+
+      transform: translateY(-2px);
+    }
+
+
+    /* =========================
+       HERO
+    ========================== */
+
+    .hero {
+      min-height: 100vh;
+
+      padding-top: 150px;
+      padding-bottom: 110px;
+
+      display: flex;
+      align-items: center;
+
+      position: relative;
+    }
+
+
+    .hero-grid {
+      display: grid;
+
+      grid-template-columns:
+        .85fr
+        1.15fr;
+
+      gap: 80px;
+
+      align-items: center;
+    }
+
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+    }
+
+
+    .hero-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+
+      padding: 7px 11px;
+
+      border: 1px solid var(--line);
+
+      border-radius: 100px;
+
+      background: white;
+
+      color: #65676c;
+
+      font-size: 10px;
+      font-weight: 700;
+
+      margin-bottom: 24px;
+    }
+
+
+    .hero-label span {
+      width: 6px;
+      height: 6px;
+
+      border-radius: 50%;
+
+      background: var(--green);
+    }
+
+
+    .hero h1 {
+      font-size: clamp(50px, 6vw, 82px);
+
+      line-height: 1.05;
+
+      letter-spacing: -4px;
+
+      font-weight: 900;
+
+      margin-bottom: 25px;
+    }
+
+
+    .hero h1 .yellow {
+      position: relative;
+      display: inline-block;
+    }
+
+
+    .hero h1 .yellow::after {
+      content: "";
+
+      position: absolute;
+
+      right: 0;
+      left: 0;
+      bottom: -4px;
+
+      height: 8px;
+
+      background: var(--yellow);
+
+      z-index: -1;
+
+      transform: skewX(-18deg);
+    }
+
+
+    .hero-description {
+      max-width: 530px;
+
+      color: var(--muted);
+
+      font-size: 15px;
+
+      line-height: 2.15;
+
+      margin-bottom: 30px;
+    }
+
+
+    .hero-buttons {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+
+    .button {
+      display: inline-flex;
+
+      align-items: center;
+      justify-content: center;
+
+      gap: 10px;
+
+      padding: 14px 20px;
+
+      border-radius: 11px;
+
+      font-size: 12px;
+
+      font-weight: 700;
+
+      transition: .25s ease;
+    }
+
+
+    .button-black {
+      background: var(--black);
+      color: white;
+
+      box-shadow: 0 12px 25px rgba(0,0,0,.12);
+    }
+
+
+    .button-black:hover {
+      transform: translateY(-3px);
+
+      background: var(--yellow);
+
+      color: var(--black);
+    }
+
+
+    .button-outline {
+      border: 1px solid var(--line-dark);
+
+      background: rgba(255,255,255,.6);
+
+      color: var(--black);
+    }
+
+
+    .button-outline:hover {
+      border-color: var(--black);
+
+      transform: translateY(-3px);
+    }
+
+
+    /* =========================
+       HERO DASHBOARD
+    ========================== */
+
+    .hero-dashboard {
+      position: relative;
+    }
+
+
+    .dashboard-shadow {
+      position: absolute;
+
+      width: 75%;
+      height: 60%;
+
+      right: 12%;
+      bottom: -8%;
+
+      background: rgba(0,0,0,.14);
+
+      filter: blur(50px);
+
+      z-index: 0;
+    }
+
+
+    .dashboard {
+      position: relative;
+      z-index: 2;
+
+      background: white;
+
+      border: 1px solid #deded9;
+
+      border-radius: 22px;
+
+      box-shadow:
+        0 30px 70px rgba(0,0,0,.11);
+
+      overflow: hidden;
+    }
+
+
+    .dashboard-top {
+      height: 52px;
+
+      border-bottom: 1px solid #eeeeea;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      padding: 0 18px;
+    }
+
+
+    .dashboard-brand {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+
+      font-size: 10px;
+      font-weight: 800;
+    }
+
+
+    .dashboard-logo {
+      width: 22px;
+      height: 22px;
+
+      display: grid;
+      place-items: center;
+
+      border-radius: 6px;
+
+      background: var(--black);
+      color: var(--yellow);
+
+      font-size: 9px;
+    }
+
+
+    .dashboard-status {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+
+      color: var(--green);
+
+      font-size: 8px;
+      font-weight: 700;
+    }
+
+
+    .status-dot {
+      width: 6px;
+      height: 6px;
+
+      border-radius: 50%;
+
+      background: var(--green);
+    }
+
+
+    .dashboard-content {
+      padding: 18px;
+    }
+
+
+    .dashboard-heading {
+      display: flex;
+      justify-content: space-between;
+
+      align-items: flex-end;
+
+      margin-bottom: 15px;
+    }
+
+
+    .dashboard-heading h3 {
+      font-size: 17px;
+
+      font-weight: 800;
+    }
+
+
+    .dashboard-heading p {
+      color: #999;
+
+      font-size: 8px;
+
+      margin-top: 4px;
+    }
+
+
+    .date-box {
+      padding: 6px 9px;
+
+      border: 1px solid #e5e5e0;
+
+      border-radius: 7px;
+
+      color: #777;
+
+      font-size: 8px;
+    }
+
+
+    .stats {
+      display: grid;
+
+      grid-template-columns:
+        repeat(4,1fr);
+
+      gap: 8px;
+
+      margin-bottom: 10px;
+    }
+
+
+    .stat {
+      padding: 12px;
+
+      border-radius: 11px;
+
+      background: #f8f8f6;
+
+      border: 1px solid #eeeeea;
+    }
+
+
+    .stat-label {
+      color: #929399;
+
+      font-size: 7px;
+
+      margin-bottom: 7px;
+    }
+
+
+    .stat-value {
+      font-size: 18px;
+
+      font-weight: 900;
+
+      letter-spacing: -.5px;
+    }
+
+
+    .stat-change {
+      margin-top: 3px;
+
+      color: var(--green);
+
+      font-size: 7px;
+    }
+
+
+    .dashboard-grid {
+      display: grid;
+
+      grid-template-columns:
+        1.4fr
+        .8fr;
+
+      gap: 10px;
+    }
+
+
+    .dash-panel {
+      padding: 13px;
+
+      border: 1px solid #eeeeea;
+
+      border-radius: 12px;
+
+      background: #fff;
+    }
+
+
+    .panel-header {
+      display: flex;
+      justify-content: space-between;
+
+      margin-bottom: 15px;
+    }
+
+
+    .panel-header strong {
+      font-size: 9px;
+    }
+
+
+    .panel-header span {
+      color: #aaa;
+
+      font-size: 7px;
+    }
+
+
+    /* Chart */
+
+    .chart {
+      height: 135px;
+
+      display: flex;
+      align-items: flex-end;
+
+      gap: 8px;
+
+      border-bottom: 1px solid #ededeb;
+
+      position: relative;
+    }
+
+
+    .chart::before,
+    .chart::after {
+      content: "";
+
+      position: absolute;
+
+      right: 0;
+      left: 0;
+
+      border-top: 1px dashed #e9e9e5;
+    }
+
+
+    .chart::before {
+      top: 35%;
+    }
+
+
+    .chart::after {
+      top: 68%;
+    }
+
+
+    .bar {
+      flex: 1;
+
+      height: var(--height);
+
+      border-radius: 4px 4px 0 0;
+
+      background:
+        linear-gradient(
+          to top,
+          #e8d27d,
+          var(--yellow)
+        );
+
+      position: relative;
+
+      z-index: 2;
+
+      animation: grow 1s ease both;
+    }
+
+
+    @keyframes grow {
+      from {
+        height: 0;
+      }
+    }
+
+
+    /* Orders */
+
+    .orders {
+      display: flex;
+
+      flex-direction: column;
+
+      gap: 7px;
+    }
+
+
+    .order {
+      display: grid;
+
+      grid-template-columns:
+        27px 1fr auto;
+
+      align-items: center;
+
+      gap: 7px;
+
+      padding: 8px;
+
+      border-radius: 8px;
+
+      background: #f8f8f6;
+    }
+
+
+    .order-icon {
+      width: 25px;
+      height: 25px;
+
+      display: grid;
+      place-items: center;
+
+      border-radius: 6px;
+
+      background: #fff3c8;
+
+      color: #9d7c13;
+
+      font-size: 7px;
+      font-weight: 800;
+    }
+
+
+    .order strong {
+      display: block;
+
+      font-size: 7px;
+    }
+
+
+    .order span {
+      color: #999;
+
+      font-size: 6px;
+    }
+
+
+    .order-status {
+      padding: 4px 5px;
+
+      border-radius: 4px;
+
+      color: var(--green);
+
+      background: #eaf8f1;
+
+      font-size: 6px;
+    }
+
+
+    /* Floating information */
+
+    .floating {
+      position: absolute;
+
+      z-index: 5;
+
+      background: white;
+
+      border: 1px solid #deded9;
+
+      box-shadow:
+        0 18px 45px rgba(0,0,0,.12);
+
+      border-radius: 13px;
+
+      padding: 13px 15px;
+    }
+
+
+    .floating.one {
+      left: -40px;
+      bottom: 60px;
+    }
+
+
+    .floating.two {
+      right: -35px;
+      top: 60px;
+    }
+
+
+    .floating-label {
+      color: #999;
+
+      font-size: 7px;
+
+      margin-bottom: 5px;
+    }
+
+
+    .floating-value {
+      font-size: 14px;
+
+      font-weight: 900;
+    }
+
+
+    .floating-value.green {
+      color: var(--green);
+    }
+
+
+    /* =========================
+       TRUST STRIP
+    ========================== */
+
+    .trust {
+      padding: 24px 0;
+
+      background: white;
+
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+
+
+    .trust-inner {
+      display: flex;
+
+      justify-content: space-between;
+
+      align-items: center;
+
+      gap: 30px;
+    }
+
+
+    .trust-label {
+      color: #a0a1a5;
+
+      font-size: 9px;
+    }
+
+
+    .trust-items {
+      display: flex;
+
+      align-items: center;
+
+      gap: 55px;
+    }
+
+
+    .trust-item {
+      font-size: 12px;
+
+      font-weight: 900;
+
+      color: #999b9f;
+
+      letter-spacing: 1px;
+    }
+
+
+    .trust-item:first-child {
+      color: var(--black);
+    }
+
+
+    .trust-item:nth-child(2) {
+      color: #777;
+    }
+
+
+    .trust-item:nth-child(3) {
+      color: #888;
+    }
+
+
+    .trust-item:nth-child(4) {
+      color: #aaa;
+    }
+
+
+    /* =========================
+       SECTIONS
+    ========================== */
+
+    section {
+      padding: 125px 0;
+    }
+
+
+    .section-header {
+      max-width: 700px;
+
+      margin-bottom: 60px;
+    }
+
+
+    .section-label {
+      color: #a58a25;
+
+      font-size: 9px;
+
+      font-weight: 900;
+
+      letter-spacing: 1.5px;
+
+      margin-bottom: 14px;
+    }
+
+
+    .section-title {
+      font-size: clamp(36px, 4vw, 55px);
+
+      line-height: 1.15;
+
+      font-weight: 900;
+
+      letter-spacing: -2px;
+
+      margin-bottom: 18px;
+    }
+
+
+    .section-description {
+      color: var(--muted);
+
+      font-size: 14px;
+
+      line-height: 2.1;
+    }
+
+
+    /* =========================
+       PROBLEM / SOLUTION
+    ========================== */
+
+    .problem-section {
+      background: var(--bg);
+    }
+
+
+    .problem-grid {
+      display: grid;
+
+      grid-template-columns:
+        .85fr
+        1.15fr;
+
+      gap: 90px;
+
+      align-items: center;
+    }
+
+
+    .problem-list {
+      display: flex;
+
+      flex-direction: column;
+
+      gap: 11px;
+
+      margin-top: 35px;
+    }
+
+
+    .problem {
+      display: flex;
+
+      align-items: center;
+
+      gap: 14px;
+
+      padding: 17px;
+
+      background: white;
+
+      border: 1px solid var(--line);
+
+      border-radius: 13px;
+
+      transition: .25s ease;
+    }
+
+
+    .problem:hover {
+      transform: translateX(-5px);
+
+      border-color: #c8c8c1;
+    }
+
+
+    .problem-icon {
+      width: 35px;
+      height: 35px;
+
+      display: grid;
+      place-items: center;
+
+      border-radius: 9px;
+
+      background: #f0f0ed;
+
+      color: #666;
+
+      font-weight: 900;
+    }
+
+
+    .problem strong {
+      display: block;
+
+      font-size: 11px;
+
+      margin-bottom: 4px;
+    }
+
+
+    .problem span {
+      color: #999;
+
+      font-size: 9px;
+    }
+
+
+    /* Solution visual */
+
+    .solution {
+      min-height: 440px;
+
+      border-radius: 24px;
+
+      background: var(--black);
+
+      color: white;
+
+      position: relative;
+
+      overflow: hidden;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+    }
+
+
+    .solution::before {
+      content: "";
+
+      position: absolute;
+
+      width: 500px;
+      height: 500px;
+
+      border-radius: 50%;
+
+      border: 1px solid rgba(255,255,255,.08);
+    }
+
+
+    .solution::after {
+      content: "";
+
+      position: absolute;
+
+      width: 330px;
+      height: 330px;
+
+      border-radius: 50%;
+
+      border: 1px solid rgba(245,197,66,.18);
+    }
+
+
+    .solution-center {
+      width: 150px;
+      height: 150px;
+
+      border-radius: 50%;
+
+      background: var(--yellow);
+
+      color: var(--black);
+
+      display: grid;
+
+      place-items: center;
+
+      font-weight: 900;
+
+      font-size: 23px;
+
+      position: relative;
+
+      z-index: 2;
+
+      box-shadow:
+        0 0 80px rgba(245,197,66,.15);
+    }
+
+
+    .solution-node {
+      position: absolute;
+
+      width: 85px;
+
+      height: 85px;
+
+      border-radius: 14px;
+
+      background: #1d1f24;
+
+      border: 1px solid #33353b;
+
+      display: grid;
+
+      place-items: center;
+
+      color: #bbb;
+
+      font-size: 8px;
+
+      font-weight: 800;
+
+      z-index: 3;
+    }
+
+
+    .node-1 {
+      top: 70px;
+      right: 90px;
+    }
+
+
+    .node-2 {
+      bottom: 70px;
+      right: 90px;
+    }
+
+
+    .node-3 {
+      top: 70px;
+      left: 90px;
+    }
+
+
+    .node-4 {
+      bottom: 70px;
+      left: 90px;
+    }
+
+
+    /* =========================
+       CAPABILITIES
+    ========================== */
+
+    .capabilities {
+      background: white;
+    }
+
+
+    .capability-grid {
+      display: grid;
+
+      grid-template-columns:
+        repeat(4,1fr);
+
+      gap: 12px;
+    }
+
+
+    .capability {
+      min-height: 275px;
+
+      padding: 25px;
+
+      background: var(--bg);
+
+      border: 1px solid var(--line);
+
+      border-radius: 17px;
+
+      position: relative;
+
+      transition: .3s ease;
+    }
+
+
+    .capability:hover {
+      transform: translateY(-7px);
+
+      background: white;
+
+      box-shadow:
+        0 20px 50px rgba(0,0,0,.07);
+    }
+
+
+    .capability-number {
+      color: #bbb;
+
+      font-size: 9px;
+
+      font-weight: 800;
+
+      margin-bottom: 35px;
+    }
+
+
+    .capability-icon {
+      width: 43px;
+      height: 43px;
+
+      display: grid;
+
+      place-items: center;
+
+      border-radius: 10px;
+
+      background: var(--black);
+
+      color: var(--yellow);
+
+      font-size: 9px;
+
+      font-weight: 900;
+
+      margin-bottom: 20px;
+    }
+
+
+    .capability h3 {
+      font-size: 15px;
+
+      margin-bottom: 10px;
+    }
+
+
+    .capability p {
+      color: #81838a;
+
+      font-size: 10px;
+
+      line-height: 2;
+    }
+
+
+    .capability-tag {
+      position: absolute;
+
+      left: 20px;
+      bottom: 20px;
+
+      color: #b2b3b6;
+
+      font-size: 7px;
+
+      letter-spacing: 1px;
+
+      font-weight: 800;
+    }
+
+
+    /* =========================
+       FLOW
+    ========================== */
+
+    .flow-section {
+      background: var(--bg);
+    }
+
+
+    .flow {
+      display: grid;
+
+      grid-template-columns:
+        repeat(5,1fr);
+
+      background: white;
+
+      border: 1px solid var(--line);
+
+      border-radius: 20px;
+
+      overflow: hidden;
+    }
+
+
+    .flow-step {
+      min-height: 220px;
+
+      padding: 26px;
+
+      border-left: 1px solid var(--line);
+
+      position: relative;
+    }
+
+
+    .flow-step:last-child {
+      border-left: none;
+    }
+
+
+    .flow-number {
+      color: var(--yellow-dark);
+
+      font-size: 10px;
+
+      font-weight: 900;
+
+      margin-bottom: 40px;
+    }
+
+
+    .flow-step h3 {
+      font-size: 16px;
+
+      margin-bottom: 10px;
+    }
+
+
+    .flow-step p {
+      color: #888;
+
+      font-size: 9px;
+
+      line-height: 2;
+    }
+
+
+    .flow-arrow {
+      position: absolute;
+
+      left: -9px;
+
+      top: 50%;
+
+      transform: translateY(-50%);
+
+      width: 18px;
+      height: 18px;
+
+      display: grid;
+
+      place-items: center;
+
+      background: var(--yellow);
+
+      color: var(--black);
+
+      border-radius: 50%;
+
+      font-size: 8px;
+
+      z-index: 2;
+    }
+
+
+    /* =========================
+       VISION
+    ========================== */
+
+    .vision {
+      background: var(--black);
+
+      color: white;
+
+      min-height: 650px;
+
+      display: flex;
+
+      align-items: center;
+
+      text-align: center;
+
+      position: relative;
+
+      overflow: hidden;
+    }
+
+
+    .vision::before {
+      content: "";
+
+      position: absolute;
+
+      width: 700px;
+      height: 700px;
+
+      border-radius: 50%;
+
+      border: 1px solid rgba(255,255,255,.05);
+
+      top: 50%;
+      right: 50%;
+
+      transform:
+        translate(50%,-50%);
+    }
+
+
+    .vision::after {
+      content: "";
+
+      position: absolute;
+
+      width: 450px;
+      height: 450px;
+
+      border-radius: 50%;
+
+      border: 1px solid rgba(245,197,66,.15);
+
+      top: 50%;
+      right: 50%;
+
+      transform:
+        translate(50%,-50%);
+    }
+
+
+    .vision-content {
+      position: relative;
+
+      z-index: 2;
+
+      max-width: 900px;
+
+      margin: auto;
+    }
+
+
+    .vision .section-label {
+      color: var(--yellow);
+    }
+
+
+    .vision-title {
+      font-size: clamp(45px, 7vw, 90px);
+
+      line-height: 1;
+
+      letter-spacing: -5px;
+
+      font-weight: 900;
+
+      margin: 30px 0;
+    }
+
+
+    .vision-title span {
+      color: var(--yellow);
+    }
+
+
+    .vision-description {
+      color: #999da5;
+
+      font-size: 14px;
+
+      line-height: 2.2;
+    }
+
+
+    /* =========================
+       FOUNDER
+    ========================== */
+
+    .founder {
+      background: white;
+    }
+
+
+    .founder-grid {
+      display: grid;
+
+      grid-template-columns:
+        .7fr
+        1.3fr;
+
+      gap: 80px;
+
+      align-items: center;
+    }
+
+
+    .founder-card {
+      height: 350px;
+
+      background: var(--bg);
+
+      border: 1px solid var(--line);
+
+      border-radius: 23px;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      position: relative;
+
+      overflow: hidden;
+    }
+
+
+    .founder-card::before {
+      content: "L";
+
+      font-size: 250px;
+
+      font-weight: 900;
+
+      color: transparent;
+
+      -webkit-text-stroke:
+        1px rgba(0,0,0,.06);
+    }
+
+
+    .founder-info h2 {
+      font-size: 40px;
+
+      font-weight: 900;
+
+      margin-bottom: 8px;
+    }
+
+
+    .founder-role {
+      color: #a58a25;
+
+      font-size: 11px;
+
+      font-weight: 800;
+
+      margin-bottom: 25px;
+    }
+
+
+    .founder-info p {
+      max-width: 650px;
+
+      color: var(--muted);
+
+      font-size: 13px;
+
+      line-height: 2.3;
+    }
+
+
+    /* =========================
+       CTA
+    ========================== */
+
+    .cta-section {
+      padding: 120px 0;
+
+      background: var(--bg);
+    }
+
+
+    .cta {
+      background: var(--black);
+
+      color: white;
+
+      border-radius: 25px;
+
+      padding: 80px 40px;
+
+      text-align: center;
+
+      position: relative;
+
+      overflow: hidden;
+    }
+
+
+    .cta::before {
+      content: "";
+
+      position: absolute;
+
+      width: 400px;
+      height: 400px;
+
+      border-radius: 50%;
+
+      background: rgba(245,197,66,.08);
+
+      filter: blur(80px);
+
+      right: 50%;
+      top: 50%;
+
+      transform:
+        translate(50%,-50%);
+    }
+
+
+    .cta-content {
+      position: relative;
+
+      z-index: 2;
+    }
+
+
+    .cta .section-label {
+      color: var(--yellow);
+    }
+
+
+    .cta h2 {
+      font-size: clamp(38px,5vw,62px);
+
+      line-height: 1.15;
+
+      letter-spacing: -2px;
+
+      margin: 20px 0;
+    }
+
+
+    .cta h2 span {
+      color: var(--yellow);
+    }
+
+
+    .cta p {
+      color: #999da5;
+
+      font-size: 13px;
+
+      margin-bottom: 30px;
+    }
+
+
+    .cta-contact {
+      display: flex;
+
+      justify-content: center;
+
+      align-items: center;
+
+      gap: 12px;
+
+      flex-wrap: wrap;
+    }
+
+
+    .cta-button {
+      padding: 14px 23px;
+
+      border-radius: 10px;
+
+      background: var(--yellow);
+
+      color: var(--black);
+
+      font-size: 12px;
+
+      font-weight: 800;
+
+      transition: .25s ease;
+    }
+
+
+    .cta-button:hover {
+      transform: translateY(-3px);
+
+      background: #ffd95b;
+    }
+
+
+    .cta-phone {
+      padding: 13px 20px;
+
+      border: 1px solid rgba(255,255,255,.15);
+
+      border-radius: 10px;
+
+      color: white;
+
+      font-size: 12px;
+
+      direction: ltr;
+    }
+
+
+    /* =========================
+       FOOTER
+    ========================== */
+
+    footer {
+      background: white;
+
+      border-top: 1px solid var(--line);
+
+      padding: 28px 0;
+    }
+
+
+    .footer-inner {
+      display: flex;
+
+      align-items: center;
+
+      justify-content: space-between;
+
+      gap: 20px;
+
+      color: #929398;
+
+      font-size: 9px;
+    }
+
+
+    .footer-logo {
+      color: var(--black);
+
+      font-size: 12px;
+
+      font-weight: 900;
+    }
+
+
+    .footer-phone {
+      direction: ltr;
+    }
+
+
+    /* =========================
+       REVEAL ANIMATION
+    ========================== */
+
+    .reveal {
+      opacity: 0;
+
+      transform: translateY(25px);
+
+      transition:
+        opacity .8s ease,
+        transform .8s ease;
+    }
+
+
+    .reveal.visible {
+      opacity: 1;
+
+      transform: translateY(0);
+    }
+
+
+    /* =========================
+       RESPONSIVE
+    ========================== */
+
+    @media (max-width: 1050px) {
+
+      .hero-grid {
+        grid-template-columns: 1fr;
+      }
+
+
+      .hero-content {
+        text-align: center;
+      }
+
+
+      .hero-description {
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+
+      .hero-buttons {
+        justify-content: center;
+      }
+
+
+      .hero-dashboard {
+        max-width: 800px;
+
+        margin: auto;
+      }
+
+
+      .problem-grid {
+        grid-template-columns: 1fr;
+      }
+
+
+      .capability-grid {
+        grid-template-columns:
+          repeat(2,1fr);
+      }
+
+
+      .founder-grid {
+        grid-template-columns: 1fr;
+      }
+
+
+      .founder-card {
+        max-width: 500px;
+      }
+
+    }
+
+
+    @media (max-width: 800px) {
+
+      .nav-links,
+      .phone {
+        display: none;
+      }
+
+
+      .container {
+        width:
+          min(100% - 28px, 1220px);
+      }
+
+
+      .hero {
+        padding-top: 120px;
+      }
+
+
+      .hero h1 {
+        letter-spacing: -2.5px;
+      }
+
+
+      .floating {
+        display: none;
+      }
+
+
+      .stats {
+        grid-template-columns:
+          repeat(2,1fr);
+      }
+
+
+      .dashboard-grid {
+        grid-template-columns: 1fr;
+      }
+
+
+      .trust-inner {
+        flex-direction: column;
+
+        align-items: flex-start;
+      }
+
+
+      .trust-items {
+        width: 100%;
+
+        justify-content: space-between;
+
+        gap: 15px;
+      }
+
+
+      .flow {
+        grid-template-columns: 1fr;
+      }
+
+
+      .flow-step {
+        border-left: none;
+
+        border-bottom: 1px solid var(--line);
+      }
+
+
+      .flow-step:last-child {
+        border-bottom: none;
+      }
+
+
+      .flow-arrow {
+        display: none;
+      }
+
+    }
+
+
+    @media (max-width: 600px) {
+
+      section {
+        padding: 85px 0;
+      }
+
+
+      .capability-grid {
+        grid-template-columns: 1fr;
+      }
+
+
+      .solution {
+        min-height: 380px;
+      }
+
+
+      .solution-node {
+        width: 70px;
+        height: 70px;
+      }
+
+
+      .node-1,
+      .node-2 {
+        right: 35px;
+      }
+
+
+      .node-3,
+      .node-4 {
+        left: 35px;
+      }
+
+
+      .vision-title {
+        letter-spacing: -3px;
+      }
+
+
+      .founder-info h2 {
+        font-size: 32px;
+      }
+
+
+      .cta {
+        padding: 60px 20px;
+      }
+
+
+      .footer-inner {
+        flex-direction: column;
+
+        text-align: center;
+      }
+
+    }
+
+  </style>
+</head>
+
+
+<body>
+
+
+  <!-- =========================
+       NAVIGATION
+  ========================== -->
+
+  <nav>
+
+    <div class="container nav-inner">
+
+      <a href="#" class="logo">
+
+        <div class="logo-mark">
+          L
+        </div>
+
+        LignoX
+
+        <small>
+          FACTORY OS
+        </small>
+
+      </a>
+
+
+      <div class="nav-links">
+
+        <a href="#why">
+          چرا LignoX
+        </a>
+
+        <a href="#capabilities">
+          قابلیت‌ها
+        </a>
+
+        <a href="#flow">
+          فرآیند
+        </a>
+
+        <a href="#vision">
+          چشم‌انداز
+        </a>
+
+      </div>
+
+
+      <div class="nav-contact">
+
+        <a
+          class="phone"
+          href="tel:09379196117"
+        >
+          0937 919 6117
+        </a>
+
+        <a
+          class="nav-button"
+          href="tel:09379196117"
+        >
+          تماس برای دمو
+        </a>
+
+      </div>
+
+    </div>
+
+  </nav>
+
+
+  <!-- =========================
+       HERO
+  ========================== -->
+
+  <main>
+
+    <section class="hero">
+
+      <div class="container hero-grid">
+
+
+        <div class="hero-content reveal">
+
+          <div class="hero-label">
+
+            <span></span>
+
+            FACTORY OPERATING SYSTEM
+
+          </div>
+
+
+          <h1>
+
+            کارخانه،
+            <br>
+
+            یک
+            <span class="yellow">
+              مغز
+            </span>
+
+            <br>
+
+            می‌خواهد.
+
+          </h1>
+
+
+          <p class="hero-description">
+
+            LignoX سیستم‌عامل عملیاتی صنعت مبلمان است؛
+            جایی که برنامه‌ریزی، تولید، ظرفیت، موجودی و
+            تصمیم‌گیری مدیریتی در یک سیستم یکپارچه به هم متصل می‌شوند.
+
+          </p>
+
+
+          <div class="hero-buttons">
+
+            <a
+              href="tel:09379196117"
+              class="button button-black"
+            >
+              درخواست دمو
+
+              <span>
+                ←
+              </span>
+
+            </a>
+
+
+            <a
+              href="#capabilities"
+              class="button button-outline"
+            >
+              آشنایی با LignoX
+            </a>
+
+          </div>
+
+        </div>
+
+
+        <!-- DASHBOARD -->
+
+        <div class="hero-dashboard reveal">
+
+          <div class="dashboard-shadow"></div>
+
+
+          <div class="floating one">
+
+            <div class="floating-label">
+              تحویل به‌موقع
+            </div>
+
+            <div class="floating-value green">
+              +18.4%
+            </div>
+
+          </div>
+
+
+          <div class="floating two">
+
+            <div class="floating-label">
+              سلامت کارخانه
+            </div>
+
+            <div class="floating-value green">
+              94.7%
+            </div>
+
+          </div>
+
+
+          <div class="dashboard">
+
+
+            <div class="dashboard-top">
+
+              <div class="dashboard-brand">
+
+                <div class="dashboard-logo">
+                  L
+                </div>
+
+                LignoX
+
+                <span style="color:#aaa">
+                  / Executive
+                </span>
+
+              </div>
+
+
+              <div class="dashboard-status">
+
+                <span class="status-dot"></span>
+
+                کارخانه آنلاین
+
+              </div>
+
+            </div>
+
+
+            <div class="dashboard-content">
+
+
+              <div class="dashboard-heading">
+
+                <div>
+
+                  <h3>
+                    نمای کارخانه
+                  </h3>
+
+                  <p>
+                    وضعیت لحظه‌ای عملیات تولید
+                  </p>
+
+                </div>
+
+
+                <div class="date-box">
+                  امروز
+                </div>
+
+              </div>
+
+
+              <div class="stats">
+
+
+                <div class="stat">
+
+                  <div class="stat-label">
+                    سفارش فعال
+                  </div>
+
+                  <div class="stat-value">
+                    128
+                  </div>
+
+                  <div class="stat-change">
+                    ↑ 12%
+                  </div>
+
+                </div>
+
+
+                <div class="stat">
+
+                  <div class="stat-label">
+                    تحویل به‌موقع
+                  </div>
+
+                  <div class="stat-value">
+                    94%
+                  </div>
+
+                  <div class="stat-change">
+                    ↑ 8.2%
+                  </div>
+
+                </div>
+
+
+                <div class="stat">
+
+                  <div class="stat-label">
+                    ظرفیت
+                  </div>
+
+                  <div class="stat-value">
+                    81%
+                  </div>
+
+                  <div class="stat-change">
+                    ↑ 4.8%
+                  </div>
+
+                </div>
+
+
+                <div class="stat">
+
+                  <div class="stat-label">
+                    ریسک فعال
+                  </div>
+
+                  <div class="stat-value">
+                    07
+                  </div>
+
+                  <div
+                    class="stat-change"
+                    style="color:#d95757"
+                  >
+                    نیازمند توجه
+                  </div>
+
+                </div>
+
+              </div>
+
+
+              <div class="dashboard-grid">
+
+
+                <div class="dash-panel">
+
+                  <div class="panel-header">
+
+                    <strong>
+                      روند تولید
+                    </strong>
+
+                    <span>
+                      PLAN / ACTUAL
+                    </span>
+
+                  </div>
+
+
+                  <div class="chart">
+
+                    <div
+                      class="bar"
+                      style="--height:48%"
+                    ></div>
+
+                    <div
+                      class="bar"
+                      style="--height:63%"
+                    ></div>
+
+                    <div
+                      class="bar"
+                      style="--height:55%"
+                    ></div>
+
+                    <div
+                      class="bar"
+                      style="--height:76%"
+                    ></div>
+
+                    <div
+                      class="bar"
+                      style="--height:68%"
+                    ></div>
+
+                    <div
+                      class="bar"
+                      style="--height:87%"
+                    ></div>
+
+                    <div
+                      class="bar"
+                      style="--height:75%"
+                    ></div>
+
+                    <div
+                      class="bar"
+                      style="--height:92%"
+                    ></div>
+
+                    <div
+                      class="bar"
+                      style="--height:82%"
+                    ></div>
+
+                    <div
+                      class="bar"
+                      style="--height:98%"
+                    ></div>
+
+                  </div>
+
+                </div>
+
+
+                <div class="dash-panel">
+
+                  <div class="panel-header">
+
+                    <strong>
+                      سفارش‌ها
+                    </strong>
+
+                    <span>
+                      LIVE
+                    </span>
+
+                  </div>
+
+
+                  <div class="orders">
+
+
+                    <div class="order">
+
+                      <div class="order-icon">
+                        A01
+                      </div>
+
+                      <div>
+
+                        <strong>
+                          سفارش 10482
+                        </strong>
+
+                        <span>
+                          مبل راحتی
+                        </span>
+
+                      </div>
+
+                      <div class="order-status">
+                        تولید
+                      </div>
+
+                    </div>
+
+
+                    <div class="order">
+
+                      <div class="order-icon">
+                        A02
+                      </div>
+
+                      <div>
+
+                        <strong>
+                          سفارش 10479
+                        </strong>
+
+                        <span>
+                          سرویس خواب
+                        </span>
+
+                      </div>
+
+                      <div class="order-status">
+                        برنامه
+                      </div>
+
+                    </div>
+
+
+                    <div class="order">
+
+                      <div class="order-icon">
+                        A03
+                      </div>
+
+                      <div>
+
+                        <strong>
+                          سفارش 10471
+                        </strong>
+
+                        <span>
+                          میز ناهارخوری
+                        </span>
+
+                      </div>
+
+                      <div class="order-status">
+                        کنترل
+                      </div>
+
+                    </div>
+
+
+                  </div>
+
+                </div>
+
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         TRUST
+    ========================== -->
+
+    <div class="trust">
+
+      <div class="container trust-inner">
+
+        <div class="trust-label">
+          معماری محصول
+        </div>
+
+
+        <div class="trust-items">
+
+          <div class="trust-item">
+            MES
+          </div>
+
+          <div class="trust-item">
+            APS
+          </div>
+
+          <div class="trust-item">
+            BI
+          </div>
+
+          <div class="trust-item">
+            AI
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- =========================
+         WHY LIGNOX
+    ========================== -->
+
+    <section
+      id="why"
+      class="problem-section"
+    >
+
+      <div class="container problem-grid">
+
+
+        <div class="reveal">
+
+          <div class="section-label">
+            THE PROBLEM
+          </div>
+
+
+          <h2 class="section-title">
+            کارخانه را
+            <br>
+            از روی حدس مدیریت نکنید.
+          </h2>
+
+
+          <p class="section-description">
+
+            وقتی اطلاعات تولید در Excel،
+            پیام‌ها، کاغذها و ذهن افراد پراکنده باشد،
+            مدیر کارخانه تصویر واقعی و لحظه‌ای از عملیات ندارد.
+
+          </p>
+
+
+          <div class="problem-list">
+
+
+            <div class="problem">
+
+              <div class="problem-icon">
+                ×
+              </div>
+
+              <div>
+
+                <strong>
+                  اطلاعات پراکنده
+                </strong>
+
+                <span>
+                  داده‌ها در چندین فایل و کانال مختلف قرار دارند.
+                </span>
+
+              </div>
+
+            </div>
+
+
+            <div class="problem">
+
+              <div class="problem-icon">
+                !
+              </div>
+
+              <div>
+
+                <strong>
+                  تشخیص دیرهنگام مشکل
+                </strong>
+
+                <span>
+                  گلوگاه زمانی دیده می‌شود که اثر خود را گذاشته است.
+                </span>
+
+              </div>
+
+            </div>
+
+
+            <div class="problem">
+
+              <div class="problem-icon">
+                ?
+              </div>
+
+              <div>
+
+                <strong>
+                  تصمیم‌گیری بدون تصویر کامل
+                </strong>
+
+                <span>
+                  تصمیم‌ها بر اساس اطلاعات ناقص گرفته می‌شوند.
+                </span>
+
+              </div>
+
+            </div>
+
+
+          </div>
+
+        </div>
+
+
+        <div class="solution reveal">
+
+
+          <div class="solution-node node-1">
+            سفارش
+          </div>
+
+
+          <div class="solution-node node-2">
+            تولید
+          </div>
+
+
+          <div class="solution-node node-3">
+            ظرفیت
+          </div>
+
+
+          <div class="solution-node node-4">
+            موجودی
+          </div>
+
+
+          <div class="solution-center">
+            LignoX
+          </div>
+
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         CAPABILITIES
+    ========================== -->
+
+    <section
+      id="capabilities"
+      class="capabilities"
+    >
+
+      <div class="container">
+
+
+        <div class="section-header reveal">
+
+          <div class="section-label">
+            ONE SYSTEM
+          </div>
+
+
+          <h2 class="section-title">
+            تمام کارخانه،
+            <br>
+            در یک نگاه.
+          </h2>
+
+
+          <p class="section-description">
+
+            LignoX داده‌های عملیاتی کارخانه را به
+            اطلاعات قابل‌فهم و قابل‌اقدام تبدیل می‌کند.
+
+          </p>
+
+        </div>
+
+
+        <div class="capability-grid">
+
+
+          <div class="capability reveal">
+
+            <div class="capability-number">
+              01
+            </div>
+
+            <div class="capability-icon">
+              PLAN
+            </div>
+
+            <h3>
+              برنامه‌ریزی تولید
+            </h3>
+
+            <p>
+              برنامه‌ریزی بر اساس سفارش،
+              ظرفیت واقعی خطوط، منابع و اولویت‌های تولید.
+            </p>
+
+            <div class="capability-tag">
+              APS
+            </div>
+
+          </div>
+
+
+          <div class="capability reveal">
+
+            <div class="capability-number">
+              02
+            </div>
+
+            <div class="capability-icon">
+              FLOW
+            </div>
+
+            <h3>
+              کنترل عملیات
+            </h3>
+
+            <p>
+              مشاهده جریان واقعی سفارش‌ها و
+              وضعیت عملیات در کف کارخانه.
+            </p>
+
+            <div class="capability-tag">
+              MES
+            </div>
+
+          </div>
+
+
+          <div class="capability reveal">
+
+            <div class="capability-number">
+              03
+            </div>
+
+            <div class="capability-icon">
+              VIEW
+            </div>
+
+            <h3>
+              هوش مدیریتی
+            </h3>
+
+            <p>
+              تبدیل داده‌های تولید به KPI،
+              گزارش و تصویر مدیریتی قابل‌فهم.
+            </p>
+
+            <div class="capability-tag">
+              BI
+            </div>
+
+          </div>
+
+
+          <div class="capability reveal">
+
+            <div class="capability-number">
+              04
+            </div>
+
+            <div class="capability-icon">
+              AI
+            </div>
+
+            <h3>
+              هوش مصنوعی
+            </h3>
+
+            <p>
+              تحلیل وضعیت کارخانه،
+              شناسایی ریسک و کمک به تصمیم‌گیری.
+            </p>
+
+            <div class="capability-tag">
+              INTELLIGENCE
+            </div>
+
+          </div>
+
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         FLOW
+    ========================== -->
+
+    <section class="flow-section" id="flow">
+
+      <div class="container">
+
+
+        <div class="section-header reveal">
+
+          <div class="section-label">
+            FACTORY FLOW
+          </div>
+
+
+          <h2 class="section-title">
+            از سفارش
+            <br>
+            تا تحویل.
+          </h2>
+
+        </div>
+
+
+        <div class="flow reveal">
+
+
+          <div class="flow-step">
+
+            <div class="flow-number">
+              01
+            </div>
+
+            <h3>
+              سفارش
+            </h3>
+
+            <p>
+              ثبت و مدیریت یکپارچه سفارش‌ها
+              و اطلاعات محصول.
+            </p>
+
+            <div class="flow-arrow">
+              ←
+            </div>
+
+          </div>
+
+
+          <div class="flow-step">
+
+            <div class="flow-number">
+              02
+            </div>
+
+            <h3>
+              برنامه‌ریزی
+            </h3>
+
+            <p>
+              ساخت برنامه تولید بر اساس
+              ظرفیت و منابع واقعی.
+            </p>
+
+            <div class="flow-arrow">
+              ←
+            </div>
+
+          </div>
+
+
+          <div class="flow-step">
+
+            <div class="flow-number">
+              03
+            </div>
+
+            <h3>
+              تولید
+            </h3>
+
+            <p>
+              ثبت و مشاهده وضعیت واقعی
+              سفارش‌ها در خط تولید.
+            </p>
+
+            <div class="flow-arrow">
+              ←
+            </div>
+
+          </div>
+
+
+          <div class="flow-step">
+
+            <div class="flow-number">
+              04
+            </div>
+
+            <h3>
+              کنترل
+            </h3>
+
+            <p>
+              شناسایی گلوگاه‌ها،
+              ریسک‌ها و انحراف‌های تولید.
+            </p>
+
+            <div class="flow-arrow">
+              ←
+            </div>
+
+          </div>
+
+
+          <div class="flow-step">
+
+            <div class="flow-number">
+              05
+            </div>
+
+            <h3>
+              تحویل
+            </h3>
+
+            <p>
+              دید دقیق‌تر نسبت به وضعیت
+              و زمان تحویل سفارش‌ها.
+            </p>
+
+          </div>
+
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         VISION
+    ========================== -->
+
+    <section
+      id="vision"
+      class="vision"
+    >
+
+      <div class="container vision-content reveal">
+
+
+        <div class="section-label">
+          THE FUTURE
+        </div>
+
+
+        <div class="vision-title">
+
+          سیستم‌عامل
+
+          <br>
+
+          <span>
+            صنعت مبلمان
+          </span>
+
+        </div>
+
+
+        <p class="vision-description">
+
+          هدف LignoX فقط دیجیتال‌کردن فرآیندها نیست.
+          <br>
+
+          هدف، ایجاد یک لایه هوشمند عملیاتی برای کارخانه است؛
+          جایی که داده، فرآیند و تصمیم‌گیری به یکدیگر متصل می‌شوند.
+
+        </p>
+
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         FOUNDER
+    ========================== -->
+
+    <section class="founder">
+
+      <div class="container founder-grid">
+
+
+        <div class="founder-card reveal"></div>
+
+
+        <div class="founder-info reveal">
+
+          <div class="section-label">
+            BUILT FROM THE FACTORY
+          </div>
+
+
+          <h2>
+            محمدجواد حسنی
+          </h2>
+
+
+          <div class="founder-role">
+            Founder & Product Builder
+          </div>
+
+
+          <p>
+
+            LignoX از دل مسائل واقعی یک کارخانه مبلمان
+            شکل گرفته است؛ از برنامه‌ریزی تولید و کنترل عملیات
+            تا تحلیل وضعیت کارخانه و تصمیم‌گیری مدیریتی.
+
+          </p>
+
+
+          <br>
+
+
+          <p>
+
+            محصول ابتدا در محیط واقعی کارخانه ساخته و آزمایش شده
+            و توسعه آن بر اساس مسئله‌های واقعی صنعت ادامه پیدا می‌کند.
+
+          </p>
+
+        </div>
+
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         FINAL CTA
+    ========================== -->
+
+    <section class="cta-section">
+
+      <div class="container">
+
+
+        <div class="cta reveal">
+
+
+          <div class="cta-content">
+
+
+            <div class="section-label">
+              START THE CONVERSATION
+            </div>
+
+
+            <h2>
+
+              کارخانه را
+
+              <br>
+
+              <span>
+                با داده
+              </span>
+
+              مدیریت کنید.
+
+            </h2>
+
+
+            <p>
+              برای آشنایی بیشتر با LignoX و دریافت دمو با ما تماس بگیرید.
+            </p>
+
+
+            <div class="cta-contact">
+
+
+              <a
+                href="tel:09379196117"
+                class="cta-button"
+              >
+                درخواست دمو
+              </a>
+
+
+              <a
+                href="tel:09379196117"
+                class="cta-phone"
+              >
+                0937 919 6117
+              </a>
+
+
+            </div>
+
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <!-- =========================
+       FOOTER
+  ========================== -->
+
+  <footer>
+
+    <div class="container footer-inner">
+
+
+      <div class="footer-logo">
+        LignoX — Factory Operating System
+      </div>
+
+
+      <div class="footer-phone">
+        0937 919 6117
+      </div>
+
+
+      <div>
+        © 2026 LignoX
+      </div>
+
+
+    </div>
+
+  </footer>
+
+
+  <!-- =========================
+       JAVASCRIPT
+  ========================== -->
+
+  <script>
+
+    /*
+      Scroll Reveal
+    */
+
+    const observer =
+      new IntersectionObserver(
+        entries => {
+
+          entries.forEach(entry => {
+
+            if (entry.isIntersecting) {
+
+              entry.target.classList.add("visible");
+
+              observer.unobserve(entry.target);
+
+            }
+
+          });
+
+        },
+        {
+          threshold: .12
+        }
+      );
+
+
+    document
+      .querySelectorAll(".reveal")
+      .forEach(element => {
+
+        observer.observe(element);
+
+      });
+
+
+    /*
+      Dashboard subtle mouse movement
+    */
+
+    const dashboard =
+      document.querySelector(".dashboard");
+
+    const dashboardWrap =
+      document.querySelector(".hero-dashboard");
+
+
+    if (
+      dashboard &&
+      dashboardWrap &&
+      window.matchMedia("(pointer:fine)").matches
+    ) {
+
+      dashboardWrap.addEventListener(
+        "mousemove",
+        event => {
+
+          const rect =
+            dashboardWrap.getBoundingClientRect();
+
+          const x =
+            (event.clientX - rect.left) /
+            rect.width -
+            .5;
+
+          const y =
+            (event.clientY - rect.top) /
+            rect.height -
+            .5;
+
+
+          dashboard.style.transform = `
+            perspective(1200px)
+            rotateY(${x * -3}deg)
+            rotateX(${y * 2}deg)
+            translateY(-3px)
+          `;
+
+        }
+      );
+
+
+      dashboardWrap.addEventListener(
+        "mouseleave",
+        () => {
+
+          dashboard.style.transform = `
+            perspective(1200px)
+            rotateY(0deg)
+            rotateX(0deg)
+            translateY(0)
+          `;
+
+        }
+      );
+
+    }
+
+
+    /*
+      Smooth navigation
+    */
+
+    document
+      .querySelectorAll('a[href^="#"]')
+      .forEach(anchor => {
+
+        anchor.addEventListener(
+          "click",
+          function(event) {
+
+            const target =
+              document.querySelector(
+                this.getAttribute("href")
+              );
+
+            if (!target) return;
+
+            event.preventDefault();
+
+            target.scrollIntoView({
+              behavior: "smooth"
+            });
+
+          }
+        );
+
+      });
+
+  </script>
+
+
+</body>
+</html>
