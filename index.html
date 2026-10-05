@@ -5,36 +5,133 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta name="theme-color" content="#f5f7fa" />
 
-<title>LignoX | سیستم‌عامل صنعت مبلمان</title>
+<title>LignoX | سیستم‌عامل تولید صنعت مبلمان</title>
 <meta
 name="description"
 content="LignoX؛ سیستم‌عامل مدیریت، برنامه‌ریزی و کنترل تولید برای کارخانه‌های مبلمان. از سفارش تا تحویل، یک سیستم برای کل کارخانه."
 />
+<meta name="robots" content="index, follow" />
+<link rel="canonical" href="https://lignox.ir/" />
 
-<meta property="og:title" content="LignoX | Furniture Manufacturing Operating System" />
+<!-- Open Graph -->
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="LignoX" />
+<meta property="og:locale" content="fa_IR" />
+<meta property="og:url" content="https://lignox.ir/" />
+<meta property="og:title" content="LignoX | سیستم‌عامل تولید صنعت مبلمان" />
 <meta
 property="og:description"
 content="سیستم‌عامل تولید برای کارخانه‌های مبلمان؛ از سفارش تا تحویل، یک سیستم برای کل کارخانه."
 />
-<meta property="og:type" content="website" />
-<meta property="og:image" content="/assets/og-image.jpg" />
+<meta property="og:image" content="https://lignox.ir/assets/og-image.jpg" />
+<meta property="og:image:type" content="image/jpeg" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content="لوگوی LignoX" />
 
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link
-href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800;900&display=swap"
-rel="stylesheet"
+<!-- Twitter / X -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="LignoX | سیستم‌عامل تولید صنعت مبلمان" />
+<meta
+name="twitter:description"
+content="سیستم‌عامل تولید برای کارخانه‌های مبلمان؛ از سفارش تا تحویل، یک سیستم برای کل کارخانه."
 />
+<meta name="twitter:image" content="https://lignox.ir/assets/og-image.jpg" />
+<meta name="twitter:image:alt" content="لوگوی LignoX" />
+
+<!-- Icons -->
+<link rel="icon" href="favicon.ico" sizes="16x16 32x32 48x48" />
+<link rel="icon" href="assets/img/favicon-32.png" type="image/png" sizes="32x32" />
+<link rel="apple-touch-icon" href="apple-touch-icon.png" />
+<link rel="manifest" href="site.webmanifest" />
+
+<!-- Self-hosted font (no third-party request) -->
+<link
+rel="preload"
+href="assets/fonts/Vazirmatn-Variable.woff2"
+as="font"
+type="font/woff2"
+crossorigin
+/>
+
+<!-- Reveal animations are a progressive enhancement: content stays visible without JS -->
+<script>document.documentElement.classList.add("js");</script>
+
+<script type="application/ld+json">
+{
+"@context": "https://schema.org",
+"@graph": [
+{
+"@type": "Organization",
+"@id": "https://lignox.ir/#organization",
+"name": "LignoX",
+"url": "https://lignox.ir/",
+"logo": {
+"@type": "ImageObject",
+"url": "https://lignox.ir/assets/img/logo.jpg",
+"width": 1200,
+"height": 423
+},
+"description": "سیستم‌عامل مدیریت، برنامه‌ریزی و کنترل تولید برای کارخانه‌های مبلمان.",
+"founder": { "@id": "https://lignox.ir/#founder" },
+"contactPoint": {
+"@type": "ContactPoint",
+"telephone": "+98-937-919-6117",
+"contactType": "sales",
+"availableLanguage": ["fa"]
+}
+},
+{
+"@type": "Person",
+"@id": "https://lignox.ir/#founder",
+"name": "محمدجواد حسنی",
+"alternateName": "Mohammad Javad Hassani",
+"jobTitle": "Founder & Product Architect",
+"image": "https://lignox.ir/assets/img/mohammad-javad-hassani.jpg",
+"worksFor": { "@id": "https://lignox.ir/#organization" },
+"sameAs": [
+"https://www.linkedin.com/in/mjhasani12/",
+"https://instagram.com/mjhasani12"
+]
+},
+{
+"@type": "SoftwareApplication",
+"@id": "https://lignox.ir/#software",
+"name": "LignoX",
+"url": "https://lignox.ir/",
+"applicationCategory": "BusinessApplication",
+"applicationSubCategory": "Manufacturing Execution & Production Planning",
+"operatingSystem": "Web",
+"inLanguage": "fa",
+"description": "سیستم برنامه‌ریزی، کنترل و هوشمندسازی تولید برای صنعت مبلمان؛ از سفارش و ظرفیت تا تولید، موجودی و تحویل.",
+"publisher": { "@id": "https://lignox.ir/#organization" }
+},
+{
+"@type": "WebSite",
+"@id": "https://lignox.ir/#website",
+"url": "https://lignox.ir/",
+"name": "LignoX",
+"inLanguage": "fa-IR",
+"publisher": { "@id": "https://lignox.ir/#organization" }
+}
+]
+}
+</script>
 
 <style>
 /* =========================================================
 LIGNOX — SINGLE FILE WEBSITE
-Replace later:
-/assets/logo.svg
-/assets/logo.png
-/assets/mohammad-javad.jpg
-/assets/og-image.jpg
+Assets: assets/img, assets/fonts, assets/og-image.jpg
 ========================================================= */
+
+@font-face {
+font-family: "Vazirmatn";
+src: url("assets/fonts/Vazirmatn-Variable.woff2") format("woff2-variations"),
+url("assets/fonts/Vazirmatn-Variable.woff2") format("woff2");
+font-weight: 100 900;
+font-style: normal;
+font-display: swap;
+}
 
 :root {
 --bg: #f5f7fa;
@@ -45,7 +142,7 @@ Replace later:
 --ink: #0b1020;
 --ink-2: #151a2d;
 --muted: #657086;
---muted-2: #8a94a6;
+--muted-2: #667085;
 --line: #e4e9f0;
 --line-dark: #d7dee8;
 
@@ -84,7 +181,7 @@ scroll-behavior: smooth;
 }
 
 body {
-font-family: "Vazirmatn", sans-serif;
+font-family: "Vazirmatn", Tahoma, "Segoe UI", sans-serif;
 background:
 radial-gradient(circle at 76% 3%, rgba(36, 87, 255, .055), transparent 27rem),
 var(--bg);
@@ -124,6 +221,44 @@ max-width: 100%;
 display: block;
 }
 
+:focus-visible {
+outline: 3px solid var(--blue);
+outline-offset: 3px;
+border-radius: 6px;
+}
+
+[tabindex="-1"]:focus {
+outline: none;
+}
+
+.skip-link {
+position: fixed;
+top: 12px;
+right: 12px;
+z-index: 1000;
+padding: 12px 18px;
+border-radius: 12px;
+background: var(--ink);
+color: #fff;
+font-size: .9rem;
+font-weight: 700;
+transform: translateY(calc(-100% - 24px));
+transition: transform .2s ease;
+}
+
+.skip-link:focus {
+transform: none;
+}
+
+.visually-hidden {
+position: absolute !important;
+width: 1px;
+height: 1px;
+overflow: hidden;
+clip: rect(0 0 0 0);
+white-space: nowrap;
+}
+
 .container {
 width: min(calc(100% - 48px), var(--container));
 margin-inline: auto;
@@ -134,10 +269,8 @@ display: inline-flex;
 align-items: center;
 gap: 9px;
 color: var(--blue);
-font-size: .76rem;
+font-size: .8rem;
 font-weight: 800;
-letter-spacing: .09em;
-text-transform: uppercase;
 }
 
 .eyebrow::before {
@@ -226,36 +359,10 @@ min-width: max-content;
 }
 
 .brand-mark {
-width: 37px;
-height: 37px;
-position: relative;
-display: grid;
-place-items: center;
-border-radius: 11px;
-overflow: hidden;
-background: linear-gradient(135deg, var(--blue), var(--indigo));
-box-shadow: 0 8px 22px rgba(36, 87, 255, .23);
-}
-
-.brand-mark::before,
-.brand-mark::after {
-content: "";
-position: absolute;
-background: white;
-opacity: .95;
-border-radius: 2px;
-}
-
-.brand-mark::before {
-width: 20px;
-height: 4px;
-transform: rotate(-42deg);
-}
-
-.brand-mark::after {
-width: 13px;
-height: 4px;
-transform: rotate(48deg) translate(3px, -3px);
+width: 40px;
+height: 40px;
+flex: 0 0 auto;
+object-fit: contain;
 }
 
 .brand-word {
@@ -266,11 +373,11 @@ letter-spacing: -.045em;
 
 .brand-word small {
 display: block;
-font-size: .49rem;
-line-height: 1;
+font-size: .75rem;
+line-height: 1.2;
 font-weight: 600;
 color: var(--muted);
-letter-spacing: .03em;
+letter-spacing: 0;
 margin-top: 2px;
 }
 
@@ -374,7 +481,7 @@ border: 1px solid var(--line);
 border-radius: 100px;
 background: rgba(255,255,255,.75);
 color: #566176;
-font-size: .73rem;
+font-size: .82rem;
 font-weight: 650;
 margin-bottom: 28px;
 box-shadow: 0 7px 25px rgba(15,25,50,.035);
@@ -462,7 +569,7 @@ font-weight: 800;
 .meta-item span {
 display: block;
 color: var(--muted-2);
-font-size: .68rem;
+font-size: .8rem;
 margin-top: 2px;
 }
 
@@ -477,6 +584,18 @@ min-height: 590px;
 display: flex;
 align-items: center;
 justify-content: center;
+}
+
+.mockup-note {
+position: absolute;
+bottom: 0;
+left: 0;
+right: 0;
+z-index: 6;
+text-align: center;
+color: var(--muted-2);
+font-size: .75rem;
+direction: rtl;
 }
 
 .dashboard-glow {
@@ -513,7 +632,8 @@ height: 54px;
 border-bottom: 1px solid var(--line);
 display: flex;
 align-items: center;
-justify-content: space-between;
+justify-content: flex-start;
+gap: 16px;
 padding: 0 19px;
 }
 
@@ -578,7 +698,8 @@ align-items: start;
 margin-bottom: 16px;
 }
 
-.dash-head h3 {
+.dash-head .dash-h {
+display: block;
 font-size: .85rem;
 font-weight: 800;
 color: #172039;
@@ -829,8 +950,8 @@ background: var(--warning);
 }
 
 .float-card p {
-color: #6f798b;
-font-size: .53rem;
+color: #5f6b80;
+font-size: .62rem;
 line-height: 1.7;
 }
 
@@ -852,7 +973,7 @@ gap: 20px;
 }
 
 .signal-copy {
-font-size: .72rem;
+font-size: .88rem;
 color: var(--muted-2);
 white-space: nowrap;
 }
@@ -870,8 +991,8 @@ border: 1px solid var(--line);
 background: #fff;
 padding: 8px 12px;
 border-radius: 9px;
-color: #6d7788;
-font-size: .65rem;
+color: #5f6b80;
+font-size: .8rem;
 font-weight: 650;
 }
 
@@ -888,6 +1009,10 @@ display: grid;
 grid-template-columns: .75fr 1.25fr;
 gap: 100px;
 align-items: start;
+}
+
+.intro-index::before {
+content: attr(data-index);
 }
 
 .intro-index {
@@ -1004,9 +1129,9 @@ letter-spacing: -.025em;
 
 .module p {
 color: var(--muted);
-font-size: .76rem;
+font-size: .9rem;
 line-height: 1.9;
-max-width: 210px;
+max-width: 240px;
 }
 
 .module-no {
@@ -1014,7 +1139,7 @@ position: absolute;
 top: 25px;
 left: 25px;
 color: #b2bac7;
-font-size: .62rem;
+font-size: .75rem;
 direction: ltr;
 }
 
@@ -1084,8 +1209,8 @@ margin-bottom: 7px;
 }
 
 .transform-panel > p {
-color: #7d889c;
-font-size: .75rem;
+color: #8d99b0;
+font-size: .9rem;
 margin-bottom: 30px;
 }
 
@@ -1104,7 +1229,7 @@ border: 1px solid #252e41;
 border-radius: 13px;
 color: #a4adbd;
 background: rgba(255,255,255,.015);
-font-size: .73rem;
+font-size: .88rem;
 }
 
 .chaos-item svg {
@@ -1163,13 +1288,13 @@ border-radius: 9px;
 }
 
 .system-row strong {
-font-size: .72rem;
+font-size: .88rem;
 }
 
 .system-row small {
 display: block;
-color: #697790;
-font-size: .51rem;
+color: #8d99b0;
+font-size: .78rem;
 margin-top: 2px;
 }
 
@@ -1207,8 +1332,8 @@ content: "LIGNOX / SYSTEM ARCHITECTURE";
 position: absolute;
 top: 22px;
 left: 25px;
-color: #a3adbb;
-font-size: .56rem;
+color: #8b95a4;
+font-size: .75rem;
 letter-spacing: .12em;
 direction: ltr;
 }
@@ -1240,11 +1365,9 @@ background: #bdc7d5;
 
 .arch-ai .ai-label {
 color: var(--blue);
-font-size: .57rem;
+font-size: .78rem;
 font-weight: 800;
-letter-spacing: .1em;
 margin-bottom: 3px;
-direction: ltr;
 }
 
 .arch-ai strong {
@@ -1254,7 +1377,7 @@ letter-spacing: -.04em;
 
 .arch-ai span {
 color: var(--muted);
-font-size: .62rem;
+font-size: .8rem;
 margin-top: 3px;
 }
 
@@ -1301,22 +1424,14 @@ background: #eef3ff;
 
 .arch-node strong {
 display: block;
-font-size: .67rem;
-direction: ltr;
-}
-
-.arch-node span {
-display: block;
-color: #8b95a4;
-font-size: .49rem;
-margin-top: 3px;
+font-size: .85rem;
 }
 
 .arch-caption {
 margin-top: 40px;
 text-align: center;
 color: var(--muted);
-font-size: .74rem;
+font-size: .92rem;
 }
 
 /* =========================================================
@@ -1376,6 +1491,12 @@ object-position: center top;
 filter: saturate(.93) contrast(1.02);
 }
 
+.portrait-frame picture {
+display: block;
+width: 100%;
+height: 100%;
+}
+
 .portrait-placeholder {
 width: 100%;
 height: 100%;
@@ -1384,12 +1505,14 @@ place-items: center;
 position: absolute;
 inset: 0;
 background:
-radial-gradient(circle at 50% 34%, rgba(36,87,255,.08), transparent 28%),
+radial-gradient(circle at 50% 40%, rgba(36,87,255,.08), transparent 40%),
 linear-gradient(145deg, #edf1f6, #fff);
-color: #8792a4;
-font-size: .7rem;
-text-align: center;
-padding: 50px;
+}
+
+.portrait-placeholder img {
+width: 34%;
+height: auto;
+opacity: .9;
 }
 
 .portrait-frame.has-image .portrait-placeholder {
@@ -1413,12 +1536,12 @@ border-radius: 13px;
 }
 
 .portrait-label strong {
-font-size: .67rem;
+font-size: .88rem;
 }
 
 .portrait-label span {
-color: var(--blue);
-font-size: .55rem;
+color: var(--blue-dark);
+font-size: .75rem;
 direction: ltr;
 }
 
@@ -1439,19 +1562,19 @@ left: 0;
 }
 
 .founder-float.bottom {
-bottom: 65px;
+bottom: 150px;
 right: 0;
 }
 
 .founder-float strong {
 display: block;
-font-size: .72rem;
+font-size: .85rem;
 }
 
 .founder-float span {
 display: block;
 color: var(--muted);
-font-size: .54rem;
+font-size: .75rem;
 margin-top: 2px;
 }
 
@@ -1493,13 +1616,15 @@ direction: ltr;
 
 .signature-info strong {
 display: block;
-font-size: .72rem;
+font-size: .9rem;
 }
 
 .signature-info span {
 display: block;
 color: var(--muted-2);
-font-size: .56rem;
+font-size: .78rem;
+direction: ltr;
+text-align: right;
 }
 
 /* =========================================================
@@ -1564,14 +1689,14 @@ color: #fff;
 
 .timeline-item strong {
 display: block;
-font-size: .7rem;
-direction: ltr;
+font-size: .85rem;
+padding: 0 4px;
 }
 
 .timeline-item span {
 display: block;
 color: var(--muted-2);
-font-size: .5rem;
+font-size: .78rem;
 margin-top: 4px;
 padding: 0 5px;
 }
@@ -1645,8 +1770,7 @@ padding: 8px 12px;
 border: 1px solid #29344c;
 border-radius: 100px;
 color: #a7b0c1;
-font-size: .6rem;
-direction: ltr;
+font-size: .8rem;
 }
 
 .vision-graphic {
@@ -1696,16 +1820,17 @@ box-shadow: 0 0 0 18px rgba(36,87,255,.08), 0 35px 90px rgba(36,87,255,.3);
 
 .vision-core small {
 display: block;
-font-size: .54rem;
-opacity: .72;
+font-size: .78rem;
+opacity: .85;
 direction: ltr;
-letter-spacing: .08em;
 }
 
 .vision-core strong {
 display: block;
-font-size: 1.1rem;
+font-size: 1rem;
+line-height: 1.5;
 margin-top: 3px;
+padding: 0 18px;
 }
 
 .orbit-node {
@@ -1721,13 +1846,15 @@ box-shadow: 0 18px 40px rgba(0,0,0,.20);
 
 .orbit-node strong {
 display: block;
-font-size: .7rem;
+font-size: .85rem;
+direction: ltr;
+text-align: right;
 }
 
 .orbit-node span {
 display: block;
-color: #69758c;
-font-size: .5rem;
+color: #9aa6bc;
+font-size: .75rem;
 margin-top: 2px;
 }
 
@@ -1825,8 +1952,13 @@ box-shadow: 0 16px 40px rgba(0,0,0,.20);
 
 .direct-number {
 direction: ltr;
-color: #aeb8ca;
-font-size: .75rem;
+color: #c3cbda;
+font-size: 1rem;
+font-weight: 700;
+}
+
+.direct-number:hover {
+color: #fff;
 }
 
 /* =========================================================
@@ -1849,13 +1981,13 @@ padding-bottom: 60px;
 .footer-brand p {
 max-width: 330px;
 color: var(--muted);
-font-size: .7rem;
+font-size: .88rem;
 line-height: 2;
 margin-top: 16px;
 }
 
 .footer-heading {
-font-size: .68rem;
+font-size: .88rem;
 font-weight: 800;
 margin-bottom: 15px;
 }
@@ -1867,7 +1999,7 @@ gap: 8px;
 
 .footer-links a {
 color: var(--muted);
-font-size: .67rem;
+font-size: .88rem;
 transition: .2s ease;
 }
 
@@ -1904,12 +2036,12 @@ display: flex;
 justify-content: space-between;
 align-items: center;
 gap: 20px;
-color: #9aa3b1;
-font-size: .57rem;
+color: var(--muted);
+font-size: .8rem;
 }
 
-.footer-bottom span:last-child {
-direction: ltr;
+.footer-heading {
+margin-top: 0;
 }
 
 /* =========================================================
@@ -1983,7 +2115,7 @@ margin-bottom: 24px;
 box-shadow: 0 12px 30px rgba(36,87,255,.20);
 }
 
-.modal h3 {
+.modal h2 {
 font-size: 1.7rem;
 letter-spacing: -.045em;
 margin-bottom: 9px;
@@ -1991,7 +2123,7 @@ margin-bottom: 9px;
 
 .modal p {
 color: var(--muted);
-font-size: .79rem;
+font-size: .92rem;
 line-height: 2;
 margin-bottom: 23px;
 }
@@ -2011,7 +2143,7 @@ background: #fafbfd;
 .phone-card small {
 display: block;
 color: var(--muted-2);
-font-size: .54rem;
+font-size: .78rem;
 }
 
 .phone-card strong {
@@ -2023,12 +2155,14 @@ margin-top: 3px;
 }
 
 .call-btn {
-min-height: 43px;
-padding: 0 15px;
+min-height: 44px;
+padding: 0 18px;
+display: inline-flex;
+align-items: center;
 border-radius: 11px;
 color: #fff;
 background: var(--blue);
-font-size: .7rem;
+font-size: .88rem;
 font-weight: 750;
 }
 
@@ -2036,13 +2170,13 @@ font-weight: 750;
 REVEAL
 ========================================================= */
 
-.reveal {
+.js .reveal {
 opacity: 0;
 transform: translateY(28px);
 transition: opacity .8s var(--ease), transform .8s var(--ease);
 }
 
-.reveal.visible {
+.js .reveal.visible {
 opacity: 1;
 transform: none;
 }
@@ -2126,8 +2260,14 @@ display: grid;
 .nav.mobile-open {
 height: auto;
 flex-wrap: wrap;
+row-gap: 8px;
 padding: 12px;
 }
+
+.nav .brand { order: 0; }
+.nav .menu-btn { order: 1; }
+.nav .nav-links { order: 2; }
+.nav .nav-cta { order: 3; }
 
 .nav.mobile-open .nav-links {
 display: grid;
@@ -2139,6 +2279,7 @@ padding-top: 8px;
 .nav.mobile-open .nav-links a {
 padding: 13px;
 background: #f7f9fb;
+font-size: .95rem;
 }
 
 .nav.mobile-open .nav-cta {
@@ -2305,7 +2446,7 @@ top: 32px;
 
 .founder-float.bottom {
 right: 0;
-bottom: 30px;
+bottom: 110px;
 }
 
 .timeline {
@@ -2424,7 +2565,7 @@ padding: 9px;
 }
 
 .orbit-node strong {
-font-size: .58rem;
+font-size: .78rem;
 }
 
 .orbit-node span {
@@ -2453,7 +2594,7 @@ animation-iteration-count: 1 !important;
 transition-duration: .01ms !important;
 }
 
-.reveal {
+.js .reveal {
 opacity: 1;
 transform: none;
 }
@@ -2463,38 +2604,39 @@ transform: none;
 
 <body>
 
+<a class="skip-link" href="#main">رفتن به محتوای اصلی</a>
+
 <!-- =========================================================
 NAVIGATION
 ========================================================= -->
 <div class="nav-shell">
 <nav class="nav" id="navbar" aria-label="ناوبری اصلی">
 
-<!-- Replace this brand block with /assets/logo.svg when ready -->
-<a href="#top" class="brand" aria-label="LignoX">
-<div class="brand-mark" aria-hidden="true"></div>
+<a href="#main" class="brand" aria-label="LignoX — صفحه اصلی">
+<img class="brand-mark" src="assets/img/logo-mark.png" width="40" height="40" alt="" />
 <div class="brand-word">
 LignoX
-<small>Furniture Manufacturing OS</small>
+<small>سیستم‌عامل تولید مبلمان</small>
 </div>
 </a>
 
 <div class="nav-links" id="navLinks">
 <a href="#product">محصول</a>
-<a href="#architecture">راهکار</a>
-<a href="#founder">درباره من</a>
+<a href="#solution">راهکار</a>
+<a href="#founder">بنیان‌گذار</a>
 <a href="#vision">چشم‌انداز</a>
 <a href="#contact">ارتباط</a>
 </div>
 
-<button class="nav-cta" data-demo>
+<a class="nav-cta" href="#contact" data-demo aria-haspopup="dialog">
 درخواست دمو
-<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+<svg aria-hidden="true" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
 <path d="M5 12h14M13 6l6 6-6 6"/>
 </svg>
-</button>
+</a>
 
-<button class="menu-btn" id="menuBtn" aria-label="باز کردن منو" aria-expanded="false">
-<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+<button type="button" class="menu-btn" id="menuBtn" aria-label="باز کردن منو" aria-expanded="false" aria-controls="navLinks">
+<svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
 <path d="M4 7h16M4 12h16M4 17h16"/>
 </svg>
 </button>
@@ -2502,7 +2644,7 @@ LignoX
 </div>
 
 
-<main id="top">
+<main id="main" tabindex="-1">
 
 <!-- =======================================================
 HERO
@@ -2512,8 +2654,8 @@ HERO
 
 <div class="hero-copy">
 <div class="hero-kicker reveal">
-<span class="live-dot"></span>
-Furniture Manufacturing Operating System
+<span class="live-dot" aria-hidden="true"></span>
+سیستم‌عامل تولید برای صنعت مبلمان
 </div>
 
 <h1 class="reveal reveal-delay-1">
@@ -2529,16 +2671,16 @@ LignoX سیستم برنامه‌ریزی، کنترل و هوشمندسازی �
 </p>
 
 <div class="hero-actions reveal reveal-delay-3">
-<button class="primary-btn" data-demo>
+<a class="primary-btn" href="#contact" data-demo aria-haspopup="dialog">
 درخواست دمو
-<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+<svg aria-hidden="true" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
 <path d="M5 12h14M13 6l6 6-6 6"/>
 </svg>
-</button>
+</a>
 
 <a class="secondary-btn" href="#product">
 LignoX چگونه کار می‌کند؟
-<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7">
+<svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7">
 <path d="M12 5v14M6 13l6 6 6-6"/>
 </svg>
 </a>
@@ -2546,22 +2688,22 @@ LignoX چگونه کار می‌کند؟
 
 <div class="hero-meta reveal reveal-delay-3">
 <div class="meta-item">
-<strong>Planning</strong>
-<span>برنامه‌ریزی تولید</span>
+<strong>برنامه‌ریزی</strong>
+<span>برنامه تولید بر پایه ظرفیت</span>
 </div>
 <div class="meta-item">
-<strong>Control</strong>
-<span>کنترل جریان تولید</span>
+<strong>کنترل</strong>
+<span>پایش جریان تولید</span>
 </div>
 <div class="meta-item">
-<strong>Intelligence</strong>
-<span>هوش مدیریتی</span>
+<strong>هوشمندی</strong>
+<span>داده برای تصمیم‌گیری</span>
 </div>
 </div>
 </div>
 
 
-<div class="dashboard-stage reveal reveal-delay-2">
+<div class="dashboard-stage reveal reveal-delay-2" role="img" aria-label="نمای نمایشی از داشبورد LignoX با داده‌های نمونه">
 
 <div class="dashboard-glow"></div>
 
@@ -2625,10 +2767,10 @@ Production Risk
 
 <div class="dash-head">
 <div>
-<h3>Factory Overview</h3>
-<p>Production intelligence — today</p>
+<strong class="dash-h">Factory Overview</strong>
+<p>Production intelligence — sample view</p>
 </div>
-<div class="dash-period">24 Sep 2026</div>
+<div class="dash-period">Demo data</div>
 </div>
 
 <div class="kpi-row">
@@ -2748,6 +2890,8 @@ stroke-linecap="round"
 </div>
 </div>
 
+<p class="mockup-note" aria-hidden="true">تصویر نمایشی محصول؛ اعداد نمونه هستند.</p>
+
 </div>
 </div>
 </section>
@@ -2763,12 +2907,12 @@ SIGNAL STRIP
 </div>
 
 <div class="signal-list">
-<span class="signal-tag">Orders</span>
-<span class="signal-tag">Planning</span>
-<span class="signal-tag">Capacity</span>
-<span class="signal-tag">Production</span>
-<span class="signal-tag">Inventory</span>
-<span class="signal-tag">Delivery</span>
+<span class="signal-tag">سفارش</span>
+<span class="signal-tag">برنامه‌ریزی</span>
+<span class="signal-tag">ظرفیت</span>
+<span class="signal-tag">تولید</span>
+<span class="signal-tag">موجودی</span>
+<span class="signal-tag">تحویل</span>
 </div>
 </div>
 </section>
@@ -2780,12 +2924,10 @@ ABOUT / PROBLEM
 <section class="section intro" id="about">
 <div class="container intro-layout">
 
-<div class="intro-index reveal">
-01
-</div>
+<div class="intro-index reveal" data-index="01" aria-hidden="true"></div>
 
 <div class="intro-copy reveal reveal-delay-1">
-<div class="eyebrow">The problem</div>
+<div class="eyebrow">مسئله</div>
 
 <h2>
 کارخانه اطلاعات کم ندارد؛
@@ -2816,7 +2958,7 @@ PRODUCT MODULES
 
 <div class="section-head">
 <div>
-<div class="eyebrow reveal">One operating layer</div>
+<div class="eyebrow reveal">یک لایه عملیاتی</div>
 <h2 class="section-title reveal reveal-delay-1">
 یک سیستم برای<br />
 <span>تمام جریان تولید.</span>
@@ -2834,34 +2976,34 @@ LignoX جریان تولید را از سفارش اولیه تا تحویل ن�
 <div class="module-grid">
 
 <article class="module reveal">
-<span class="module-no">01</span>
-<div class="module-icon">
+<span class="module-no" aria-hidden="true">01</span>
+<div class="module-icon" aria-hidden="true">
 <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
 <rect x="5" y="3" width="14" height="18" rx="2"/>
 <path d="M8 7h8M8 11h8M8 15h5"/>
 </svg>
 </div>
-<h3>Order Management</h3>
+<h3>مدیریت سفارش</h3>
 <p>تمام سفارش‌ها، وضعیت‌ها، اولویت‌ها و تعهدات تحویل در یک نمای واحد.</p>
 </article>
 
 
 <article class="module reveal reveal-delay-1">
-<span class="module-no">02</span>
-<div class="module-icon">
+<span class="module-no" aria-hidden="true">02</span>
+<div class="module-icon" aria-hidden="true">
 <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
 <path d="M4 18h16M6 15V8M10 15V5M14 15v-3M18 15V7"/>
 <path d="M4 20h16"/>
 </svg>
 </div>
-<h3>Production Planning</h3>
+<h3>برنامه‌ریزی تولید</h3>
 <p>برنامه‌ای که با ظرفیت واقعی، محدودیت‌ها و وضعیت سفارش‌ها ساخته می‌شود.</p>
 </article>
 
 
 <article class="module reveal reveal-delay-2">
-<span class="module-no">03</span>
-<div class="module-icon">
+<span class="module-no" aria-hidden="true">03</span>
+<div class="module-icon" aria-hidden="true">
 <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
 <path d="M4 18h16"/>
 <path d="M6 15l3-5 3 3 3-7 3 4"/>
@@ -2870,74 +3012,74 @@ LignoX جریان تولید را از سفارش اولیه تا تحویل ن�
 <circle cx="15" cy="6" r="1"/>
 </svg>
 </div>
-<h3>Capacity Planning</h3>
+<h3>برنامه‌ریزی ظرفیت</h3>
 <p>ظرفیت واقعی ایستگاه‌ها را ببینید و قبل از ایجاد گلوگاه تصمیم بگیرید.</p>
 </article>
 
 
 <article class="module reveal reveal-delay-3">
-<span class="module-no">04</span>
-<div class="module-icon">
+<span class="module-no" aria-hidden="true">04</span>
+<div class="module-icon" aria-hidden="true">
 <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
 <path d="M5 19V5h14v14z"/>
 <path d="M8 15l2-2 2 1 4-5"/>
 </svg>
 </div>
-<h3>Production Control</h3>
+<h3>کنترل تولید</h3>
 <p>فاصله بین برنامه و واقعیت تولید را لحظه‌به‌لحظه قابل مشاهده کنید.</p>
 </article>
 
 
 <article class="module reveal">
-<span class="module-no">05</span>
-<div class="module-icon">
+<span class="module-no" aria-hidden="true">05</span>
+<div class="module-icon" aria-hidden="true">
 <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
 <path d="M4 8h16M4 16h16"/>
 <path d="M7 5v6M17 13v6"/>
 <rect x="3" y="3" width="18" height="18" rx="3"/>
 </svg>
 </div>
-<h3>Inventory</h3>
+<h3>موجودی و انبار</h3>
 <p>وضعیت مواد و قطعات را در ارتباط با برنامه و سفارش‌های واقعی ببینید.</p>
 </article>
 
 
 <article class="module reveal reveal-delay-1">
-<span class="module-no">06</span>
-<div class="module-icon">
+<span class="module-no" aria-hidden="true">06</span>
+<div class="module-icon" aria-hidden="true">
 <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
 <path d="M3 7h11v10H3zM14 10h4l3 3v4h-7z"/>
 <circle cx="7" cy="18" r="2"/>
 <circle cx="18" cy="18" r="2"/>
 </svg>
 </div>
-<h3>Outsourcing</h3>
+<h3>برون‌سپاری</h3>
 <p>فرآیندهای برون‌سپاری را به بخشی قابل مشاهده از جریان تولید تبدیل کنید.</p>
 </article>
 
 
 <article class="module reveal reveal-delay-2">
-<span class="module-no">07</span>
-<div class="module-icon">
+<span class="module-no" aria-hidden="true">07</span>
+<div class="module-icon" aria-hidden="true">
 <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
 <path d="M4 18V6M4 18h16"/>
 <path d="M7 15l3-4 3 2 4-6"/>
 </svg>
 </div>
-<h3>Management Intelligence</h3>
+<h3>هوش مدیریتی</h3>
 <p>مدیریت به‌جای دنبال کردن افراد، وضعیت واقعی سیستم را می‌بیند.</p>
 </article>
 
 
 <article class="module reveal reveal-delay-3">
-<span class="module-no">08</span>
-<div class="module-icon">
+<span class="module-no" aria-hidden="true">08</span>
+<div class="module-icon" aria-hidden="true">
 <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
 <path d="M12 3l1.8 4.4L18 9l-4.2 1.8L12 15l-1.8-4.2L6 9l4.2-1.6L12 3z"/>
 <path d="M18 14l.8 2.2L21 17l-2.2.8L18 20l-.8-2.2L15 17l2.2-.8L18 14z"/>
 </svg>
 </div>
-<h3>AI Layer</h3>
+<h3>لایه هوش مصنوعی (AI)</h3>
 <p>لایه‌ای برای تبدیل داده‌های عملیاتی به تحلیل، هشدار و تصمیم هوشمند.</p>
 </article>
 
@@ -2954,7 +3096,7 @@ CHAOS -> SYSTEM
 
 <div class="section-head">
 <div>
-<div class="eyebrow reveal">From chaos to system</div>
+<div class="eyebrow reveal">از پراکندگی به سیستم</div>
 <h2 class="section-title reveal reveal-delay-1">
 از اطلاعات پراکنده<br />
 به <span>هوش کارخانه.</span>
@@ -3018,7 +3160,7 @@ LignoX قرار نیست فقط ابزارهای فعلی کارخانه را د
 
 
 <div class="transform-center reveal">
-<div class="transform-arrow">
+<div class="transform-arrow" aria-hidden="true">
 <svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8">
 <path d="M5 12h14M13 6l6 6-6 6"/>
 </svg>
@@ -3039,10 +3181,10 @@ LignoX قرار نیست فقط ابزارهای فعلی کارخانه را د
 </svg>
 </div>
 <div>
-<strong>Centralized Data</strong>
+<strong>داده متمرکز</strong>
 <small>یک منبع برای داده‌های عملیاتی</small>
 </div>
-<i class="system-status"></i>
+<i class="system-status" aria-hidden="true"></i>
 </div>
 
 <div class="system-row">
@@ -3052,10 +3194,10 @@ LignoX قرار نیست فقط ابزارهای فعلی کارخانه را د
 </svg>
 </div>
 <div>
-<strong>Production Planning</strong>
+<strong>برنامه‌ریزی تولید</strong>
 <small>برنامه مبتنی بر ظرفیت واقعی</small>
 </div>
-<i class="system-status"></i>
+<i class="system-status" aria-hidden="true"></i>
 </div>
 
 <div class="system-row">
@@ -3065,10 +3207,10 @@ LignoX قرار نیست فقط ابزارهای فعلی کارخانه را د
 </svg>
 </div>
 <div>
-<strong>Capacity Visibility</strong>
+<strong>شفافیت ظرفیت</strong>
 <small>دیدن گلوگاه قبل از توقف</small>
 </div>
-<i class="system-status"></i>
+<i class="system-status" aria-hidden="true"></i>
 </div>
 
 <div class="system-row">
@@ -3078,10 +3220,10 @@ LignoX قرار نیست فقط ابزارهای فعلی کارخانه را د
 </svg>
 </div>
 <div>
-<strong>Real-time Control</strong>
+<strong>کنترل اجرا</strong>
 <small>مقایسه برنامه با واقعیت</small>
 </div>
-<i class="system-status"></i>
+<i class="system-status" aria-hidden="true"></i>
 </div>
 
 <div class="system-row">
@@ -3091,10 +3233,10 @@ LignoX قرار نیست فقط ابزارهای فعلی کارخانه را د
 </svg>
 </div>
 <div>
-<strong>Management Intelligence</strong>
+<strong>هوش مدیریتی</strong>
 <small>داده‌ای که به تصمیم تبدیل می‌شود</small>
 </div>
-<i class="system-status"></i>
+<i class="system-status" aria-hidden="true"></i>
 </div>
 
 </div>
@@ -3113,7 +3255,7 @@ ARCHITECTURE
 
 <div class="section-head">
 <div>
-<div class="eyebrow reveal">Product architecture</div>
+<div class="eyebrow reveal">معماری محصول</div>
 <h2 class="section-title reveal reveal-delay-1">
 یک لایه عملیاتی<br />
 روی <span>کل کارخانه.</span>
@@ -3130,78 +3272,72 @@ ARCHITECTURE
 <div class="architecture-frame reveal">
 
 <div class="arch-ai">
-<div class="ai-label">INTELLIGENCE LAYER</div>
-<strong>AI + Factory Intelligence</strong>
-<span>Analysis · Prediction · Recommendation</span>
+<div class="ai-label">لایه هوشمندی</div>
+<strong>AI و هوش کارخانه</strong>
+<span>تحلیل · پیش‌بینی · پیشنهاد</span>
 </div>
 
 
 <div class="arch-flow">
 
 <div class="arch-node">
-<div class="arch-node-icon">
+<div class="arch-node-icon" aria-hidden="true">
 <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
 <rect x="5" y="4" width="14" height="16" rx="2"/>
 <path d="M8 8h8M8 12h6"/>
 </svg>
 </div>
-<strong>Orders</strong>
-<span>سفارش</span>
+<strong>سفارش</strong>
 </div>
 
 <div class="arch-node">
-<div class="arch-node-icon">
+<div class="arch-node-icon" aria-hidden="true">
 <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
 <path d="M4 18h16M6 15V8M10 15V5M14 15v-3M18 15V7"/>
 </svg>
 </div>
-<strong>Planning</strong>
-<span>برنامه‌ریزی</span>
+<strong>برنامه‌ریزی</strong>
 </div>
 
 <div class="arch-node">
-<div class="arch-node-icon">
+<div class="arch-node-icon" aria-hidden="true">
 <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
 <path d="M4 7h16M4 17h16M7 4v6M17 14v6"/>
 </svg>
 </div>
-<strong>Production</strong>
-<span>تولید</span>
+<strong>تولید</strong>
 </div>
 
 <div class="arch-node">
-<div class="arch-node-icon">
+<div class="arch-node-icon" aria-hidden="true">
 <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
 <path d="M4 8h16M4 16h16"/>
 <path d="M7 5v6M17 13v6"/>
 <rect x="3" y="3" width="18" height="18" rx="3"/>
 </svg>
 </div>
-<strong>Inventory</strong>
-<span>موجودی</span>
+<strong>موجودی</strong>
 </div>
 
 <div class="arch-node">
-<div class="arch-node-icon">
+<div class="arch-node-icon" aria-hidden="true">
 <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
 <path d="M3 7h11v10H3zM14 10h4l3 3v4h-7z"/>
 <circle cx="7" cy="18" r="2"/>
 <circle cx="18" cy="18" r="2"/>
 </svg>
 </div>
-<strong>Delivery</strong>
-<span>تحویل</span>
+<strong>تحویل</strong>
 </div>
 
 <div class="arch-node">
-<div class="arch-node-icon">
+<div class="arch-node-icon" aria-hidden="true">
 <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
 <path d="M4 18V6M4 18h16"/>
 <path d="M7 15l3-4 3 2 4-6"/>
 </svg>
 </div>
-<strong>Intelligence</strong>
-<span>هوش مدیریتی</span>
+<strong>هوش مدیریتی</strong>
 </div>
 
 </div>
@@ -3224,37 +3360,38 @@ FOUNDER
 <div class="founder-visual reveal">
 
 <div class="founder-float top">
-<strong>Since 2015</strong>
+<strong>از سال ۲۰۱۵</strong>
 <span>فعال در صنعت چوب و مبلمان</span>
 </div>
 
-<div class="portrait-frame">
+<div class="portrait-frame has-image" id="founderPortrait">
 
-<!-- Replace with:
-/assets/mohammad-javad.jpg
--->
+<!-- Fallback (brand mark) is shown only if the photo fails to load -->
+<div class="portrait-placeholder" aria-hidden="true">
+<img src="assets/img/logo-mark.png" width="128" height="128" alt="" />
+</div>
+
+<picture>
+<source srcset="assets/img/mohammad-javad-hassani.webp" type="image/webp" />
 <img
-src="/assets/mohammad-javad.jpg"
-alt="محمدجواد حسنی — Founder & Product Architect at LignoX"
-onerror="this.style.display='none'; this.parentElement.classList.remove('has-image');"
+src="assets/img/mohammad-javad-hassani.jpg"
+width="760"
+height="916"
+loading="lazy"
+decoding="async"
+alt="تصویر محمدجواد حسنی، بنیان‌گذار و معمار محصول LignoX"
 />
-
-<div class="portrait-placeholder">
-<div>
-<strong>Founder Portrait</strong><br />
-/assets/mohammad-javad.jpg
-</div>
-</div>
+</picture>
 
 <div class="portrait-label">
-<strong>Mohammad Javad Hassani</strong>
-<span>FOUNDER / PRODUCT ARCHITECT</span>
+<strong>محمدجواد حسنی</strong>
+<span>Founder &amp; Product Architect</span>
 </div>
 
 </div>
 
 <div class="founder-float bottom">
-<strong>Factory → Product</strong>
+<strong>از کارخانه تا محصول</strong>
 <span>ساخته‌شده از تجربه واقعی تولید</span>
 </div>
 
@@ -3263,7 +3400,7 @@ onerror="this.style.display='none'; this.parentElement.classList.remove('has-ima
 
 <div class="founder-copy">
 
-<div class="eyebrow reveal">The founder</div>
+<div class="eyebrow reveal">بنیان‌گذار</div>
 
 <h2 class="section-title reveal reveal-delay-1">
 LignoX از پشت<br />
@@ -3273,7 +3410,7 @@ LignoX از پشت<br />
 <div class="founder-story reveal reveal-delay-2">
 
 <p>
-<strong>محمدجواد حسنی</strong>، Founder & Product Architect در LignoX،
+<strong>محمدجواد حسنی</strong>، Founder &amp; Product Architect در LignoX،
 مسیر حرفه‌ای خود را از طراحی و ساخت مبلمان آغاز کرد؛
 مسیری که به‌تدریج او را از کارگاه به طراحی فرآیند،
 کنترل کیفیت، برنامه‌ریزی تولید و مدیریت عملیات کارخانه رساند.
@@ -3301,10 +3438,10 @@ LignoX از پشت<br />
 
 
 <div class="founder-signature reveal reveal-delay-3">
-<div class="signature-mark">MJ Hassani</div>
+<div class="signature-mark" aria-hidden="true">MJ Hassani</div>
 <div class="signature-info">
 <strong>محمدجواد حسنی</strong>
-<span>Founder & Product Architect — LignoX</span>
+<span>Founder &amp; Product Architect — LignoX</span>
 </div>
 </div>
 
@@ -3322,7 +3459,7 @@ TIMELINE
 
 <div class="section-head">
 <div>
-<div class="eyebrow reveal">The journey</div>
+<div class="eyebrow reveal">مسیر</div>
 <h2 class="section-title reveal reveal-delay-1">
 از <span>کارگاه</span><br />
 تا سیستم‌عامل.
@@ -3336,81 +3473,74 @@ TIMELINE
 </div>
 
 
-<div class="timeline">
+<div class="timeline" role="list">
 
-<div class="timeline-item reveal">
-<div class="timeline-dot">
+<div role="listitem" class="timeline-item reveal">
+<div class="timeline-dot" aria-hidden="true">
 <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
 <path d="M4 20h16M6 17V8l6-4 6 4v9"/>
 </svg>
 </div>
-<strong>Workshop</strong>
-<span>کارگاه</span>
+<strong>کارگاه</strong>
 </div>
 
-<div class="timeline-item reveal reveal-delay-1">
-<div class="timeline-dot">
+<div role="listitem" class="timeline-item reveal reveal-delay-1">
+<div class="timeline-dot" aria-hidden="true">
 <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
 <path d="M4 18l8-14 8 14H4z"/>
 </svg>
 </div>
-<strong>Furniture Design</strong>
-<span>طراحی مبلمان</span>
+<strong>طراحی مبلمان</strong>
 </div>
 
-<div class="timeline-item reveal reveal-delay-2">
-<div class="timeline-dot">
+<div role="listitem" class="timeline-item reveal reveal-delay-2">
+<div class="timeline-dot" aria-hidden="true">
 <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
 <path d="M5 5h14v14H5z"/><path d="M8 8h8v8H8z"/>
 </svg>
 </div>
-<strong>Production</strong>
-<span>تولید</span>
+<strong>تولید</strong>
 </div>
 
-<div class="timeline-item reveal reveal-delay-3">
-<div class="timeline-dot">
+<div role="listitem" class="timeline-item reveal reveal-delay-3">
+<div class="timeline-dot" aria-hidden="true">
 <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
 <path d="M12 3l2.5 5.2L20 10l-5.5 2.4L12 18l-2.5-5.6L4 10l5.5-1.8L12 3z"/>
 </svg>
 </div>
-<strong>Quality Control</strong>
-<span>کنترل کیفیت</span>
+<strong>کنترل کیفیت</strong>
 </div>
 
-<div class="timeline-item reveal">
-<div class="timeline-dot">
+<div role="listitem" class="timeline-item reveal">
+<div class="timeline-dot" aria-hidden="true">
 <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
 <path d="M5 19V5M5 5h14v10H5"/><path d="M9 9h6M9 13h4"/>
 </svg>
 </div>
-<strong>Process Design</strong>
-<span>طراحی فرآیند</span>
+<strong>طراحی فرآیند</strong>
 </div>
 
-<div class="timeline-item reveal reveal-delay-1">
-<div class="timeline-dot">
+<div role="listitem" class="timeline-item reveal reveal-delay-1">
+<div class="timeline-dot" aria-hidden="true">
 <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
 <path d="M4 18h16M6 15V8M10 15V5M14 15v-3M18 15V7"/>
 </svg>
 </div>
-<strong>Production Planning</strong>
-<span>برنامه‌ریزی تولید</span>
+<strong>برنامه‌ریزی تولید</strong>
 </div>
 
-<div class="timeline-item reveal reveal-delay-2">
-<div class="timeline-dot">
+<div role="listitem" class="timeline-item reveal reveal-delay-2">
+<div class="timeline-dot" aria-hidden="true">
 <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
 <circle cx="12" cy="12" r="8"/>
 <path d="M12 8v4l3 2"/>
 </svg>
 </div>
-<strong>Management</strong>
-<span>مدیریت تولید</span>
+<strong>مدیریت تولید</strong>
 </div>
 
-<div class="timeline-item reveal reveal-delay-3">
-<div class="timeline-dot">
+<div role="listitem" class="timeline-item reveal reveal-delay-3">
+<div class="timeline-dot" aria-hidden="true">
 <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
 <path d="M12 3l1.8 4.4L18 9l-4.2 1.8L12 15l-1.8-4.2L6 9l4.2-1.6L12 3z"/>
 </svg>
@@ -3432,7 +3562,7 @@ VISION
 
 <div class="vision-copy">
 
-<div class="eyebrow reveal">The long-term vision</div>
+<div class="eyebrow reveal">چشم‌انداز بلندمدت</div>
 
 <h2 class="reveal reveal-delay-1">
 فقط مدیریت تولید نیست.
@@ -3452,41 +3582,41 @@ VISION
 <span class="vision-tag">APS</span>
 <span class="vision-tag">BI</span>
 <span class="vision-tag">AI</span>
-<span class="vision-tag">Factory Intelligence</span>
+<span class="vision-tag">هوش کارخانه</span>
 </div>
 
 </div>
 
 
-<div class="vision-graphic reveal reveal-delay-2">
+<div class="vision-graphic reveal reveal-delay-2" aria-hidden="true">
 
 <div class="orbit"></div>
 
 <div class="vision-core">
 <div>
-<small>LIGNOX</small>
-<strong>Factory OS</strong>
+<small>LignoX</small>
+<strong>سیستم‌عامل کارخانه</strong>
 </div>
 </div>
 
 <div class="orbit-node one">
 <strong>MES</strong>
-<span>Execution</span>
+<span>اجرای تولید</span>
 </div>
 
 <div class="orbit-node two">
 <strong>APS</strong>
-<span>Planning</span>
+<span>برنامه‌ریزی</span>
 </div>
 
 <div class="orbit-node three">
 <strong>BI</strong>
-<span>Intelligence</span>
+<span>تحلیل</span>
 </div>
 
 <div class="orbit-node four">
 <strong>AI</strong>
-<span>Prediction</span>
+<span>پیش‌بینی</span>
 </div>
 
 </div>
@@ -3505,7 +3635,7 @@ DEMO CTA
 
 <div class="demo-box-content">
 
-<div class="eyebrow">See the system</div>
+<div class="eyebrow">سیستم را ببینید</div>
 
 <h2>
 کارخانه‌تان را<br />
@@ -3514,19 +3644,19 @@ DEMO CTA
 
 <p>
 برای آشنایی با ساختار محصول، بررسی مسئله کارخانه
-و هماهنگی یک دمو با من در تماس باشید.
+و هماهنگی یک دمو با ما تماس بگیرید.
 </p>
 
 <div class="demo-actions">
 
-<button class="demo-btn" data-demo>
+<a class="demo-btn" href="tel:+989379196117" data-demo aria-haspopup="dialog">
 درخواست دمو
-<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+<svg aria-hidden="true" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
 <path d="M5 12h14M13 6l6 6-6 6"/>
 </svg>
-</button>
+</a>
 
-<a href="tel:+989379196117" class="direct-number">
+<a href="tel:+989379196117" class="direct-number" aria-label="تماس تلفنی: ۰۹۳۷ ۹۱۹ ۶۱۱۷">
 ۰۹۳۷ ۹۱۹ ۶۱۱۷
 </a>
 
@@ -3551,11 +3681,11 @@ FOOTER
 <div class="footer-top">
 
 <div class="footer-brand">
-<a href="#top" class="brand">
-<div class="brand-mark" aria-hidden="true"></div>
+<a href="#main" class="brand" aria-label="LignoX — بازگشت به بالای صفحه">
+<img class="brand-mark" src="assets/img/logo-mark.png" width="40" height="40" alt="" loading="lazy" />
 <div class="brand-word">
 LignoX
-<small>Furniture Manufacturing OS</small>
+<small>سیستم‌عامل تولید مبلمان</small>
 </div>
 </a>
 
@@ -3568,7 +3698,7 @@ LignoX
 
 
 <div>
-<div class="footer-heading">Product</div>
+<h2 class="footer-heading">محصول</h2>
 <div class="footer-links">
 <a href="#product">ماژول‌ها</a>
 <a href="#solution">راهکار</a>
@@ -3579,20 +3709,17 @@ LignoX
 
 
 <div>
-<div class="footer-heading">Explore</div>
+<h2 class="footer-heading">بیشتر بدانید</h2>
 <div class="footer-links">
 <a href="#founder">درباره بنیان‌گذار</a>
 <a href="#contact">درخواست دمو</a>
-<a href="https://instagram.com/mjhasani12" target="_blank" rel="noopener noreferrer">Instagram</a>
-
-<!-- Replace # with the final LinkedIn URL -->
-<a href="#" aria-label="LinkedIn">LinkedIn</a>
+<a href="tel:+989379196117">تماس: <span dir="ltr">۰۹۳۷ ۹۱۹ ۶۱۱۷</span></a>
 </div>
 </div>
 
 
 <div>
-<div class="footer-heading">Connect</div>
+<h2 class="footer-heading">ارتباط</h2>
 
 <div class="social-links">
 
@@ -3601,18 +3728,23 @@ class="social"
 href="https://instagram.com/mjhasani12"
 target="_blank"
 rel="noopener noreferrer"
-aria-label="Instagram"
+aria-label="اینستاگرام (در پنجره جدید)"
 >
-<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+<svg aria-hidden="true" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
 <rect x="3" y="3" width="18" height="18" rx="5"/>
 <circle cx="12" cy="12" r="4"/>
 <circle cx="17.5" cy="6.5" r=".8" fill="currentColor" stroke="none"/>
 </svg>
 </a>
 
-<!-- Replace href="#" with the final LinkedIn URL -->
-<a class="social" href="#" aria-label="LinkedIn">
-<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+<a
+class="social"
+href="https://www.linkedin.com/in/mjhasani12/"
+target="_blank"
+rel="noopener noreferrer"
+aria-label="لینکدین بنیان‌گذار (در پنجره جدید)"
+>
+<svg aria-hidden="true" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
 <path d="M6 9v9M6 6.2v.1M10 18v-9M10 13c0-2.5 1.3-4 3.5-4S17 10.5 17 13v5"/>
 </svg>
 </a>
@@ -3624,8 +3756,8 @@ aria-label="Instagram"
 
 
 <div class="footer-bottom">
-<span>© LignoX — All rights reserved.</span>
-<span>Built from real factory experience.</span>
+<span>© LignoX — تمامی حقوق محفوظ است.</span>
+<span>ساخته‌شده از تجربه واقعی کارخانه.</span>
 </div>
 
 </div>
@@ -3635,37 +3767,37 @@ aria-label="Instagram"
 <!-- =========================================================
 DEMO MODAL
 ========================================================= -->
-<div class="modal" id="demoModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+<div class="modal" id="demoModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" aria-describedby="modalDesc">
 
 <div class="modal-card">
 
-<button class="modal-close" id="modalClose" aria-label="بستن">
-<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+<button type="button" class="modal-close" id="modalClose" aria-label="بستن">
+<svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
 <path d="M6 6l12 12M18 6L6 18"/>
 </svg>
 </button>
 
-<div class="modal-icon">
+<div class="modal-icon" aria-hidden="true">
 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
 <path d="M4 12h16M13 5l7 7-7 7"/>
 </svg>
 </div>
 
-<h3 id="modalTitle">LignoX را در کارخانه خود ببینید.</h3>
+<h2 id="modalTitle">LignoX را در کارخانه خود ببینید.</h2>
 
-<p>
+<p id="modalDesc">
 برای دریافت اطلاعات بیشتر، بررسی نیازهای کارخانه
-و هماهنگی دمو با من در تماس باشید.
+و هماهنگی دمو با ما تماس بگیرید.
 </p>
 
 <div class="phone-card">
 
 <div>
 <small>تماس مستقیم</small>
-<strong>0937 919 6117</strong>
+<strong>۰۹۳۷ ۹۱۹ ۶۱۱۷</strong>
 </div>
 
-<a class="call-btn" href="tel:+989379196117">
+<a class="call-btn" href="tel:+989379196117" aria-label="تماس با ۰۹۳۷ ۹۱۹ ۶۱۱۷">
 تماس
 </a>
 
@@ -3707,16 +3839,25 @@ Mobile navigation
 const menuBtn = document.getElementById("menuBtn");
 const navLinks = document.getElementById("navLinks");
 
-menuBtn.addEventListener("click", () => {
-const isOpen = navbar.classList.toggle("mobile-open");
+const setMenu = isOpen => {
+navbar.classList.toggle("mobile-open", isOpen);
 menuBtn.setAttribute("aria-expanded", String(isOpen));
+menuBtn.setAttribute("aria-label", isOpen ? "بستن منو" : "باز کردن منو");
+};
+
+menuBtn.addEventListener("click", () => {
+setMenu(!navbar.classList.contains("mobile-open"));
 });
 
-navLinks.querySelectorAll("a").forEach(link => {
-link.addEventListener("click", () => {
-navbar.classList.remove("mobile-open");
-menuBtn.setAttribute("aria-expanded", "false");
+navbar.querySelectorAll(".nav-links a, .nav-cta").forEach(link => {
+link.addEventListener("click", () => setMenu(false));
 });
+
+document.addEventListener("keydown", event => {
+if (event.key === "Escape" && navbar.classList.contains("mobile-open")) {
+setMenu(false);
+menuBtn.focus();
+}
 });
 
 
@@ -3725,6 +3866,10 @@ Scroll reveal
 --------------------------------------------- */
 
 const revealElements = document.querySelectorAll(".reveal");
+
+if (!("IntersectionObserver" in window)) {
+revealElements.forEach(el => el.classList.add("visible"));
+} else {
 
 const revealObserver = new IntersectionObserver(
 entries => {
@@ -3742,6 +3887,28 @@ rootMargin: "0px 0px -40px 0px"
 );
 
 revealElements.forEach(el => revealObserver.observe(el));
+}
+
+
+/* ---------------------------------------------
+Founder portrait fallback
+--------------------------------------------- */
+
+const portrait = document.getElementById("founderPortrait");
+const portraitImg = portrait && portrait.querySelector("picture img");
+
+if (portraitImg) {
+const showFallback = () => {
+portrait.classList.remove("has-image");
+portraitImg.closest("picture").hidden = true;
+};
+
+portraitImg.addEventListener("error", showFallback);
+
+if (portraitImg.complete && portraitImg.naturalWidth === 0) {
+showFallback();
+}
+}
 
 
 /* ---------------------------------------------
@@ -3752,19 +3919,50 @@ const modal = document.getElementById("demoModal");
 const modalClose = document.getElementById("modalClose");
 const demoButtons = document.querySelectorAll("[data-demo]");
 
-const openModal = () => {
+let lastFocused = null;
+
+const focusableSelector =
+'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])';
+
+const openModal = event => {
+if (event) event.preventDefault();
+lastFocused = document.activeElement;
 modal.classList.add("open");
 document.body.classList.add("modal-open");
-setTimeout(() => modalClose.focus(), 120);
+setTimeout(() => modalClose.focus(), 60);
 };
 
 const closeModal = () => {
 modal.classList.remove("open");
 document.body.classList.remove("modal-open");
+if (lastFocused && typeof lastFocused.focus === "function") {
+lastFocused.focus();
+}
+lastFocused = null;
 };
 
 demoButtons.forEach(button => {
+button.setAttribute("aria-controls", "demoModal");
 button.addEventListener("click", openModal);
+});
+
+/* Keep keyboard focus inside the open dialog */
+modal.addEventListener("keydown", event => {
+if (event.key !== "Tab") return;
+
+const items = [...modal.querySelectorAll(focusableSelector)];
+if (!items.length) return;
+
+const first = items[0];
+const last = items[items.length - 1];
+
+if (event.shiftKey && document.activeElement === first) {
+event.preventDefault();
+last.focus();
+} else if (!event.shiftKey && document.activeElement === last) {
+event.preventDefault();
+first.focus();
+}
 });
 
 modalClose.addEventListener("click", closeModal);
@@ -3825,7 +4023,7 @@ dashboard.style.transform =
 Smooth anchor navigation
 --------------------------------------------- */
 
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+document.querySelectorAll('a[href^="#"]:not([data-demo])').forEach(anchor => {
 anchor.addEventListener("click", event => {
 
 const id = anchor.getAttribute("href");
@@ -3848,9 +4046,15 @@ window.scrollY -
 navOffset;
 
 window.scrollTo({
-top,
+top: Math.max(0, top),
 behavior: reducedMotion ? "auto" : "smooth"
 });
+
+/* Move keyboard focus with the scroll (skip link, in-page nav) */
+if (!target.hasAttribute("tabindex")) {
+target.setAttribute("tabindex", "-1");
+}
+target.focus({ preventScroll: true });
 });
 });
 
