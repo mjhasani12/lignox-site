@@ -7,7 +7,7 @@
 <meta name="description" content="LignoX، نرم‌افزار مدیریت تولید مبلمان: برنامه‌ریزی ظرفیت (APS)، اجرای تولید (MES)، مواد و انبار، فرآیندها و داشبورد مدیریتی در یک سیستم فارسی." />
 <meta name="robots" content="index, follow, max-image-preview:large" />
 <link rel="canonical" href="https://lignox.ir/" />
-<meta name="theme-color" content="#f7f6f2" />
+<meta name="theme-color" content="#0a0c0f" />
 <meta name="author" content="LignoX" />
 
 <meta property="og:type" content="website" />
@@ -33,7 +33,7 @@
 <link rel="apple-touch-icon" href="apple-touch-icon.png" />
 <link rel="manifest" href="site.webmanifest" />
 <link rel="preload" href="assets/fonts/Vazirmatn-Variable.woff2" as="font" type="font/woff2" crossorigin />
-<link rel="preload" as="image" href="assets/screens/lignox-executive-dashboard-1600.webp" imagesrcset="assets/screens/lignox-executive-dashboard-800.webp 800w, assets/screens/lignox-executive-dashboard-1600.webp 1600w" imagesizes="(max-width: 1240px) 100vw, 1200px" />
+<link rel="preload" as="image" href="assets/screens/lignox-executive-dashboard-1600.webp" imagesrcset="assets/screens/lignox-executive-dashboard-800.webp 800w, assets/screens/lignox-executive-dashboard-1600.webp 1600w" imagesizes="(max-width: 640px) 100vw, 640px" />
 
 <script>document.documentElement.classList.add("js");</script>
 
@@ -269,434 +269,630 @@ font-style: normal;
 font-display: swap;
 }
 
+/* =========================================================
+TOKENS — graphite base, warm wood accent, system cyan
+========================================================= */
 :root {
---paper: #f7f6f2;
---paper-2: #efede6;
---surface: #ffffff;
---ink: #111723;
---ink-2: #2b3342;
---muted: #545d6c;
---line: #e3e0d7;
---line-2: #d3cfc4;
---navy: #17233a;
---navy-2: #0f1727;
---navy-line: #26324a;
---on-navy: #eef1f6;
---on-navy-muted: #a9b3c4;
---wood: #8c4d1d;
---wood-2: #b8743f;
---wood-soft: #f5ece2;
---ok: #1e7a4f;
---radius: 14px;
---radius-lg: 22px;
---container: 1200px;
+--bg: #0a0c0f;
+--bg-2: #0e1115;
+--surface: #13171d;
+--surface-2: #191e26;
+--surface-3: #20262f;
+--line: rgba(255, 255, 255, .07);
+--line-2: rgba(255, 255, 255, .13);
+--text: #f2eee7;
+--text-2: #cdc7bd;
+--muted: #9da3ac;
+--wood: #d08a4c;
+--wood-2: #e9ae76;
+--wood-soft: rgba(208, 138, 76, .12);
+--cyan: #3ad2bf;
+--cyan-soft: rgba(58, 210, 191, .12);
+--amber: #f2b64f;
+--red: #f06b5f;
+--radius: 12px;
+--radius-lg: 18px;
+--container: 1240px;
 --header-h: 68px;
---shadow: 0 1px 2px rgba(17, 23, 35, .04), 0 12px 32px rgba(17, 23, 35, .07);
---shadow-lg: 0 2px 4px rgba(17, 23, 35, .04), 0 30px 70px rgba(17, 23, 35, .12);
+--ease-out: cubic-bezier(.16, 1, .3, 1);
+--ease-in-out: cubic-bezier(.65, 0, .35, 1);
+--shadow: 0 1px 0 rgba(255,255,255,.04) inset, 0 18px 40px rgba(0,0,0,.45);
+--shadow-lg: 0 1px 0 rgba(255,255,255,.05) inset, 0 40px 90px rgba(0,0,0,.6);
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
-
-html { scroll-behavior: smooth; scroll-padding-top: calc(var(--header-h) + 16px); }
-
+html { scroll-behavior: smooth; scroll-padding-top: calc(var(--header-h) + 16px); background: var(--bg); }
 body {
 font-family: "Vazirmatn", Tahoma, "Segoe UI", sans-serif;
-background: var(--paper);
-color: var(--ink);
+background: var(--bg);
+color: var(--text);
 font-size: 1.0625rem;
 line-height: 1.9;
-text-rendering: optimizeLegibility;
 -webkit-font-smoothing: antialiased;
+text-rendering: optimizeLegibility;
+overflow-x: clip;
 }
-
 img { display: block; max-width: 100%; height: auto; }
 a { color: inherit; }
 button { font: inherit; color: inherit; cursor: pointer; background: none; border: 0; }
 ul, ol { list-style: none; }
-h1, h2, h3 { line-height: 1.35; font-weight: 800; letter-spacing: 0; }
+h1, h2, h3, h4 { line-height: 1.3; font-weight: 800; letter-spacing: 0; color: var(--text); }
 p { text-wrap: pretty; }
+::selection { background: rgba(208,138,76,.35); color: #fff; }
 
-:focus-visible { outline: 3px solid var(--wood-2); outline-offset: 3px; border-radius: 6px; }
+:focus-visible { outline: 2px solid var(--cyan); outline-offset: 3px; border-radius: 6px; }
 [tabindex="-1"]:focus { outline: none; }
 
 .skip-link {
-position: fixed; top: 12px; right: 12px; z-index: 200;
-padding: 10px 16px; border-radius: 10px;
-background: var(--navy); color: #fff; font-weight: 700; text-decoration: none;
+position: fixed; top: 12px; right: 12px; z-index: 300;
+padding: 10px 16px; border-radius: 10px; background: var(--wood); color: #120c06; font-weight: 800; text-decoration: none;
 transform: translateY(calc(-100% - 24px)); transition: transform .2s ease;
 }
 .skip-link:focus { transform: none; }
-
-.container { width: min(100% - 40px, var(--container)); margin-inline: auto; }
-.ltr { direction: ltr; unicode-bidi: isolate; display: inline-block; }
 .visually-hidden { position: absolute !important; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); clip-path: inset(50%); white-space: nowrap; }
-.founder-media { max-width: 420px; }
+.ltr { direction: ltr; unicode-bidi: isolate; display: inline-block; }
+.container { width: min(100% - 40px, var(--container)); margin-inline: auto; }
+
+/* ---------------------------------------------------------- background system */
+.grid-bg {
+position: absolute; inset: 0; pointer-events: none; z-index: 0;
+background-image:
+linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px),
+linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px);
+background-size: 56px 56px;
+-webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 30%, #000 30%, transparent 75%);
+mask-image: radial-gradient(ellipse 70% 60% at 50% 30%, #000 30%, transparent 75%);
+}
+.glow {
+position: absolute; pointer-events: none; z-index: 0; border-radius: 50%; filter: blur(60px); opacity: .55;
+animation: drift 22s var(--ease-in-out) infinite alternate;
+}
+.hero, .search-sec, .section { overflow-x: clip; }
+.glow.wood { width: 520px; height: 520px; background: radial-gradient(circle, rgba(208,138,76,.22), transparent 65%); }
+.glow.cyan { width: 460px; height: 460px; background: radial-gradient(circle, rgba(58,210,191,.13), transparent 65%); animation-duration: 28s; }
+@keyframes drift { from { transform: translate3d(0,0,0); } to { transform: translate3d(40px,-30px,0); } }
 
 /* ---------------------------------------------------------- header */
 .site-header {
 position: sticky; top: 0; z-index: 100;
-background: rgba(247, 246, 242, .92);
-backdrop-filter: saturate(1.4) blur(12px);
--webkit-backdrop-filter: saturate(1.4) blur(12px);
+background: rgba(10, 12, 15, .78);
+backdrop-filter: saturate(1.3) blur(14px); -webkit-backdrop-filter: saturate(1.3) blur(14px);
 border-bottom: 1px solid var(--line);
 }
 .header-inner { height: var(--header-h); display: flex; align-items: center; justify-content: space-between; gap: 24px; }
 .brand { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; }
-.brand img { width: 34px; height: 34px; }
-.brand-name { font-weight: 800; font-size: 1.2rem; direction: ltr; }
+.brand-tile { width: 34px; height: 34px; border-radius: 9px; background: #f2eee7; display: grid; place-items: center; }
+.brand-tile img { width: 28px; height: 28px; }
+.brand-name { font-weight: 800; font-size: 1.2rem; direction: ltr; color: var(--text); }
 .brand-name b { color: var(--wood); font-weight: 800; }
-.main-nav { display: flex; align-items: center; gap: 4px; }
-.main-nav a { text-decoration: none; color: var(--ink-2); font-size: .95rem; font-weight: 600; padding: 8px 12px; border-radius: 8px; }
-.main-nav a:hover { background: var(--paper-2); color: var(--ink); }
-.header-cta { display: flex; align-items: center; gap: 10px; }
+.brand-sub { font-size: .75rem; color: var(--muted); direction: ltr; letter-spacing: .08em; border-inline-start: 1px solid var(--line-2); padding-inline-start: 10px; }
+.main-nav { display: flex; align-items: center; gap: 2px; }
+.main-nav a { text-decoration: none; color: var(--text-2); font-size: .93rem; font-weight: 600; padding: 8px 12px; border-radius: 8px; transition: color .2s, background-color .2s; }
+.main-nav a:hover { color: var(--text); background: rgba(255,255,255,.05); }
 .main-nav .nav-demo { display: none; }
+.header-cta { display: flex; align-items: center; gap: 10px; }
 .menu-toggle { display: none; width: 44px; height: 44px; border-radius: 10px; border: 1px solid var(--line-2); align-items: center; justify-content: center; }
 
 /* ---------------------------------------------------------- buttons */
 .btn {
 display: inline-flex; align-items: center; justify-content: center; gap: 8px;
-min-height: 48px; padding: 0 22px; border-radius: 12px;
+min-height: 48px; padding: 0 22px; border-radius: 10px;
 font-weight: 700; font-size: 1rem; text-decoration: none; white-space: nowrap;
-transition: background-color .2s ease, border-color .2s ease, transform .2s ease;
+transition: transform .25s var(--ease-out), background-color .2s, border-color .2s, box-shadow .25s;
 }
-.btn svg { flex: 0 0 auto; }
-.btn-primary { background: var(--navy); color: #fff; }
-.btn-primary:hover { background: var(--navy-2); }
-.btn-secondary { border: 1px solid var(--line-2); color: var(--ink); background: var(--surface); }
-.btn-secondary:hover { border-color: var(--ink-2); }
-.btn-sm { min-height: 42px; padding: 0 16px; font-size: .95rem; }
-.btn-light { background: #fff; color: var(--navy-2); }
-.btn-light:hover { background: var(--wood-soft); }
-.btn-ghost-light { border: 1px solid rgba(255,255,255,.28); color: #fff; }
-.btn-ghost-light:hover { border-color: #fff; }
+.btn-primary { background: var(--wood); color: #140d06; box-shadow: 0 8px 24px rgba(208,138,76,.25); }
+.btn-primary:hover { background: var(--wood-2); transform: translateY(-2px); box-shadow: 0 14px 34px rgba(208,138,76,.32); }
+.btn-secondary { border: 1px solid var(--line-2); color: var(--text); background: rgba(255,255,255,.03); }
+.btn-secondary:hover { border-color: rgba(255,255,255,.3); background: rgba(255,255,255,.06); transform: translateY(-2px); }
+.btn-sm { min-height: 40px; padding: 0 16px; font-size: .92rem; }
 
-/* ---------------------------------------------------------- sections */
-.section { padding: 112px 0; }
-.section-alt { background: var(--surface); border-block: 1px solid var(--line); }
-.section-dark { background: var(--navy-2); color: var(--on-navy); }
-.kicker {
-display: inline-flex; align-items: center; gap: 10px;
-color: var(--wood); font-size: .9rem; font-weight: 700; margin-bottom: 16px;
-}
-.kicker .num { direction: ltr; font-variant-numeric: tabular-nums; color: var(--wood); }
-.kicker::after { content: ""; width: 28px; height: 1px; background: currentColor; opacity: .5; }
-.section-dark .kicker { color: #e2b48a; }
-.section-dark .kicker .num { color: #e2b48a; }
-.section-title { font-size: clamp(1.75rem, 3.4vw, 2.6rem); max-width: 30ch; text-wrap: balance; }
-.section-lead { color: var(--muted); font-size: 1.125rem; max-width: 62ch; margin-top: 18px; }
-.section-dark .section-lead { color: var(--on-navy-muted); }
+/* ---------------------------------------------------------- section scaffolding */
+.section { position: relative; padding: 120px 0; }
+.section > .container { position: relative; z-index: 1; }
+.section-alt { background: var(--bg-2); border-block: 1px solid var(--line); }
+.kicker { display: inline-flex; align-items: center; gap: 10px; color: var(--wood-2); font-size: .88rem; font-weight: 700; margin-bottom: 16px; }
+.kicker .num { direction: ltr; font-variant-numeric: tabular-nums; color: var(--cyan); font-weight: 800; }
+.kicker::after { content: ""; width: 32px; height: 1px; background: linear-gradient(90deg, transparent, currentColor); opacity: .6; }
+.section-title { font-size: clamp(1.8rem, 3.6vw, 2.85rem); max-width: 30ch; text-wrap: balance; }
+.section-lead { color: var(--text-2); font-size: 1.12rem; max-width: 62ch; margin-top: 18px; }
 .section-head { margin-bottom: 56px; }
 .section-head.center { text-align: center; }
 .section-head.center .section-title, .section-head.center .section-lead { margin-inline: auto; }
+.chip { display: inline-flex; align-items: center; gap: 6px; padding: 4px 10px; border-radius: 6px; font-size: .8rem; font-weight: 700; direction: ltr; letter-spacing: .1em; }
+.chip-cyan { background: var(--cyan-soft); color: var(--cyan); }
+.chip-wood { background: var(--wood-soft); color: var(--wood-2); }
+.dot { width: 7px; height: 7px; border-radius: 50%; background: var(--cyan); box-shadow: 0 0 0 0 rgba(58,210,191,.5); animation: pulse 2.4s ease-out infinite; }
+@keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(58,210,191,.45); } 70% { box-shadow: 0 0 0 8px rgba(58,210,191,0); } 100% { box-shadow: 0 0 0 0 rgba(58,210,191,0); } }
 
 /* ---------------------------------------------------------- hero */
-.hero { padding: 72px 0 96px; overflow: hidden; }
-.hero-grid { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: 24px 64px; align-items: end; }
-.hero-copy { grid-column: 1 / -1; display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: 0 64px; align-items: end; }
-.hero-copy-main, .hero-copy-side { min-width: 0; }
-.eyebrow-pill {
-display: inline-flex; align-items: center; gap: 8px;
-padding: 6px 14px; border-radius: 999px; border: 1px solid var(--line-2); background: var(--surface);
-font-size: .875rem; font-weight: 600; color: var(--ink-2); margin-bottom: 24px;
-}
-.eyebrow-pill i { width: 7px; height: 7px; border-radius: 50%; background: var(--wood-2); }
-.hero h1 { font-size: clamp(2.2rem, 5vw, 4rem); line-height: 1.25; }
-.hero h1 span { color: var(--wood); }
-.hero-lead { color: var(--muted); font-size: 1.15rem; margin-top: 22px; max-width: 46ch; }
-.hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
-.hero-note { margin-top: 18px; font-size: .95rem; color: var(--muted); max-width: 46ch; }
-.hero-facts { display: flex; flex-wrap: wrap; gap: 10px 22px; margin-top: 30px; padding-top: 22px; border-top: 1px solid var(--line); }
-.hero-facts li { display: inline-flex; align-items: center; gap: 8px; font-size: .92rem; font-weight: 600; color: var(--ink-2); }
-.hero-facts svg { color: var(--ok); }
-.hero-visual { position: relative; grid-column: 1 / -1; margin-top: 48px; }
-.hero-visual .shot { margin-inline-start: 0; }
+.hero { position: relative; padding: 64px 0 88px; overflow: hidden; }
+.hero .glow.wood { top: -160px; left: -120px; }
+.hero .glow.cyan { bottom: -200px; right: 10%; }
+.hero-grid { position: relative; z-index: 1; display: grid; grid-template-columns: minmax(0, 5.4fr) minmax(0, 6.6fr); gap: 32px; align-items: center; min-height: calc(100vh - var(--header-h) - 120px); }
+.eyebrow { display: inline-flex; align-items: center; gap: 10px; padding: 6px 12px 6px 14px; border-radius: 8px; border: 1px solid var(--line-2); background: rgba(255,255,255,.03); font-size: .84rem; font-weight: 700; color: var(--text-2); direction: ltr; letter-spacing: .08em; margin-bottom: 26px; }
+.hero h1 { font-size: clamp(2.4rem, 4.3vw, 3.95rem); line-height: 1.18; font-weight: 900; }
+.hero h1 span { display: block; background: linear-gradient(90deg, var(--wood-2), var(--wood) 60%, #b86f33); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.hero-lead { color: var(--text-2); font-size: 1.15rem; margin-top: 24px; max-width: 48ch; }
+.hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 34px; }
+.hero-note { margin-top: 18px; font-size: .95rem; color: var(--muted); max-width: 48ch; }
+.hero-facts { display: flex; flex-wrap: wrap; gap: 10px 22px; margin-top: 28px; padding-top: 22px; border-top: 1px solid var(--line); }
+.hero-facts li { display: inline-flex; align-items: center; gap: 8px; font-size: .92rem; font-weight: 600; color: var(--text-2); }
+.hero-facts svg { color: var(--cyan); }
 
-/* ---------------------------------------------------------- screenshot frame */
-.shot { margin: 0; }
-.shot-frame {
-background: var(--surface); border: 1px solid var(--line-2); border-radius: var(--radius);
-box-shadow: var(--shadow-lg); overflow: hidden;
+/* product composition */
+.stage { position: relative; height: 620px; perspective: 1800px; }
+.stage-inner { position: absolute; inset: 0; transform-style: preserve-3d; transition: transform .6s var(--ease-out); }
+.panel {
+position: absolute; border-radius: 12px; overflow: hidden; background: #fff;
+border: 1px solid rgba(255,255,255,.14);
+box-shadow: var(--shadow-lg);
 }
-.shot-bar {
-display: flex; align-items: center; gap: 12px; height: 38px; padding: 0 14px;
-border-bottom: 1px solid var(--line); background: #fbfaf8; direction: ltr;
+.panel img { width: 100%; height: auto; }
+.panel-bar { display: flex; align-items: center; gap: 10px; height: 26px; padding: 0 12px; background: #0f1318; border-bottom: 1px solid rgba(255,255,255,.08); direction: ltr; }
+.panel-bar i { width: 7px; height: 7px; border-radius: 50%; background: rgba(255,255,255,.18); }
+.panel-bar span { margin-inline-start: auto; font-size: .75rem; color: var(--muted); font-weight: 700; letter-spacing: .1em; }
+.panel-bar span b { color: var(--cyan); font-weight: 800; margin-inline-end: 6px; }
+.panel.base { width: 88%; left: 6%; top: 96px; transform: rotateY(-16deg) rotateX(7deg) rotateZ(1deg) translateZ(-60px); transform-origin: left center; }
+.panel.health { width: 62%; right: 0; top: 14px; transform: translateZ(70px); }
+.panel.ai { width: 38%; left: 0; top: 176px; transform: translateZ(110px); background: #f3f3f3; }
+.panel.aps { width: 47%; left: 5%; bottom: 0; transform: translateZ(90px); }
+.panel.queue { width: 45%; right: 0; bottom: 52px; transform: translateZ(130px); }
+.panel.pill { width: 250px; right: 4%; top: 78px; transform: translateZ(160px); background: transparent; border: 0; box-shadow: 0 18px 40px rgba(0,0,0,.6); border-radius: 999px; }
+.search-chip {
+position: absolute; z-index: 4; left: 2%; top: 96px; transform: translateZ(140px);
+display: flex; align-items: center; gap: 10px; padding: 9px 12px; border-radius: 10px;
+background: rgba(19,23,29,.92); border: 1px solid var(--line-2); box-shadow: var(--shadow);
+font-size: .85rem; color: var(--text-2); min-width: 250px;
 }
-.shot-dots { display: inline-flex; gap: 6px; }
-.shot-dots i { width: 9px; height: 9px; border-radius: 50%; background: var(--line-2); }
-.shot-title { flex: 1; text-align: center; font-size: .8rem; color: var(--muted); font-weight: 600; direction: rtl; }
-.shot img { width: 100%; background: #f3f3f3; }
-.shot-full { margin-inline-start: auto; white-space: nowrap; font-weight: 600; color: var(--wood); text-decoration: none; }
-.shot-full:hover { text-decoration: underline; }
-.section-dark .shot-full { color: #e2b48a; }
-.shot figcaption { margin-top: 12px; font-size: .875rem; color: var(--muted); display: flex; gap: 8px; align-items: baseline; }
-.shot figcaption::before { content: ""; flex: 0 0 auto; width: 6px; height: 6px; border-radius: 50%; background: var(--wood-2); transform: translateY(-2px); }
-.section-dark .shot figcaption { color: var(--on-navy-muted); }
-.section-dark .shot-frame { border-color: var(--navy-line); }
+.search-chip kbd, .kbd { font-family: inherit; direction: ltr; font-size: .75rem; font-weight: 700; color: var(--text); padding: 2px 7px; border-radius: 6px; border: 1px solid var(--line-2); background: var(--surface-3); box-shadow: 0 2px 0 rgba(0,0,0,.4); }
+.search-chip .caret { width: 1px; height: 16px; background: var(--cyan); animation: blink 1s steps(1) infinite; }
+@keyframes blink { 50% { opacity: 0; } }
+.float-a { animation: floatA 7s var(--ease-in-out) infinite; }
+.float-b { animation: floatB 8.5s var(--ease-in-out) infinite; }
+.float-c { animation: floatC 6.5s var(--ease-in-out) infinite; }
+@keyframes floatA { 0%,100% { translate: 0 0; } 50% { translate: 0 -7px; } }
+@keyframes floatB { 0%,100% { translate: 0 0; } 50% { translate: 0 6px; } }
+@keyframes floatC { 0%,100% { translate: 0 0; } 50% { translate: 0 -4px; } }
+.stage-caption { position: absolute; bottom: -34px; left: 0; right: 0; text-align: center; font-size: .82rem; color: var(--muted); }
 
-/* ---------------------------------------------------------- evidence strip */
-.evidence { padding: 72px 0; background: var(--surface); border-block: 1px solid var(--line); }
-.evidence-grid { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 2fr); gap: 56px; align-items: center; }
-.evidence h2 { font-size: clamp(1.5rem, 2.6vw, 2rem); }
-.evidence p { color: var(--muted); margin-top: 12px; }
-.formula { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
-.formula-item { position: relative; padding: 20px 18px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--paper); }
-.formula-item:not(:last-child)::after {
-content: "+"; position: absolute; left: -13px; top: 50%; transform: translateY(-50%);
-width: 14px; text-align: center; color: var(--wood-2); font-weight: 800; z-index: 1;
-}
-.formula-en { direction: ltr; text-align: right; font-size: .8rem; letter-spacing: .14em; font-weight: 800; color: var(--wood); }
-.formula-fa { font-size: 1.2rem; font-weight: 800; margin-top: 2px; }
+/* hero entrance */
+.js .stage .panel, .js .stage .search-chip { opacity: 0; }
+.js .stage.on .panel, .js .stage.on .search-chip { opacity: 1; transition: opacity .7s var(--ease-out); }
+.js .stage.on .panel.base { transition-delay: .05s; }
+.js .stage.on .panel.health { transition-delay: .35s; }
+.js .stage.on .panel.ai { transition-delay: .55s; }
+.js .stage.on .panel.aps { transition-delay: .7s; }
+.js .stage.on .panel.queue { transition-delay: .85s; }
+.js .stage.on .panel.pill { transition-delay: 1s; }
+.js .stage.on .search-chip { transition-delay: 1.15s; }
+
+/* ---------------------------------------------------------- formula / layers */
+.formula-band { position: relative; padding: 72px 0; border-block: 1px solid var(--line); background: var(--bg-2); }
+.formula-grid { display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 8fr); gap: 48px; align-items: center; }
+.formula-band h2 { font-size: clamp(1.5rem, 2.6vw, 2.05rem); }
+.formula-band p { color: var(--text-2); margin-top: 12px; }
+.formula { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0; position: relative; border: 1px solid var(--line-2); border-radius: var(--radius-lg); overflow: hidden; background: var(--surface); }
+.formula-item { position: relative; padding: 22px 20px; }
+.formula-item + .formula-item { border-inline-start: 1px solid var(--line); }
+.formula-item::before { content: ""; position: absolute; top: 0; inset-inline: 0; height: 2px; background: linear-gradient(90deg, transparent, var(--cyan), transparent); opacity: 0; transition: opacity .5s; }
+.formula.is-visible .formula-item::before { animation: scan 4s var(--ease-in-out) infinite; }
+.formula.is-visible .formula-item:nth-child(2)::before { animation-delay: 1s; }
+.formula.is-visible .formula-item:nth-child(3)::before { animation-delay: 2s; }
+.formula.is-visible .formula-item:nth-child(4)::before { animation-delay: 3s; }
+@keyframes scan { 0%, 30%, 100% { opacity: 0; } 8%, 22% { opacity: 1; } }
+.formula-en { direction: ltr; text-align: right; font-size: .78rem; letter-spacing: .18em; font-weight: 800; color: var(--cyan); }
+.formula-fa { font-size: 1.3rem; font-weight: 800; margin-top: 2px; }
 .formula-sub { font-size: .875rem; color: var(--muted); }
 
-/* ---------------------------------------------------------- problem */
-.problem-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0; border-top: 1px solid var(--line-2); }
-.problem-item { padding: 28px 28px 32px 0; border-bottom: 1px solid var(--line); }
-.problem-item:nth-child(3n+2), .problem-item:nth-child(3n+3) { padding-right: 28px; border-right: 1px solid var(--line); }
-.problem-item h3 { font-size: 1.1rem; }
-.problem-item p { color: var(--muted); margin-top: 8px; font-size: 1rem; }
-.problem-close { margin-top: 48px; font-size: clamp(1.25rem, 2.2vw, 1.6rem); font-weight: 800; max-width: 34ch; }
-.problem-close span { color: var(--wood); }
+/* problem */
+.problem-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+.problem-item { padding: 26px; border-radius: var(--radius); border: 1px solid var(--line); background: var(--surface); position: relative; transition: border-color .3s, transform .4s var(--ease-out); }
+.problem-item:hover { border-color: rgba(242,182,79,.35); transform: translateY(-3px); }
+.problem-item::before { content: ""; display: block; width: 8px; height: 8px; border-radius: 2px; background: var(--amber); margin-bottom: 16px; box-shadow: 0 0 14px rgba(242,182,79,.5); }
+.problem-item h3 { font-size: 1.08rem; }
+.problem-item p { color: var(--muted); margin-top: 8px; font-size: .98rem; }
+.problem-close { margin-top: 44px; font-size: clamp(1.3rem, 2.4vw, 1.75rem); font-weight: 800; max-width: 34ch; }
+.problem-close span { color: var(--amber); }
 
-/* ---------------------------------------------------------- ecosystem */
-.eco { position: relative; }
-.eco-core {
-display: flex; align-items: center; justify-content: center; gap: 12px; flex-wrap: wrap;
-padding: 14px 20px; margin: 0 auto 28px; width: fit-content; max-width: 100%;
-border-radius: 999px; border: 1px solid var(--navy-line); background: rgba(255,255,255,.04);
-font-weight: 700; color: var(--on-navy);
+/* architecture: four connected layers */
+.layers4 { display: grid; gap: 0; position: relative; }
+.layer4 { position: relative; display: grid; grid-template-columns: 200px minmax(0, 1fr) minmax(0, 1.2fr); gap: 32px; align-items: start; padding: 30px 28px; border: 1px solid var(--line); background: var(--surface); }
+.layer4:first-child { border-radius: var(--radius-lg) var(--radius-lg) 0 0; }
+.layer4:last-of-type { border-radius: 0 0 var(--radius-lg) var(--radius-lg); }
+.layer4 + .layer4 { border-top: 0; }
+.layer4-name .en { direction: ltr; text-align: right; font-size: .8rem; letter-spacing: .2em; font-weight: 800; color: var(--cyan); }
+.layer4-name h3 { font-size: 1.6rem; margin-top: 2px; }
+.layer4-name .role { font-size: .9rem; color: var(--wood-2); font-weight: 700; }
+.layer4-desc { color: var(--text-2); font-size: 1rem; }
+.layer4-desc small { display: block; margin-top: 6px; color: var(--muted); font-size: .9rem; }
+.layer4 ul { display: flex; flex-wrap: wrap; gap: 8px; }
+.layer4 li { font-size: .88rem; color: var(--text-2); padding: 5px 10px; border-radius: 7px; border: 1px solid var(--line-2); background: rgba(255,255,255,.02); }
+.layer4::after {
+content: ""; position: absolute; z-index: 2; right: 128px; bottom: -14px; width: 26px; height: 26px; border-radius: 50%;
+background: var(--bg) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%233ad2bf' stroke-width='2' stroke-linecap='round'%3E%3Cpath d='M12 5v14M6 13l6 6 6-6'/%3E%3C/svg%3E") center/14px no-repeat;
+border: 1px solid rgba(58,210,191,.4);
 }
-.eco-core img { width: 28px; height: 28px; background: #fff; border-radius: 7px; padding: 2px; }
-.eco-pillars { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; }
-.pillar { border: 1px solid var(--navy-line); border-radius: var(--radius-lg); padding: 26px 22px; background: rgba(255,255,255,.025); }
-.pillar-head { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; }
-.pillar-en { direction: ltr; font-size: .8rem; letter-spacing: .16em; font-weight: 800; color: #e2b48a; }
-.pillar h3 { font-size: 1.35rem; color: #fff; }
-.pillar-sub { font-size: .9rem; color: var(--on-navy-muted); margin-top: 2px; }
-.pillar-desc { font-size: .98rem; color: var(--on-navy); margin-top: 14px; }
-.pillar ul { margin-top: 18px; display: grid; gap: 8px; }
-.pillar li { font-size: .93rem; color: var(--on-navy-muted); display: flex; gap: 10px; align-items: baseline; }
-.pillar li::before { content: ""; width: 5px; height: 5px; border-radius: 50%; background: #e2b48a; flex: 0 0 auto; transform: translateY(-2px); }
-.eco-arrow { display: flex; justify-content: center; color: #e2b48a; margin: 18px 0; }
-.eco-foundation { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
-.foundation-item { border: 1px dashed var(--navy-line); border-radius: var(--radius); padding: 18px 22px; }
-.foundation-item h3 { font-size: 1rem; color: #fff; }
-.foundation-item p { font-size: .93rem; color: var(--on-navy-muted); margin-top: 4px; }
-.eco-base {
-margin-top: 16px; padding: 16px 22px; border-radius: var(--radius); text-align: center;
-background: var(--navy); border: 1px solid var(--navy-line); color: var(--on-navy); font-weight: 700;
-}
-.eco-base small { display: block; font-weight: 400; color: var(--on-navy-muted); font-size: .9rem; }
+.layer4:last-of-type::after { display: none; }
+.layer4 .flow-line { position: absolute; top: 0; bottom: 0; right: 140px; width: 1px; background: linear-gradient(var(--line), rgba(58,210,191,.35), var(--line)); }
+.eco-formula { display: flex; align-items: center; justify-content: center; gap: 12px; flex-wrap: wrap; text-align: center; margin: 0 auto 22px; padding: 12px 20px; width: fit-content; max-width: 100%; border-radius: 12px; border: 1px solid rgba(58,210,191,.3); background: var(--cyan-soft); font-weight: 800; font-size: 1.05rem; }
+.eco-foundation { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; margin-top: 18px; }
+.foundation-item { border: 1px dashed var(--line-2); border-radius: var(--radius); padding: 18px 22px; }
+.foundation-item h3 { font-size: 1rem; }
+.foundation-item p { font-size: .93rem; color: var(--muted); margin-top: 4px; }
+.eco-base { margin-top: 14px; padding: 18px 22px; border-radius: var(--radius); text-align: center; background: linear-gradient(180deg, rgba(58,210,191,.07), transparent); border: 1px solid rgba(58,210,191,.25); font-weight: 800; }
+.eco-base small { display: block; font-weight: 400; color: var(--muted); font-size: .92rem; }
 
-/* ---------------------------------------------------------- lifecycle */
-.flow-steps { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0; counter-reset: step; }
-.flow-step { position: relative; padding: 0 0 36px 24px; }
-.flow-step::before {
+/* lifecycle timeline */
+.timeline { position: relative; display: grid; grid-template-columns: repeat(8, minmax(0, 1fr)); gap: 0; counter-reset: step; }
+.timeline::before { content: ""; position: absolute; top: 21px; right: 6%; left: 6%; height: 2px; background: var(--line-2); }
+.timeline .rail-fill { position: absolute; top: 21px; right: 6%; height: 2px; width: 0; background: linear-gradient(270deg, var(--wood), var(--cyan)); transition: width 2.6s var(--ease-in-out); }
+.timeline.run .rail-fill { width: 88%; }
+.tl-step { position: relative; padding: 0 8px; text-align: center; }
+.tl-step::before {
 counter-increment: step; content: counter(step, persian);
-display: grid; place-items: center; width: 40px; height: 40px; border-radius: 50%;
-background: var(--surface); border: 1px solid var(--line-2); color: var(--wood); font-weight: 800;
-position: relative; z-index: 1;
+display: grid; place-items: center; width: 44px; height: 44px; margin: 0 auto; border-radius: 50%;
+background: var(--surface); border: 1px solid var(--line-2); color: var(--muted); font-weight: 800; position: relative; z-index: 1;
+transition: background-color .4s, border-color .4s, color .4s, box-shadow .4s;
 }
-.flow-step::after { content: ""; position: absolute; top: 20px; right: 40px; left: 0; height: 1px; background: var(--line-2); }
-.flow-step:nth-child(4n)::after, .flow-step:last-child::after { display: none; }
-.flow-step h3 { font-size: 1.08rem; margin-top: 16px; }
-.flow-step p { font-size: .97rem; color: var(--muted); margin-top: 6px; }
+.timeline.run .tl-step::before { background: #12201f; border-color: rgba(58,210,191,.6); color: var(--cyan); box-shadow: 0 0 0 6px rgba(58,210,191,.07); }
+.timeline.run .tl-step:nth-of-type(1)::before { transition-delay: .1s; }
+.timeline.run .tl-step:nth-of-type(2)::before { transition-delay: .4s; }
+.timeline.run .tl-step:nth-of-type(3)::before { transition-delay: .7s; }
+.timeline.run .tl-step:nth-of-type(4)::before { transition-delay: 1s; }
+.timeline.run .tl-step:nth-of-type(5)::before { transition-delay: 1.3s; }
+.timeline.run .tl-step:nth-of-type(6)::before { transition-delay: 1.6s; }
+.timeline.run .tl-step:nth-of-type(7)::before { transition-delay: 1.9s; }
+.timeline.run .tl-step:nth-of-type(8)::before { transition-delay: 2.2s; }
+.tl-step h3 { font-size: 1rem; margin-top: 16px; }
+.tl-step p { font-size: .9rem; color: var(--muted); margin-top: 6px; line-height: 1.8; }
 
-/* ---------------------------------------------------------- capability blocks */
-.cap { display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 8fr); gap: 48px; align-items: start; padding: 72px 0; border-top: 1px solid var(--line); }
-.cap:first-of-type { border-top: 0; padding-top: 16px; }
+/* screenshot frame (dark chrome) */
+.shot { margin: 0; }
+.shot-frame { position: relative; border-radius: var(--radius); overflow: hidden; border: 1px solid var(--line-2); background: #0f1318; box-shadow: var(--shadow-lg); transition: transform .5s var(--ease-out), box-shadow .5s var(--ease-out); }
+.shot-frame:hover { transform: translateY(-4px); }
+.shot-bar { display: flex; align-items: center; gap: 12px; height: 34px; padding: 0 14px; border-bottom: 1px solid rgba(255,255,255,.07); direction: ltr; }
+.shot-dots { display: inline-flex; gap: 6px; }
+.shot-dots i { width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,.16); }
+.shot-title { flex: 1; text-align: center; font-size: .78rem; color: var(--muted); font-weight: 600; direction: rtl; }
+.shot img { width: 100%; background: #f3f3f3; }
+.shot figcaption { margin-top: 12px; font-size: .86rem; color: var(--muted); display: flex; gap: 10px; align-items: baseline; }
+.shot figcaption::before { content: ""; flex: 0 0 auto; width: 6px; height: 6px; border-radius: 50%; background: var(--cyan); transform: translateY(-2px); }
+.shot-full { margin-inline-start: auto; white-space: nowrap; font-weight: 700; color: var(--wood-2); text-decoration: none; }
+.shot-full:hover { text-decoration: underline; }
+
+/* capability blocks */
+.cap { display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 8fr); gap: 52px; align-items: start; padding: 80px 0; border-top: 1px solid var(--line); }
+.cap:first-of-type { border-top: 0; padding-top: 12px; }
 .cap.reverse { grid-template-columns: minmax(0, 8fr) minmax(0, 4fr); }
 .cap.reverse .cap-text { order: 2; }
-.cap-tag { display: inline-flex; gap: 8px; align-items: center; font-size: .85rem; font-weight: 700; color: var(--wood); }
-.cap-tag .en { direction: ltr; letter-spacing: .14em; }
-.cap h3 { font-size: clamp(1.4rem, 2.4vw, 1.85rem); margin-top: 10px; }
-.cap-problem { margin-top: 18px; padding: 14px 16px; border-radius: 12px; background: var(--paper-2); font-size: .98rem; color: var(--ink-2); }
-.cap-problem strong { color: var(--ink); }
+.cap-tag { display: inline-flex; gap: 10px; align-items: center; font-size: .86rem; font-weight: 700; color: var(--wood-2); }
+.cap-tag .en { direction: ltr; letter-spacing: .18em; color: var(--cyan); font-weight: 800; }
+.cap h3 { font-size: clamp(1.45rem, 2.4vw, 1.95rem); margin-top: 10px; }
+.cap-problem { margin-top: 18px; padding: 14px 16px; border-radius: 10px; background: rgba(242,182,79,.06); border: 1px solid rgba(242,182,79,.16); font-size: .98rem; color: var(--text-2); }
+.cap-problem strong { color: var(--amber); }
 .cap-list { margin-top: 20px; display: grid; gap: 10px; }
-.cap-list li { display: flex; gap: 12px; align-items: flex-start; font-size: 1rem; color: var(--ink-2); }
-.cap-list svg { flex: 0 0 auto; margin-top: 6px; color: var(--wood); }
-.cap-value { margin-top: 20px; font-size: 1rem; font-weight: 700; color: var(--ink); border-right: 3px solid var(--wood-2); padding-right: 14px; }
+.cap-list li { display: flex; gap: 12px; align-items: flex-start; font-size: 1rem; color: var(--text-2); }
+.cap-list svg { flex: 0 0 auto; margin-top: 6px; color: var(--cyan); }
+.cap-value { margin-top: 22px; font-size: 1rem; font-weight: 700; color: var(--text); border-inline-start: 2px solid var(--wood); padding-inline-start: 14px; }
 .cap-shots { display: grid; gap: 22px; }
 .cap-shots.pair { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); align-items: start; }
 
-.more-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin-top: 8px; }
-.more-item { padding: 22px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); }
-.more-item h4 { font-size: 1.05rem; font-weight: 800; }
+/* VISION live dashboard sequence */
+.live { position: relative; display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 14px; padding: 18px; border-radius: var(--radius-lg); border: 1px solid var(--line-2); background: linear-gradient(180deg, #121720, #0e1217); box-shadow: var(--shadow-lg); }
+.live-head { grid-column: 1 / -1; display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 2px 4px 6px; }
+.live-head p { font-size: .85rem; color: var(--muted); }
+.live-head .status { display: inline-flex; align-items: center; gap: 8px; font-size: .8rem; font-weight: 700; color: var(--cyan); direction: ltr; letter-spacing: .12em; }
+.tile { border-radius: 10px; overflow: hidden; background: #fff; border: 1px solid rgba(255,255,255,.1); position: relative; }
+.tile img { width: 100%; }
+.tile.health { grid-column: 1 / -1; }
+.tile.kpis { grid-column: 1 / -1; }
+.tile.compare { grid-column: span 8; }
+.tile.bottleneck { grid-column: span 4; }
+.tile.attention { grid-column: span 5; }
+.tile.recs { grid-column: span 7; align-self: start; }
+.tile.team { grid-column: span 7; align-self: start; margin-top: -1px; }
+.tile-label { position: absolute; z-index: 2; bottom: 8px; left: 8px; }
+.js .live .tile { opacity: 0; transform: translateY(14px) scale(.985); }
+.js .live.is-visible .tile { opacity: 1; transform: none; transition: opacity .6s var(--ease-out), transform .7s var(--ease-out); }
+.js .live.is-visible .tile.health { transition-delay: .1s; }
+.js .live.is-visible .tile.kpis { transition-delay: .45s; }
+.js .live.is-visible .tile.compare { transition-delay: .85s; }
+.js .live.is-visible .tile.bottleneck { transition-delay: 1.3s; }
+.js .live.is-visible .tile.attention { transition-delay: 1.7s; }
+.js .live.is-visible .tile.recs { transition-delay: 2.1s; }
+.js .live.is-visible .tile.team { transition-delay: 2.4s; }
+.js .live .tile.compare::after { content: ""; position: absolute; inset: 0; background: #e8f3fb; transform-origin: left center; }
+.js .live.is-visible .tile.compare::after { transform: scaleX(0); transition: transform 1.4s var(--ease-in-out) 1.05s; }
+.js .live.is-visible .tile.attention { animation: alertIn 1.2s var(--ease-out) 1.7s both; }
+@keyframes alertIn { 0% { box-shadow: 0 0 0 0 rgba(242,182,79,0); } 40% { box-shadow: 0 0 0 4px rgba(242,182,79,.45); } 100% { box-shadow: 0 0 0 0 rgba(242,182,79,0); } }
+.vision-grid { display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 8fr); gap: 52px; align-items: start; }
+
+/* AI flow */
+.ai-flow { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; margin-bottom: 40px; }
+.ai-step { position: relative; padding: 18px 18px 20px; border-radius: var(--radius); border: 1px solid var(--line); background: var(--surface); }
+.ai-step .en { direction: ltr; text-align: right; font-size: .76rem; letter-spacing: .16em; font-weight: 800; color: var(--muted); }
+.ai-step h4 { font-size: 1.05rem; margin-top: 4px; font-weight: 800; }
+.ai-step p { font-size: .9rem; color: var(--muted); margin-top: 4px; }
+.ai-step:not(:last-child)::after { content: ""; position: absolute; top: 50%; left: -10px; width: 8px; height: 8px; border-top: 2px solid var(--line-2); border-left: 2px solid var(--line-2); transform: translateY(-50%) rotate(-45deg); }
+.ai-step.human { border-color: rgba(208,138,76,.45); background: linear-gradient(180deg, rgba(208,138,76,.1), var(--surface)); }
+.ai-step.human .en { color: var(--wood-2); }
+.js .ai-flow .ai-step { opacity: .35; transform: translateY(8px); transition: opacity .5s, transform .5s var(--ease-out), border-color .5s; }
+.js .ai-flow.is-visible .ai-step { transform: none; }
+.js .ai-flow.is-visible .ai-step { opacity: 1; }
+.js .ai-flow.is-visible .ai-step:nth-child(2) { transition-delay: .35s; }
+.js .ai-flow.is-visible .ai-step:nth-child(3) { transition-delay: .7s; }
+.js .ai-flow.is-visible .ai-step:nth-child(4) { transition-delay: 1.05s; }
+
+/* Universal Search demo */
+.search-sec { overflow: hidden; }
+.search-grid { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 56px; align-items: center; }
+.keys { display: flex; align-items: center; gap: 10px; margin-top: 28px; direction: ltr; justify-content: flex-end; }
+.key { min-width: 64px; padding: 12px 16px; border-radius: 10px; text-align: center; font-weight: 800; font-size: 1rem; color: var(--text); background: var(--surface-3); border: 1px solid var(--line-2); box-shadow: 0 4px 0 #05070a; transition: transform .12s, box-shadow .12s, background-color .2s, color .2s; }
+.key.space { min-width: 160px; }
+.key.down { transform: translateY(3px); box-shadow: 0 1px 0 #05070a; background: var(--cyan); color: #04211d; }
+.keys .plus { color: var(--muted); font-weight: 800; }
+.sdemo { position: relative; border-radius: var(--radius-lg); border: 1px solid var(--line-2); background: #e9ecef; box-shadow: var(--shadow-lg); overflow: hidden; min-height: 520px; }
+.sdemo-app { position: absolute; inset: 0; background: linear-gradient(#f6f7f9 0 46px, #eef0f3 46px); }
+.sdemo-app::before { content: ""; position: absolute; top: 14px; right: 18px; width: 120px; height: 18px; border-radius: 4px; background: #dfe3e8; }
+.sdemo-app::after { content: ""; position: absolute; top: 70px; right: 18px; left: 18px; height: 380px; border-radius: 10px; background: repeating-linear-gradient(#fff 0 44px, #f3f4f6 44px 46px); opacity: .9; }
+.sdemo-overlay { position: absolute; inset: 0; background: rgba(15,19,24,.45); backdrop-filter: blur(2px); opacity: 0; transition: opacity .25s ease; }
+.sdemo.open .sdemo-overlay { opacity: 1; }
+.smodal { position: absolute; top: 34px; left: 50%; width: min(560px, calc(100% - 28px)); transform: translate(-50%, 10px) scale(.98); opacity: 0; transition: opacity .25s var(--ease-out), transform .35s var(--ease-out); background: #fff; border-radius: 14px; box-shadow: 0 30px 70px rgba(0,0,0,.35); color: #1b2230; overflow: hidden; direction: rtl; }
+.sdemo.open .smodal { opacity: 1; transform: translate(-50%, 0) scale(1); }
+.sinput { display: flex; align-items: center; gap: 10px; padding: 14px 16px; border-bottom: 1px solid #e6e8ec; font-size: 1.05rem; }
+.sinput svg { color: #8a93a3; flex: 0 0 auto; }
+.sinput .q { font-weight: 700; direction: ltr; min-height: 1.6em; }
+.sinput .ph { color: #6b7482; }
+.sinput .caret2 { width: 2px; height: 20px; background: #0067c0; animation: blink 1s steps(1) infinite; }
+.sinput kbd { margin-inline-start: auto; font-family: inherit; font-size: .75rem; color: #6b7482; border: 1px solid #dde1e6; border-radius: 6px; padding: 1px 6px; direction: ltr; }
+.ssummary { padding: 10px 16px; font-size: .86rem; color: #4c5563; background: #f7f8fa; border-bottom: 1px solid #eef0f3; opacity: 0; transition: opacity .3s; }
+.ssummary b { color: #1b2230; }
+.sdemo.results .ssummary { opacity: 1; }
+.sgroups { max-height: 330px; overflow: hidden; }
+.sgroup { padding: 8px 10px 4px; opacity: 0; transform: translateY(6px); transition: opacity .35s var(--ease-out), transform .35s var(--ease-out); }
+.sdemo.results .sgroup { opacity: 1; transform: none; }
+.sdemo.results .sgroup:nth-child(2) { transition-delay: .08s; }
+.sdemo.results .sgroup:nth-child(3) { transition-delay: .16s; }
+.sdemo.results .sgroup:nth-child(4) { transition-delay: .24s; }
+.sgroup .gh { font-size: .75rem; color: #535c6a; font-weight: 700; padding: 2px 8px 4px; display: flex; justify-content: space-between; }
+.srow { display: flex; align-items: center; gap: 10px; padding: 7px 8px; border-radius: 8px; font-size: .9rem; transition: background-color .2s; }
+.srow .code { direction: ltr; font-weight: 800; color: #0067c0; font-size: .85rem; }
+.srow .meta { color: #4c5563; font-size: .82rem; margin-inline-start: auto; }
+.srow mark { background: #fff1c2; color: inherit; border-radius: 3px; padding: 0 2px; }
+.srow.sel { background: #eaf3fc; box-shadow: inset 3px 0 0 #0067c0; }
+.snav { position: absolute; inset: 0; background: #f6f7f9; display: flex; flex-direction: column; opacity: 0; pointer-events: none; transition: opacity .35s ease; direction: rtl; color: #1b2230; }
+.sdemo.nav .snav { opacity: 1; }
+.snav-top { height: 46px; display: flex; align-items: center; gap: 8px; padding: 0 18px; border-bottom: 1px solid #e6e8ec; font-size: .85rem; color: #6b7482; background: #fff; }
+.snav-top b { color: #1b2230; }
+.snav-body { padding: 22px; display: grid; gap: 12px; }
+.snav-title { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 1.15rem; }
+.snav-title .code { direction: ltr; color: #0067c0; }
+.snav-row { height: 40px; border-radius: 8px; background: #fff; border: 1px solid #e6e8ec; }
+.snav-row.short { width: 60%; }
+.sdemo-caption { margin-top: 12px; font-size: .86rem; color: var(--muted); display: flex; align-items: center; gap: 12px; justify-content: space-between; }
+.replay { display: inline-flex; align-items: center; gap: 6px; font-size: .86rem; font-weight: 700; color: var(--wood-2); padding: 6px 10px; border-radius: 8px; border: 1px solid var(--line-2); }
+.replay:hover { border-color: var(--wood); }
+
+/* Time Tracker */
+.tt-grid { display: grid; grid-template-columns: minmax(0, 6fr) minmax(0, 6fr); gap: 56px; align-items: center; }
+.tt-visual { position: relative; display: grid; grid-template-columns: minmax(0, 1fr); justify-items: center; gap: 0; }
+.tt-visual .pill-wrap { width: min(360px, 90%); border-radius: 999px; overflow: hidden; background: #0b0d10; box-shadow: 0 20px 50px rgba(0,0,0,.6); }
+.tt-visual .pop-wrap { width: min(320px, 82%); margin-top: 14px; border-radius: 14px; background: #0b0d10; overflow: hidden; border: 1px solid rgba(255,255,255,.1); box-shadow: var(--shadow-lg); }
+.tt-team { margin-top: 48px; }
+.tt-team .shot-frame img { background: #fff; }
+.tt-chain { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; margin-top: 30px; }
+.tt-node { position: relative; padding: 14px 12px; border-radius: 10px; border: 1px solid var(--line); background: var(--surface); text-align: center; }
+.tt-node .en { direction: ltr; font-size: .75rem; letter-spacing: .16em; color: var(--cyan); font-weight: 800; }
+.tt-node b { display: block; font-size: 1rem; margin-top: 2px; }
+.tt-node:not(:last-child)::after { content: "←"; position: absolute; left: -10px; top: 50%; transform: translate(-50%, -50%); color: var(--muted); font-size: .9rem; }
+.js .tt-chain .tt-node { opacity: .3; transition: opacity .5s; }
+.js .tt-chain.is-visible .tt-node { opacity: 1; }
+.js .tt-chain.is-visible .tt-node:nth-child(2) { transition-delay: .3s; }
+.js .tt-chain.is-visible .tt-node:nth-child(3) { transition-delay: .6s; }
+.js .tt-chain.is-visible .tt-node:nth-child(4) { transition-delay: .9s; }
+
+.more-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+.more-item { padding: 24px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); transition: border-color .3s, transform .4s var(--ease-out); }
+.more-item:hover { border-color: var(--line-2); transform: translateY(-3px); }
+.more-item h3 { font-size: 1.05rem; font-weight: 800; }
 .more-item p { margin-top: 6px; font-size: .95rem; color: var(--muted); }
 
-/* ---------------------------------------------------------- before / after */
-.ba { border: 1px solid var(--line); border-radius: var(--radius-lg); overflow: hidden; background: var(--surface); }
-.ba-row { display: grid; grid-template-columns: minmax(0, 1fr) 48px minmax(0, 1fr); align-items: center; border-top: 1px solid var(--line); }
+/* before / after */
+.ba { border: 1px solid var(--line-2); border-radius: var(--radius-lg); overflow: hidden; background: var(--surface); }
+.ba-row { display: grid; grid-template-columns: minmax(0, 1fr) 56px minmax(0, 1fr); align-items: center; border-top: 1px solid var(--line); transition: background-color .3s; }
 .ba-row:first-child { border-top: 0; }
-.ba-head { background: var(--paper-2); font-weight: 800; font-size: .95rem; }
-.ba-cell { padding: 16px 24px; font-size: 1rem; }
-.ba-before { color: var(--muted); }
-.ba-after { color: var(--ink); font-weight: 600; }
-.ba-head .ba-after { color: var(--wood); }
-.ba-arrow { color: var(--wood-2); display: flex; justify-content: center; }
+.ba-row:not(.ba-head):hover { background: rgba(255,255,255,.02); }
+.ba-head { background: var(--surface-2); font-weight: 800; font-size: .95rem; }
+.ba-cell { padding: 17px 24px; font-size: 1rem; }
+.ba-before { color: var(--muted); text-decoration: line-through; text-decoration-color: rgba(240,107,95,.45); text-decoration-thickness: 1px; }
+.ba-head .ba-before { text-decoration: none; color: var(--red); }
+.ba-after { color: var(--text); font-weight: 600; }
+.ba-head .ba-after { color: var(--cyan); }
+.ba-arrow { color: var(--cyan); display: flex; justify-content: center; }
 
-/* ---------------------------------------------------------- data flow */
-.layers { display: grid; gap: 10px; max-width: 760px; margin-inline: auto; }
-.layer { display: grid; grid-template-columns: 150px minmax(0, 1fr); gap: 20px; align-items: center; padding: 18px 22px; border-radius: var(--radius); border: 1px solid var(--line); background: var(--surface); }
+/* data flow */
+.layers { display: grid; gap: 10px; max-width: 780px; margin-inline: auto; }
+.layer { display: grid; grid-template-columns: 160px minmax(0, 1fr); gap: 20px; align-items: center; padding: 18px 22px; border-radius: var(--radius); border: 1px solid var(--line); background: var(--surface); }
 .layer-name { font-weight: 800; }
-.layer-name small { display: block; font-weight: 600; font-size: .8rem; color: var(--wood); direction: ltr; text-align: right; letter-spacing: .12em; }
+.layer-name small { display: block; font-weight: 700; font-size: .78rem; color: var(--cyan); direction: ltr; text-align: right; letter-spacing: .14em; }
 .layer p { font-size: .97rem; color: var(--muted); }
-.layer.core { background: var(--navy); border-color: var(--navy); color: #fff; }
-.layer.core p { color: var(--on-navy-muted); }
-.layer.core .layer-name small { color: #e2b48a; }
-.layer-arrow { display: flex; justify-content: center; color: var(--wood-2); }
+.layer.core { border-color: rgba(208,138,76,.45); background: linear-gradient(90deg, rgba(208,138,76,.12), var(--surface)); }
+.layer.core .layer-name small { color: var(--wood-2); }
+.layer-arrow { display: flex; justify-content: center; color: var(--cyan); }
 
-/* ---------------------------------------------------------- audience */
-.aud-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+/* audience */
+.aud-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
 .aud-item { padding: 26px; border-radius: var(--radius); background: var(--surface); border: 1px solid var(--line); }
 .aud-item h3 { font-size: 1.1rem; }
 .aud-item p { margin-top: 8px; color: var(--muted); font-size: .98rem; }
-.fit { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 16px; margin-top: 16px; }
-.fit-box { padding: 24px 26px; border-radius: var(--radius); border: 1px solid var(--line); background: var(--paper-2); }
+.fit { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 14px; margin-top: 14px; }
+.fit-box { padding: 24px 26px; border-radius: var(--radius); border: 1px solid var(--line-2); background: var(--surface-2); }
 .fit-box h3 { font-size: 1.05rem; }
-.fit-box p { margin-top: 6px; color: var(--ink-2); font-size: .98rem; }
+.fit-box p { margin-top: 6px; color: var(--text-2); font-size: .98rem; }
 
-/* ---------------------------------------------------------- security */
-.sec-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1px; background: var(--navy-line); border: 1px solid var(--navy-line); border-radius: var(--radius-lg); overflow: hidden; }
-.sec-item { background: var(--navy-2); padding: 28px; }
-.sec-item h3 { font-size: 1.05rem; color: #fff; }
-.sec-item p { margin-top: 8px; color: var(--on-navy-muted); font-size: .97rem; }
+/* security */
+.sec-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1px; background: var(--line); border: 1px solid var(--line-2); border-radius: var(--radius-lg); overflow: hidden; }
+.sec-item { background: var(--bg-2); padding: 28px; position: relative; }
+.sec-item::before { content: ""; display: block; width: 22px; height: 22px; margin-bottom: 14px; border-radius: 6px; border: 1px solid rgba(58,210,191,.4); background: var(--cyan-soft) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%233ad2bf' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12.5l4.5 4.5L19 7.5'/%3E%3C/svg%3E") center/13px no-repeat; }
+.sec-item h3 { font-size: 1.05rem; }
+.sec-item p { margin-top: 8px; color: var(--muted); font-size: .97rem; }
 
-/* ---------------------------------------------------------- founder & story */
+/* founder & story */
 .founder { display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 7fr); gap: 64px; align-items: center; }
-.founder-photo { border-radius: var(--radius-lg); overflow: hidden; border: 1px solid var(--line); background: var(--paper-2); aspect-ratio: 760 / 916; }
+.founder-media { max-width: 420px; }
+.founder-photo { border-radius: var(--radius-lg); overflow: hidden; border: 1px solid var(--line-2); background: var(--surface); aspect-ratio: 760 / 916; }
 .founder-photo img { width: 100%; height: 100%; object-fit: cover; }
 .founder-name { font-size: 1.15rem; font-weight: 800; margin-top: 18px; }
 .founder-role { color: var(--muted); font-size: .95rem; direction: ltr; text-align: right; }
 .founder-links { display: flex; gap: 10px; margin-top: 12px; }
-.founder-links a { display: inline-flex; align-items: center; gap: 6px; font-size: .9rem; font-weight: 600; text-decoration: none; padding: 6px 12px; border-radius: 999px; border: 1px solid var(--line-2); }
-.founder-links a:hover { border-color: var(--ink-2); }
-.founder-quote { font-size: clamp(1.45rem, 2.8vw, 2.15rem); font-weight: 800; line-height: 1.5; }
-.founder-quote span { color: var(--wood); }
-.founder-text { margin-top: 20px; color: var(--ink-2); font-size: 1.08rem; max-width: 60ch; }
+.founder-links a { display: inline-flex; align-items: center; gap: 6px; font-size: .9rem; font-weight: 600; text-decoration: none; padding: 6px 12px; border-radius: 8px; border: 1px solid var(--line-2); color: var(--text-2); }
+.founder-links a:hover { border-color: var(--wood); color: var(--text); }
+.founder-quote { font-size: clamp(1.5rem, 2.9vw, 2.2rem); font-weight: 800; line-height: 1.5; }
+.founder-quote span { color: var(--wood-2); }
+.founder-text { margin-top: 20px; color: var(--text-2); font-size: 1.08rem; max-width: 60ch; }
 .founder-text + .founder-text { margin-top: 12px; }
-
 .story { margin-top: 96px; }
-.story-list { position: relative; max-width: 860px; margin-inline: auto; }
-.story-list::before { content: ""; position: absolute; top: 8px; bottom: 8px; right: 79px; width: 1px; background: var(--line-2); }
+.story-list { position: relative; max-width: 880px; margin-inline: auto; }
+.story-list::before { content: ""; position: absolute; top: 8px; bottom: 8px; right: 79px; width: 1px; background: linear-gradient(var(--line-2), rgba(208,138,76,.5), var(--line-2)); }
 .chapter { position: relative; display: grid; grid-template-columns: 80px minmax(0, 1fr); gap: 28px; padding-bottom: 44px; }
 .chapter:last-child { padding-bottom: 0; }
-.chapter-label { font-size: .85rem; font-weight: 800; color: var(--wood); padding-top: 4px; }
+.chapter-label { font-size: .85rem; font-weight: 800; color: var(--wood-2); padding-top: 4px; }
 .chapter-body { position: relative; }
-.chapter-body::before { content: ""; position: absolute; right: -33px; top: 12px; width: 9px; height: 9px; border-radius: 50%; background: var(--paper); border: 2px solid var(--wood-2); }
+.chapter-body::before { content: ""; position: absolute; right: -33px; top: 12px; width: 9px; height: 9px; border-radius: 50%; background: var(--bg); border: 2px solid var(--wood); }
 .chapter h4 { font-size: 1.3rem; font-weight: 800; line-height: 1.4; }
-.chapter p { margin-top: 8px; color: var(--ink-2); font-size: 1.05rem; }
-.chapter.highlight .chapter-body { padding: 22px 24px; border-radius: var(--radius); background: var(--surface); border: 1px solid var(--line); }
-.chapter.highlight .chapter-body::before { right: -33px; top: 34px; }
+.chapter p { margin-top: 8px; color: var(--text-2); font-size: 1.05rem; }
+.chapter.highlight .chapter-body { padding: 22px 24px; border-radius: var(--radius); background: var(--surface); border: 1px solid var(--line-2); }
+.chapter.highlight .chapter-body::before { top: 34px; }
 
-/* ---------------------------------------------------------- FAQ */
-.faq { max-width: 880px; margin-inline: auto; border-top: 1px solid var(--line-2); }
+/* FAQ */
+.faq { max-width: 900px; margin-inline: auto; border-top: 1px solid var(--line-2); }
 .faq-item { border-bottom: 1px solid var(--line-2); }
 .faq-q { margin: 0; font-size: 1.08rem; }
-.faq-btn {
-width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 16px;
-padding: 22px 4px; text-align: right; font-weight: 700; font-size: 1.08rem; line-height: 1.6;
-}
-.faq-btn:hover { color: var(--wood); }
-.faq-icon { flex: 0 0 auto; width: 28px; height: 28px; border-radius: 50%; border: 1px solid var(--line-2); display: grid; place-items: center; transition: transform .25s ease; }
-.faq-btn[aria-expanded="true"] .faq-icon { transform: rotate(45deg); }
-.faq-a { padding: 0 4px 24px; color: var(--ink-2); max-width: 72ch; }
+.faq-btn { width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 22px 4px; text-align: right; font-weight: 700; font-size: 1.08rem; line-height: 1.6; color: var(--text); transition: color .2s; }
+.faq-btn:hover { color: var(--wood-2); }
+.faq-icon { flex: 0 0 auto; width: 30px; height: 30px; border-radius: 8px; border: 1px solid var(--line-2); display: grid; place-items: center; transition: transform .3s var(--ease-out), border-color .2s, color .2s; color: var(--muted); }
+.faq-btn[aria-expanded="true"] .faq-icon { transform: rotate(45deg); border-color: var(--cyan); color: var(--cyan); }
+.faq-a { padding: 0 4px 24px; color: var(--text-2); max-width: 74ch; }
 .faq-a[hidden] { display: none; }
 
-/* ---------------------------------------------------------- CTA */
-.cta { padding: 104px 0; background: var(--navy-2); color: var(--on-navy); text-align: center; }
-.cta h2 { font-size: clamp(1.8rem, 3.6vw, 2.75rem); max-width: 26ch; text-wrap: balance; margin-inline: auto; }
-.cta p { color: var(--on-navy-muted); margin: 18px auto 0; max-width: 60ch; font-size: 1.1rem; }
+/* CTA */
+.cta { position: relative; overflow: hidden; padding: 120px 0; text-align: center; border-top: 1px solid var(--line); background: radial-gradient(ellipse 60% 80% at 50% 0%, rgba(208,138,76,.16), transparent 70%), var(--bg-2); }
+.cta h2 { font-size: clamp(1.9rem, 3.8vw, 3rem); max-width: 26ch; margin-inline: auto; text-wrap: balance; }
+.cta p { color: var(--text-2); margin: 18px auto 0; max-width: 60ch; font-size: 1.1rem; }
 .cta-actions { display: flex; justify-content: center; flex-wrap: wrap; gap: 12px; margin-top: 34px; }
-.cta-phone { margin-top: 20px; font-size: .95rem; color: var(--on-navy-muted); }
-.cta-phone a { color: #fff; font-weight: 700; text-decoration: none; }
+.cta-phone { margin-top: 20px; font-size: .95rem; color: var(--muted); }
+.cta-phone a { color: var(--text); font-weight: 800; text-decoration: none; }
 
-/* ---------------------------------------------------------- footer */
-.site-footer { background: var(--navy-2); border-top: 1px solid var(--navy-line); color: var(--on-navy-muted); padding: 56px 0 32px; font-size: .95rem; }
+/* footer */
+.site-footer { background: var(--bg); border-top: 1px solid var(--line); color: var(--muted); padding: 56px 0 32px; font-size: .95rem; }
 .footer-grid { display: grid; grid-template-columns: minmax(0, 2fr) repeat(2, minmax(0, 1fr)); gap: 40px; }
-.site-footer .brand { color: #fff; }
-.site-footer .brand img { background: #fff; border-radius: 8px; padding: 2px; }
-.site-footer .brand-name b { color: #e2b48a; }
 .footer-about { margin-top: 14px; max-width: 42ch; }
-.footer-title { color: #fff; font-size: 1rem; margin-bottom: 12px; }
+.footer-title { color: var(--text); font-size: 1rem; margin-bottom: 12px; }
 .footer-links { display: grid; gap: 6px; }
 .footer-links a { text-decoration: none; }
-.footer-links a:hover { color: #fff; }
-.footer-bottom { margin-top: 44px; padding-top: 20px; border-top: 1px solid var(--navy-line); display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; font-size: .875rem; }
+.footer-links a:hover { color: var(--text); }
+.footer-bottom { margin-top: 44px; padding-top: 20px; border-top: 1px solid var(--line); display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; font-size: .875rem; }
 
-/* ---------------------------------------------------------- reveal (progressive enhancement) */
-.js .reveal { opacity: 0; transform: translateY(18px); transition: opacity .7s ease, transform .7s ease; }
+/* reveal */
+.js .reveal { opacity: 0; transform: translateY(22px); transition: opacity .7s var(--ease-out), transform .8s var(--ease-out); transition-delay: var(--d, 0s); }
 .js .reveal.is-visible { opacity: 1; transform: none; }
 
 /* ---------------------------------------------------------- responsive */
-@media (max-width: 1100px) {
+@media (max-width: 1180px) {
 .main-nav a { padding: 8px 9px; font-size: .9rem; }
-.eco-pillars { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-.flow-steps { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-.flow-step:nth-child(2n)::after { display: none; }
-.formula { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 12px; }
-.formula-item:nth-child(2)::after { display: none; }
+.brand-sub { display: none; }
+.hero-grid { grid-template-columns: minmax(0, 1fr); min-height: 0; }
+.hero-copy { max-width: 720px; }
+.stage { height: 600px; max-width: 900px; width: 100%; margin-inline: auto; }
+.stage-inner { inset: 0 6%; }
+.timeline { grid-template-columns: repeat(4, minmax(0, 1fr)); row-gap: 36px; }
+.timeline::before, .timeline .rail-fill { display: none; }
+.layer4 { grid-template-columns: 170px minmax(0, 1fr); }
+.layer4 ul { grid-column: 2; }
+.layer4 .flow-line, .layer4::after { right: 100px; }
+.layer4 .flow-line { right: 112px; }
 }
 
 @media (max-width: 960px) {
 .menu-toggle { display: inline-flex; }
-.main-nav {
-position: absolute; top: var(--header-h); right: 0; left: 0;
-display: none; flex-direction: column; align-items: stretch; gap: 0;
-background: var(--paper); border-bottom: 1px solid var(--line); padding: 8px 20px 16px;
-}
+.main-nav { position: absolute; top: var(--header-h); right: 0; left: 0; display: none; flex-direction: column; align-items: stretch; gap: 0; background: var(--bg); border-bottom: 1px solid var(--line-2); padding: 8px 20px 16px; }
 .main-nav.is-open { display: flex; }
 .main-nav a { padding: 14px 4px; border-bottom: 1px solid var(--line); border-radius: 0; font-size: 1rem; }
-.hero-grid, .hero-copy, .evidence-grid, .cap, .founder { grid-template-columns: minmax(0, 1fr); gap: 36px; }
-.hero-copy { gap: 0; }
-.hero-visual { margin-top: 36px; }
-.cap.reverse { grid-template-columns: minmax(0, 1fr); }
+.formula-grid, .cap, .cap.reverse, .vision-grid, .search-grid, .tt-grid, .founder { grid-template-columns: minmax(0, 1fr); gap: 36px; }
 .cap.reverse .cap-text { order: 0; }
-.problem-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
-.problem-item, .problem-item:nth-child(3n+2), .problem-item:nth-child(3n+3) { padding: 24px 0; border-right: 0; }
-.problem-item:nth-child(2n) { padding-right: 24px; border-right: 1px solid var(--line); }
-.aud-grid, .sec-grid, .more-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
-.founder-media { max-width: 360px; }
+.problem-grid, .aud-grid, .sec-grid, .more-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+.ai-flow { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+.ai-step:nth-child(2)::after { display: none; }
 .footer-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
 .footer-grid > :first-child { grid-column: 1 / -1; }
+.tile.compare, .tile.bottleneck, .tile.attention, .tile.recs, .tile.team { grid-column: 1 / -1; }
+.tile.bottleneck { max-width: 420px; }
+.keys { justify-content: flex-start; }
 }
 
 @media (max-width: 640px) {
 body { font-size: 1rem; }
-.section { padding: 80px 0; }
-.hero { padding: 40px 0 72px; }
+.section { padding: 84px 0; }
+.hero { padding: 36px 0 64px; }
 .hero-lead { font-size: 1.05rem; }
 .header-cta .btn { display: none; }
-.main-nav .nav-demo { display: block; margin-top: 12px; border: 0; border-radius: 12px; background: var(--navy); color: #fff; text-align: center; font-weight: 700; }
-.main-nav .nav-demo:hover { background: var(--navy-2); color: #fff; }
+.main-nav .nav-demo { display: block; margin-top: 12px; border: 0; border-radius: 10px; background: var(--wood); color: #140d06; text-align: center; font-weight: 800; }
 .hero-actions .btn { flex: 1 1 100%; }
-.eco-pillars, .eco-foundation, .flow-steps, .problem-grid, .aud-grid, .sec-grid, .more-grid, .fit, .cap-shots.pair { grid-template-columns: minmax(0, 1fr); }
-.problem-item:nth-child(2n) { padding-right: 0; border-right: 0; }
+.hero-copy { display: contents; }
+.hero-grid { display: flex; flex-direction: column; gap: 0; }
+.hero-grid > .hero-copy > * { order: 1; }
+.hero-grid > .stage { order: 2; margin: 28px 0 8px; }
+.hero-grid > .hero-copy > .hero-note, .hero-grid > .hero-copy > .hero-facts { order: 3; }
+/* recomposed hero visual: base + two cards, no 3D */
+.stage { height: auto; perspective: none; margin-top: 8px; }
+.stage-inner { position: relative; inset: auto; display: grid; gap: 0; }
+.panel { position: relative; transform: none !important; left: auto !important; right: auto !important; top: auto !important; bottom: auto !important; width: 100% !important; }
+.panel.base { order: 2; }
+.panel.health { order: 1; width: 94% !important; margin: 0 auto -14px; z-index: 2; }
+.panel.pill { order: 3; width: 72% !important; margin: -18px auto 0; z-index: 2; }
+.panel.ai, .panel.aps, .panel.queue, .search-chip { display: none; }
+.stage-caption { position: static; margin-top: 14px; }
 .formula { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
-.flow-step::after { display: none; }
-.flow-step { padding-left: 0; padding-bottom: 28px; }
+.formula-item:nth-child(3) { border-inline-start: 0; }
+.formula-item:nth-child(n+3) { border-top: 1px solid var(--line); }
+.problem-grid, .aud-grid, .sec-grid, .more-grid, .fit, .eco-foundation, .cap-shots.pair, .ai-flow, .tt-chain { grid-template-columns: minmax(0, 1fr); }
+.ai-step::after, .tt-node::after { display: none; }
+.timeline { grid-template-columns: minmax(0, 1fr); row-gap: 0; }
+.tl-step { display: grid; grid-template-columns: 44px minmax(0, 1fr); column-gap: 16px; text-align: right; padding: 0 0 22px; }
+.tl-step::before { grid-row: 1 / span 2; margin: 0; }
+.tl-step h3 { margin-top: 8px; }
+.layer4 { grid-template-columns: minmax(0, 1fr); gap: 12px; padding: 24px 20px; }
+.layer4 ul { grid-column: auto; }
+.layer4 .flow-line { display: none; }
+.layer4::after { right: auto; left: 50%; transform: translateX(-50%); }
 .ba-row { grid-template-columns: minmax(0, 1fr); }
-.ba-arrow { display: none; }
-.ba-head { display: none; }
+.ba-arrow, .ba-head { display: none; }
 .ba-cell { padding: 6px 18px; }
 .ba-before { padding-top: 16px; }
-.ba-before::before { content: "پیش از LignoX: "; font-weight: 700; }
+.ba-before::before { content: "پیش از LignoX: "; font-weight: 700; text-decoration: none; display: inline; }
 .ba-after { padding-bottom: 16px; }
-.ba-after::before { content: "با LignoX: "; color: var(--wood); font-weight: 800; }
+.ba-after::before { content: "با LignoX: "; color: var(--cyan); font-weight: 800; }
 .layer { grid-template-columns: minmax(0, 1fr); gap: 4px; }
 .story-list::before { right: 7px; }
 .chapter { grid-template-columns: minmax(0, 1fr); gap: 4px; padding-right: 30px; }
 .chapter-body::before, .chapter.highlight .chapter-body::before { right: -27px; top: -22px; }
 .chapter.highlight .chapter-body { padding: 18px; }
 .footer-grid { grid-template-columns: minmax(0, 1fr); }
-.eco-core { border-radius: 16px; text-align: center; }
-.shot-bar { height: 30px; }
-.shot-title { font-size: .75rem; }
+.sdemo { min-height: 470px; }
+.key { min-width: 52px; padding: 10px 12px; }
+.key.space { min-width: 120px; }
+.live { padding: 10px; gap: 10px; }
+
 }
 
 @media (prefers-reduced-motion: reduce) {
 html { scroll-behavior: auto; }
-*, *::before, *::after { transition: none !important; animation: none !important; }
-.js .reveal { opacity: 1; transform: none; }
+*, *::before, *::after { animation: none !important; transition-duration: .01ms !important; transition-delay: 0s !important; }
+.js .reveal, .js .stage .panel, .js .stage .search-chip, .js .live .tile, .js .ai-flow .ai-step, .js .tt-chain .tt-node { opacity: 1 !important; transform: none; }
+.panel.base { transform: rotateY(-10deg) rotateX(5deg) translateZ(-40px); }
+.js .live .tile.compare::after { display: none; }
+.timeline .rail-fill { width: 88%; }
+.glow { display: none; }
 }
 
 </style>
@@ -707,14 +903,12 @@ html { scroll-behavior: auto; }
 
 <header class="site-header">
 <div class="container header-inner">
-<a class="brand" href="#main" aria-label="LignoX — بازگشت به ابتدای صفحه">
-<img src="assets/img/logo-mark.png" width="34" height="34" alt="" />
-<span class="brand-name">Ligno<b>X</b></span>
-</a>
+<a class="brand" href="#main" aria-label="LignoX — بازگشت به ابتدای صفحه"><span class="brand-tile"><img src="assets/img/logo-mark.png" width="28" height="28" alt="" /></span><span class="brand-name">Ligno<b>X</b></span><span class="brand-sub">MANUFACTURING OS</span></a>
 <nav class="main-nav" id="mainNav" aria-label="ناوبری اصلی">
 <a href="#product">محصول</a>
 <a href="#capabilities">قابلیت‌ها</a>
 <a href="#lifecycle">در کارخانه</a>
+<a href="#search">جستجو</a>
 <a href="#founder">داستان LignoX</a>
 <a href="#faq">پرسش‌ها</a>
 <a class="nav-demo" href="#demo">درخواست دمو</a>
@@ -730,16 +924,16 @@ html { scroll-behavior: auto; }
 
 <main id="main" tabindex="-1">
 
-<!-- 01 HERO -->
+<!-- HERO -->
 <section class="hero" aria-labelledby="hero-title">
+<div class="grid-bg" aria-hidden="true"></div>
+<div class="glow wood" aria-hidden="true"></div><div class="glow cyan" aria-hidden="true"></div>
 <div class="container hero-grid">
 <div class="hero-copy">
-<div class="hero-copy-main">
-<p class="eyebrow-pill"><i aria-hidden="true"></i> Manufacturing Operating System</p>
+<p class="eyebrow"><i class="dot" aria-hidden="true"></i> MANUFACTURING OPERATING SYSTEM</p>
 <h1 id="hero-title">سیستم‌عامل تولید<br /><span>برای صنعت مبلمان</span></h1>
 <p class="hero-lead">LignoX سفارش، برنامه‌ریزی ظرفیت، اجرای تولید در ایستگاه‌ها، مواد و انبار، فرآیندهای سازمانی و دید مدیریتی را به یک سیستم واحد وصل می‌کند؛ تا از سالن تولید تا اتاق مدیریت، همه از روی یک واقعیت کار کنند.</p>
-</div>
-<div class="hero-copy-side">
+
 <div class="hero-actions">
 <a class="btn btn-primary" href="#demo">درخواست دمو <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></a>
 <a class="btn btn-secondary" href="#capabilities">آشنایی با قابلیت‌ها</a>
@@ -751,28 +945,30 @@ html { scroll-behavior: auto; }
 <li><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg> دسترسی نقش‌محور</li>
 </ul>
 </div>
+<div class="stage" id="stage" role="img" aria-label="ترکیبی از صفحه‌های واقعی LignoX با داده‌های نمونه: داشبورد اجرایی، وضعیت سلامت کارخانه، دستیار LignoX AI، برنامه‌ریزی APS، صف ایستگاه تولید، Time Tracker و جستجوی سراسری">
+<div class="stage-inner" id="stageInner" aria-hidden="true">
+<div class="panel base"><div class="panel-bar"><i></i><i></i><i></i><span>LIGNOX · DASHBOARD</span></div><img src="assets/screens/lignox-executive-dashboard-1600.webp" srcset="assets/screens/lignox-executive-dashboard-800.webp 800w, assets/screens/lignox-executive-dashboard-1600.webp 1600w" sizes="(max-width: 640px) 100vw, 640px" width="1600" height="1000" alt="" fetchpriority="high" /></div>
+<div class="panel health float-a"><div class="panel-bar"><i></i><i></i><i></i><span><b>VISION</b>FACTORY HEALTH</span></div><img src="assets/ui/lignox-ui-factory-health.webp" width="1400" height="90" alt="" fetchpriority="high" sizes="(max-width: 640px) 94vw, 480px" /></div>
+<div class="panel ai float-b"><div class="panel-bar"><i></i><i></i><i></i><span><b>AI</b>LIGNOX AI</span></div><img src="assets/ui/lignox-ui-ai-conversation.webp" width="1000" height="665" alt="" fetchpriority="high" sizes="300px" /></div>
+<div class="panel aps float-c"><div class="panel-bar"><i></i><i></i><i></i><span><b>PLAN</b>APS</span></div><img src="assets/ui/lignox-ui-aps-rows.webp" width="1200" height="565" alt="" fetchpriority="high" sizes="360px" /></div>
+<div class="panel queue float-a"><div class="panel-bar"><i></i><i></i><i></i><span><b>FLOW</b>STATION QUEUE</span></div><img src="assets/ui/lignox-ui-station-queue.webp" width="1200" height="478" alt="" fetchpriority="high" sizes="340px" /></div>
+<div class="panel pill float-b"><img src="assets/ui/lignox-ui-time-tracker-pill.webp" width="520" height="72" alt="" fetchpriority="high" sizes="250px" /></div>
+<div class="search-chip float-c"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg><span>جستجو</span><span class="caret"></span><span style="margin-inline-start:auto"><kbd>Ctrl</kbd> <kbd>Space</kbd></span></div>
 </div>
-<div class="hero-visual">
-<figure class="shot">
-<div class="shot-frame">
-<div class="shot-bar" aria-hidden="true"><span class="shot-dots"><i></i><i></i><i></i></span><span class="shot-title">LignoX — داشبورد اجرایی</span></div>
-<img src="assets/screens/lignox-executive-dashboard-1600.webp" srcset="assets/screens/lignox-executive-dashboard-800.webp 800w, assets/screens/lignox-executive-dashboard-1600.webp 1600w" sizes="(max-width: 1240px) 100vw, 1200px" width="1600" height="1000" alt="داشبورد اجرایی LignoX با وضعیت سلامت کارخانه، شاخص‌های روزانه، گلوگاه‌ها و فهرست اقدام‌های لازم" fetchpriority="high" />
-</div>
-<figcaption><span>داشبورد اجرایی LignoX: وضعیت سلامت کارخانه، شاخص‌ها، گلوگاه‌ها و اقدام‌های لازم · تصویر واقعی از نرم‌افزار LignoX · داده‌ها نمایشی هستند</span><a class="shot-full" href="assets/screens/lignox-executive-dashboard-1600.webp" target="_blank" rel="noopener">اندازه کامل<span class="visually-hidden"> تصویر داشبورد اجرایی (در پنجره جدید)</span></a></figcaption>
-</figure>
+<p class="stage-caption">صفحه‌ها و بخش‌های واقعی LignoX · داده‌ها نمایشی هستند</p>
 </div>
 </div>
 </section>
 
-<!-- 02 PRODUCT REALITY -->
-<section class="evidence" id="product" aria-labelledby="evidence-title">
-<div class="container evidence-grid">
+<!-- REAL PRODUCT + FLOW/PLAN/VISION/AI -->
+<section class="formula-band" id="product" aria-labelledby="evidence-title">
+<div class="container formula-grid">
 <div class="reveal">
 <p class="kicker"><span class="num">01</span> محصول واقعی</p>
 <h2 id="evidence-title">به‌جای ادعا، خود نرم‌افزار را ببینید.</h2>
 <p>همه تصاویر این صفحه از رابط واقعی LignoX گرفته شده‌اند. برای حفظ محرمانگی کارخانه‌ها، داده‌های داخل تصاویر نمایشی هستند.</p>
 </div>
-<div class="formula reveal" role="list" aria-label="چهار بُعد LignoX">
+<div class="formula" role="list" aria-label="چهار بُعد LignoX">
 <div class="formula-item" role="listitem"><p class="formula-en">FLOW</p><p class="formula-fa">جریان</p><p class="formula-sub">اجرای تولید · MES</p></div>
 <div class="formula-item" role="listitem"><p class="formula-en">PLAN</p><p class="formula-fa">برنامه</p><p class="formula-sub">برنامه‌ریزی · APS</p></div>
 <div class="formula-item" role="listitem"><p class="formula-en">VISION</p><p class="formula-fa">دید</p><p class="formula-sub">هوش کارخانه · BI</p></div>
@@ -781,7 +977,7 @@ html { scroll-behavior: auto; }
 </div>
 </section>
 
-<!-- 03 PROBLEM -->
+<!-- PROBLEM -->
 <section class="section" aria-labelledby="problem-title">
 <div class="container">
 <div class="section-head reveal">
@@ -801,43 +997,43 @@ html { scroll-behavior: auto; }
 </div>
 </section>
 
-<!-- 04/05 WHAT IS LIGNOX + ECOSYSTEM -->
-<section class="section section-dark" id="system" aria-labelledby="system-title">
+<!-- ARCHITECTURE -->
+<section class="section section-alt" id="system" aria-labelledby="system-title">
+<div class="grid-bg" aria-hidden="true"></div>
 <div class="container">
 <div class="section-head reveal">
 <p class="kicker"><span class="num">03</span> LignoX چیست؟</p>
 <h2 class="section-title" id="system-title">یک سیستم، با چهار بُعد.</h2>
 <p class="section-lead">LignoX مجموعه‌ای از نرم‌افزارهای جدا نیست. سفارش، برنامه، اجرا، مواد و تصمیم مدیریتی روی یک مدل مشترک از کارخانه ساخته شده‌اند؛ هر رویداد در سالن تولید، همان لحظه در برنامه و داشبورد دیده می‌شود.</p>
 </div>
-<div class="eco reveal">
-<p class="eco-core"><img src="assets/img/logo-mark.png" width="28" height="28" alt="" /> LignoX = جریان + برنامه + دید + هوش مصنوعی</p>
-<div class="eco-pillars">
-<div class="pillar">
-<div class="pillar-head"><h3>جریان</h3><span class="pillar-en">FLOW</span></div>
-<p class="pillar-sub">اجرای تولید · MES</p>
-<p class="pillar-desc">آنچه همین حالا در سالن تولید اتفاق می‌افتد.</p>
+<div class="reveal">
+<p class="eco-formula"><span class="brand-tile"><img src="assets/img/logo-mark.png" width="28" height="28" alt="" loading="lazy" /></span> LignoX = جریان + برنامه + دید + هوش مصنوعی</p>
+<div class="layers4">
+<div class="layer4">
+<span class="flow-line" aria-hidden="true"></span>
+<div class="layer4-name"><p class="en">FLOW</p><h3>جریان</h3><p class="role">اجرا · اجرای تولید · MES</p></div>
+<p class="layer4-desc">آنچه همین حالا در سالن تولید اتفاق می‌افتد.<small>اجرای کار در سالن تولید، داده عملیاتی را می‌سازد.</small></p>
 <ul><li>مرکز تولید و صف ایستگاه‌ها</li><li>ترمینال لمسی و اسکن QR</li><li>ثبت توقف با دلیل</li><li>برون‌سپاری و دوباره‌کاری</li><li>انبار محصول تکمیل‌شده</li><li>مانیتور سالن تولید</li></ul>
 </div>
-<div class="pillar">
-<div class="pillar-head"><h3>برنامه</h3><span class="pillar-en">PLAN</span></div>
-<p class="pillar-sub">برنامه‌ریزی · APS</p>
-<p class="pillar-desc">اینکه چه کاری، کِی و با کدام ظرفیت انجام شود.</p>
+<div class="layer4">
+<span class="flow-line" aria-hidden="true"></span>
+<div class="layer4-name"><p class="en">PLAN</p><h3>برنامه</h3><p class="role">هماهنگی · برنامه‌ریزی · APS</p></div>
+<p class="layer4-desc">اینکه چه کاری، کِی و با کدام ظرفیت انجام شود.<small>برنامه، کار را با ظرفیت و مواد هماهنگ می‌کند.</small></p>
 <ul><li>برنامه‌ریزی ظرفیت APS</li><li>تاریخ تحویل محاسبه‌شده</li><li>گروه‌های ظرفیتی و تقویم کاری</li><li>شبیه‌سازی سناریو</li><li>نیازمندی مواد (MRP)</li><li>لیست خرید</li></ul>
 </div>
-<div class="pillar">
-<div class="pillar-head"><h3>دید</h3><span class="pillar-en">VISION</span></div>
-<p class="pillar-sub">هوش کارخانه · BI</p>
-<p class="pillar-desc">تصویر مدیریتی از وضعیت واقعی کارخانه.</p>
+<div class="layer4">
+<span class="flow-line" aria-hidden="true"></span>
+<div class="layer4-name"><p class="en">VISION</p><h3>دید</h3><p class="role">فهم · هوش کارخانه · BI</p></div>
+<p class="layer4-desc">تصویر مدیریتی از وضعیت واقعی کارخانه.<small>دید، این داده را به تصویری قابل فهم از کارخانه تبدیل می‌کند.</small></p>
 <ul><li>داشبورد اجرایی</li><li>وضعیت سلامت کارخانه</li><li>گلوگاه فعلی و پیش‌بینی‌شده</li><li>مرکز رویدادها و هشدارها</li><li>بهره‌وری و زمان توقف</li><li>گزارش روزانه تولید</li></ul>
 </div>
-<div class="pillar">
-<div class="pillar-head"><h3>هوش مصنوعی</h3><span class="pillar-en">AI</span></div>
-<p class="pillar-sub">LignoX AI</p>
-<p class="pillar-desc">پرسیدن، تحلیل‌کردن و پیشنهاددادن، با تأیید انسان.</p>
+<div class="layer4">
+<span class="flow-line" aria-hidden="true"></span>
+<div class="layer4-name"><p class="en">AI</p><h3>هوش مصنوعی</h3><p class="role">هوشمندی · LignoX AI</p></div>
+<p class="layer4-desc">پرسیدن، تحلیل‌کردن و پیشنهاددادن، با تأیید انسان.<small>هوش مصنوعی به تصمیم‌گیری انسان کمک می‌کند؛ تصمیم با انسان است.</small></p>
 <ul><li>دستیار عملیاتی کارخانه</li><li>گزارش هوشمند داشبورد</li><li>شبیه‌سازی با گفتگو</li><li>پیشنهاد اقدام با تأیید انسانی</li><li>شروع فرآیند با گفتگو</li><li>حالت بدون AI</li></ul>
 </div>
 </div>
-<div class="eco-arrow" aria-hidden="true"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M6 13l6 6 6-6"/></svg></div>
 <div class="eco-foundation">
 <div class="foundation-item"><h3>مهندسی تولید</h3><p>محصول، مسیر تولید، BOM، فرآیند استاندارد چندمرحله‌ای، مستندات فنی و تجربه‌های تولید</p></div>
 <div class="foundation-item"><h3>سازمان</h3><p>کاربران و نقش‌ها، فرآیندها و فرم‌ها، پروژه‌ها، اعلان‌ها، ارتباطات و منابع انسانی</p></div>
@@ -847,7 +1043,7 @@ html { scroll-behavior: auto; }
 </div>
 </section>
 
-<!-- 06 LIFECYCLE -->
+<!-- LIFECYCLE -->
 <section class="section" id="lifecycle" aria-labelledby="lifecycle-title">
 <div class="container">
 <div class="section-head reveal">
@@ -855,20 +1051,21 @@ html { scroll-behavior: auto; }
 <h2 class="section-title" id="lifecycle-title">مسیر یک سفارش در LignoX</h2>
 <p class="section-lead">از لحظه ثبت سفارش تا تحویل و گزارش مدیریتی، اطلاعات قطع نمی‌شود؛ هر مرحله داده لازم را از مرحله قبل می‌گیرد.</p>
 </div>
-<ol class="flow-steps reveal">
-<li class="flow-step"><h3>سفارش</h3><p>سفارش با محصول، تعداد و تاریخ درخواستی ثبت می‌شود و یک کد ردیابی یکتا می‌گیرد.</p></li>
-<li class="flow-step"><h3>مسیر تولید</h3><p>هر محصول مسیر ایستگاه‌ها، BOM و فرآیند استاندارد خودش را دارد؛ از برش تا بسته‌بندی.</p></li>
-<li class="flow-step"><h3>برنامه‌ریزی</h3><p>APS بار هر گروه ظرفیتی را با تقویم کاری و مرخصی‌ها می‌سنجد و تاریخ تحویل واقع‌بینانه محاسبه می‌کند.</p></li>
-<li class="flow-step"><h3>مواد</h3><p>نیاز مواد از BOM محاسبه می‌شود؛ آنچه در انبار هست کسر می‌شود و کسری‌ها برای افزودن به لیست خرید مشخص می‌شوند.</p></li>
-<li class="flow-step"><h3>اجرا در ایستگاه‌ها</h3><p>هر ایستگاه صف خودش را می‌بیند. شروع، توقف با دلیل و پایان کار ثبت می‌شود و کار تا تمام‌شدن مرحله قبل قفل می‌ماند.</p></li>
-<li class="flow-step"><h3>برون‌سپاری</h3><p>کارهایی که بیرون از کارخانه انجام می‌شوند، ارسال و دریافتشان در همان جریان پیگیری می‌شود.</p></li>
-<li class="flow-step"><h3>انبار و تحویل</h3><p>وقتی همه مراحل یک ردیف سفارش تمام شود، محصول خودکار وارد انبار محصول تکمیل‌شده می‌شود؛ با برچسب QR و حواله تحویل.</p></li>
-<li class="flow-step"><h3>دید مدیریتی</h3><p>همه این رویدادها به داشبورد، هشدارها و تحلیل گلوگاه می‌رسند؛ بدون گزارش‌گیری دستی.</p></li>
+<ol class="timeline">
+<li class="rail-fill" aria-hidden="true" role="presentation"></li>
+<li class="tl-step"><h3>سفارش</h3><p>سفارش با محصول، تعداد و تاریخ درخواستی ثبت می‌شود و یک کد ردیابی یکتا می‌گیرد.</p></li>
+<li class="tl-step"><h3>مسیر تولید</h3><p>هر محصول مسیر ایستگاه‌ها، BOM و فرآیند استاندارد خودش را دارد؛ از برش تا بسته‌بندی.</p></li>
+<li class="tl-step"><h3>برنامه‌ریزی</h3><p>APS بار هر گروه ظرفیتی را با تقویم کاری و مرخصی‌ها می‌سنجد و تاریخ تحویل واقع‌بینانه محاسبه می‌کند.</p></li>
+<li class="tl-step"><h3>مواد</h3><p>نیاز مواد از BOM محاسبه می‌شود؛ آنچه در انبار هست کسر می‌شود و کسری‌ها برای افزودن به لیست خرید مشخص می‌شوند.</p></li>
+<li class="tl-step"><h3>اجرا در ایستگاه‌ها</h3><p>هر ایستگاه صف خودش را می‌بیند. شروع، توقف با دلیل و پایان کار ثبت می‌شود و کار تا تمام‌شدن مرحله قبل قفل می‌ماند.</p></li>
+<li class="tl-step"><h3>برون‌سپاری</h3><p>کارهایی که بیرون از کارخانه انجام می‌شوند، ارسال و دریافتشان در همان جریان پیگیری می‌شود.</p></li>
+<li class="tl-step"><h3>انبار و تحویل</h3><p>وقتی همه مراحل یک ردیف سفارش تمام شود، محصول خودکار وارد انبار محصول تکمیل‌شده می‌شود؛ با برچسب QR و حواله تحویل.</p></li>
+<li class="tl-step"><h3>دید مدیریتی</h3><p>همه این رویدادها به داشبورد، هشدارها و تحلیل گلوگاه می‌رسند؛ بدون گزارش‌گیری دستی.</p></li>
 </ol>
 </div>
 </section>
 
-<!-- 07-16 CAPABILITIES -->
+<!-- CAPABILITIES: FLOW / PLAN / MATERIAL / PROCESS / VISION / AI -->
 <section class="section section-alt" id="capabilities" aria-labelledby="cap-title">
 <div class="container">
 <div class="section-head reveal">
@@ -876,7 +1073,7 @@ html { scroll-behavior: auto; }
 <h2 class="section-title" id="cap-title">هر قابلیت، پاسخ به یک مسئله واقعی کف کارخانه</h2>
 <p class="section-lead">برای هر بخش: مسئله‌ای که حل می‌کند، آنچه LignoX انجام می‌دهد و تصویری واقعی از خود نرم‌افزار.</p>
 </div>
-<article class="cap reveal" id="cap-flow">
+<article class="reveal cap" id="cap-flow">
 <div class="cap-text">
 <p class="cap-tag"><span class="en">FLOW</span> · اجرای تولید (MES)</p>
 <h3>هر ایستگاه می‌داند الان چه کاری باید انجام دهد</h3>
@@ -912,7 +1109,7 @@ html { scroll-behavior: auto; }
 </figure></div>
 </div>
 </article>
-<article class="cap reverse reveal" id="cap-plan">
+<article class="reveal cap reverse" id="cap-plan">
 <div class="cap-text">
 <p class="cap-tag"><span class="en">PLAN</span> · برنامه‌ریزی ظرفیت (APS)</p>
 <h3>تاریخ تحویلی که از ظرفیت واقعی می‌آید</h3>
@@ -936,7 +1133,7 @@ html { scroll-behavior: auto; }
 </figure>
 </div>
 </article>
-<article class="cap reveal" id="cap-material">
+<article class="reveal cap" id="cap-material">
 <div class="cap-text">
 <p class="cap-tag"><span class="en">MATERIAL</span> · مواد و انبار</p>
 <h3>کمبود مواد، پیش از رسیدن کار به ایستگاه</h3>
@@ -959,7 +1156,7 @@ html { scroll-behavior: auto; }
 </figure>
 </div>
 </article>
-<article class="cap reverse reveal" id="cap-process">
+<article class="reveal cap reverse" id="cap-process">
 <div class="cap-text">
 <p class="cap-tag"><span class="en">PROCESS</span> · فرآیندها (BPMN)</p>
 <h3>درخواست‌ها و تأییدها، با مسیر روشن</h3>
@@ -982,7 +1179,8 @@ html { scroll-behavior: auto; }
 </figure>
 </div>
 </article>
-<article class="cap reveal" id="cap-vision">
+<div class="cap-sep" style="border-top:1px solid var(--line);padding-top:80px">
+<article class="vision-grid reveal" id="cap-vision">
 <div class="cap-text">
 <p class="cap-tag"><span class="en">VISION</span> · هوش کارخانه (BI)</p>
 <h3>مدیریت، وضعیت واقعی کارخانه را می‌بیند</h3>
@@ -995,16 +1193,21 @@ html { scroll-behavior: auto; }
 </ul>
 <p class="cap-value">نتیجه: تصمیم مدیریتی بر پایه داده عملیاتی گرفته می‌شود، نه گزارش‌های پراکنده.</p>
 </div>
-<div class="cap-shots">
-<figure class="shot">
-<div class="shot-frame">
-<div class="shot-bar" aria-hidden="true"><span class="shot-dots"><i></i><i></i><i></i></span><span class="shot-title">LignoX — هوش کارخانه</span></div>
-<img src="assets/screens/lignox-factory-intelligence-1600.webp" srcset="assets/screens/lignox-factory-intelligence-800.webp 800w, assets/screens/lignox-factory-intelligence-1600.webp 1600w" sizes="(max-width: 960px) 100vw, 790px" width="1600" height="933" alt="بخش هوش کارخانه در داشبورد LignoX: جریان تولید، نمودار ظرفیت در برابر بار گروه‌های ظرفیتی، کارکرد و توقف بر اساس دلیل" loading="lazy" decoding="async" />
+<div><div class="live" role="img" aria-label="ترکیب نمایشی از بخش‌های واقعی داشبورد فعلی LignoX با داده‌های نمونه: وضعیت سلامت کارخانه، شاخص‌های کلیدی، مقایسه عملکرد، گلوگاه، مسائل و اقدام‌ها، پیشنهادهای در انتظار تصمیم و زمان کاری تیم">
+<div class="live-head" aria-hidden="true"><p>LignoX — داشبورد اجرایی</p><span class="status"><i class="dot"></i> FACTORY VIEW</span></div>
+<div class="tile health" aria-hidden="true"><img src="assets/ui/lignox-ui-factory-health.webp" width="1400" height="90" alt="" loading="lazy" decoding="async" sizes="(max-width: 640px) 100vw, 600px" /></div>
+<div class="tile kpis" aria-hidden="true"><img src="assets/ui/lignox-ui-kpis.webp" width="1400" height="202" alt="" loading="lazy" decoding="async" sizes="(max-width: 640px) 100vw, 600px" /></div>
+<div class="tile compare" aria-hidden="true"><img src="assets/ui/lignox-ui-period-comparison.webp" width="1200" height="645" alt="" loading="lazy" decoding="async" sizes="(max-width: 640px) 100vw, 600px" /></div>
+<div class="tile bottleneck" aria-hidden="true"><img src="assets/ui/lignox-ui-bottleneck.webp" width="600" height="580" alt="" loading="lazy" decoding="async" sizes="(max-width: 640px) 100vw, 600px" /></div>
+<div class="tile attention" aria-hidden="true"><img src="assets/ui/lignox-ui-attention.webp" width="800" height="580" alt="" loading="lazy" decoding="async" sizes="(max-width: 640px) 100vw, 600px" /></div>
+<div class="tile recs" aria-hidden="true"><span class="tile-label chip chip-wood">DECISION</span><img src="assets/ui/lignox-ui-skeleton-recommendations.webp" width="1200" height="266" alt="" loading="lazy" decoding="async" sizes="(max-width: 640px) 100vw, 600px" /></div>
+<div class="tile team" aria-hidden="true"><img src="assets/ui/lignox-ui-team-time.webp" width="1200" height="283" alt="" loading="lazy" decoding="async" sizes="(max-width: 640px) 100vw, 600px" /></div>
 </div>
-<figcaption><span>جریان تولید، ظرفیت در برابر بار و توقف بر اساس دلیل · تصویر واقعی از نرم‌افزار LignoX · داده‌ها نمایشی هستند</span><a class="shot-full" href="assets/screens/lignox-factory-intelligence-1600.webp" target="_blank" rel="noopener">اندازه کامل<span class="visually-hidden"> تصویر هوش کارخانه (در پنجره جدید)</span></a></figcaption>
-</figure>
-</div>
+<p class="sdemo-caption"><span>بخش‌های واقعی داشبورد فعلی LignoX، کنار هم چیده شده برای نمایش · داده‌ها نمایشی هستند</span><a class="shot-full" href="assets/screens/lignox-executive-dashboard-1600.webp" target="_blank" rel="noopener">تصویر کامل داشبورد<span class="visually-hidden"> (در پنجره جدید)</span></a></p></div>
 </article>
+</div>
+<div style="border-top:1px solid var(--line);padding-top:80px;margin-top:80px">
+<ol class="ai-flow reveal" aria-label="چرخه کار LignoX AI"><li class="ai-step"><p class="en">ASK</p><h4>پرسش</h4><p>سؤال به زبان فارسی، در چارچوب دسترسی همان کاربر.</p></li><li class="ai-step"><p class="en">ANALYZE</p><h4>تحلیل</h4><p>بررسی سفارش‌ها، صف تولید، گلوگاه، MRP و رویدادها با ابزارهای خود سیستم.</p></li><li class="ai-step"><p class="en">PROPOSE</p><h4>پیشنهاد</h4><p>شبیه‌سازی بدون تغییر داده واقعی، و پیشنهاد اقدام.</p></li><li class="ai-step human"><p class="en">APPROVE</p><h4>تأیید انسانی</h4><p>اقدام حساس فقط پس از تأیید شما اجرا می‌شود.</p></li></ol>
 <article class="cap reverse reveal" id="cap-ai">
 <div class="cap-text">
 <p class="cap-tag"><span class="en">AI</span> · LignoX AI</p>
@@ -1020,32 +1223,94 @@ html { scroll-behavior: auto; }
 </ul>
 <p class="cap-value">نتیجه: AI به‌جای حرف کلی، به داده و قواعد کارخانه وصل است و تصمیم نهایی با انسان می‌ماند.</p>
 </div>
-<div class="cap-shots">
-<figure class="shot">
-<div class="shot-frame">
-<div class="shot-bar" aria-hidden="true"><span class="shot-dots"><i></i><i></i><i></i></span><span class="shot-title">LignoX — LignoX AI</span></div>
-<img src="assets/screens/lignox-ai-assistant-1600.webp" srcset="assets/screens/lignox-ai-assistant-800.webp 800w, assets/screens/lignox-ai-assistant-1600.webp 1600w" sizes="(max-width: 960px) 100vw, 790px" width="1600" height="1250" alt="دستیار LignoX AI در حال تحلیل گلوگاه و شبیه‌سازی اضافه‌کاری، با پیشنهاد تغییر اولویت که منتظر تأیید کاربر است" loading="lazy" decoding="async" />
+<div class="cap-shots"><figure class="shot">
+<div class="shot-frame"><div class="shot-bar" aria-hidden="true"><span class="shot-dots"><i></i><i></i><i></i></span><span class="shot-title">LignoX — LignoX AI</span></div>
+<img src="assets/ui/lignox-ui-ai-conversation.webp" width="1000" height="665" alt="گفتگو با LignoX AI: پرسش درباره گلوگاه، مراحل تحلیل و شبیه‌سازی، پاسخ، و پیشنهاد تغییر اولویت که منتظر تأیید کاربر است" loading="lazy" decoding="async" sizes="(max-width: 960px) 100vw, 780px" />
 </div>
-<figcaption><span>گفتگو با LignoX AI: تحلیل گلوگاه، شبیه‌سازی و پیشنهاد در انتظار تأیید · تصویر واقعی از نرم‌افزار LignoX · داده‌ها نمایشی هستند</span><a class="shot-full" href="assets/screens/lignox-ai-assistant-1600.webp" target="_blank" rel="noopener">اندازه کامل<span class="visually-hidden"> تصویر LignoX AI (در پنجره جدید)</span></a></figcaption>
-</figure>
-</div>
+<figcaption><span>تصویر واقعی از نرم‌افزار LignoX · داده‌ها نمایشی هستند</span><a class="shot-full" href="assets/screens/lignox-ai-assistant-1600.webp" target="_blank" rel="noopener">اندازه کامل<span class="visually-hidden"> تصویر LignoX AI (در پنجره جدید)</span></a></figcaption>
+</figure></div>
 </article>
-<div class="reveal" style="margin-top:56px">
-<h3 class="section-title" style="font-size:clamp(1.3rem,2.2vw,1.6rem)">و بخش‌هایی که کار روزانه کارخانه را کامل می‌کنند</h3>
-<div class="more-grid" style="margin-top:24px">
-<div class="more-item"><h4>پروژه‌ها و وظایف</h4><p>بورد وظایف، نمودار گانت، تقویم و جلسات پروژه، برای کارهای تیمی مستقل از سفارش‌های تولید.</p></div>
-<div class="more-item"><h4>اعلان‌ها و ارتباطات</h4><p>مرکز قواعد اعلان، اعلان Web Push روی دستگاه کاربر، گفتگو، گروه و کانال اطلاع‌رسانی.</p></div>
-<div class="more-item"><h4>مهندسی تولید</h4><p>محصولات و مسیر تولید، BOM، فرآیندهای استاندارد، مستندات فنی مثل نقشه و فایل CNC، و ثبت تجربه‌های تولید برای جلوگیری از تکرار خطا.</p></div>
-<div class="more-item"><h4>منابع انسانی و بهره‌وری</h4><p>پرسنل، تقویم‌های کاری، مرخصی، غیبت، مأموریت و اضافه‌کاری، و مقایسه ظرفیت مورد انتظار با خروجی واقعی.</p></div>
-<div class="more-item"><h4>چاپ و برچسب</h4><p>قالب‌های چاپ با لوگو، سربرگ و محل امضا؛ کارت رنگ، برچسب QR محصول و حواله تحویل.</p></div>
-<div class="more-item"><h4>فرم‌های سازمانی</h4><p>فرم‌های اداری به تفکیک واحد با تاریخچه نسخه‌ها، و خروجی Excel در بخش‌هایی مانند برنامه‌ریزی تولید.</p></div>
-</div>
 </div>
 </div>
 </section>
 
-<!-- 17 BEFORE / AFTER -->
-<section class="section" aria-labelledby="ba-title">
+<section class="section search-sec" id="search" aria-labelledby="search-title">
+<div class="grid-bg" aria-hidden="true"></div>
+<div class="container search-grid">
+<div class="reveal">
+<p class="kicker"><span class="num">SEARCH</span> جستجوی سراسری</p>
+<h2 class="section-title" id="search-title">هر چیزی را در کارخانه پیدا کن.</h2>
+<p class="section-lead">با <span class="ltr">Ctrl + Space</span> از هر صفحه، پنجره جستجو باز می‌شود. یک کد یا عبارت بنویسید؛ نتایج به تفکیک بخش‌ها نمایش داده می‌شوند و با انتخاب هر نتیجه، مستقیم به همان سفارش یا بخش می‌روید.</p>
+<div class="keys" aria-hidden="true"><span class="key" data-k="ctrl">Ctrl</span><span class="plus">+</span><span class="key space" data-k="space">Space</span></div>
+</div>
+<div class="reveal" style="--d:.1s">
+<div class="sdemo" id="sdemo" aria-hidden="true">
+<div class="sdemo-app"></div>
+<div class="sdemo-overlay"></div>
+<div class="smodal">
+<div class="sinput"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg><span class="q" data-q></span><span class="caret2"></span><span class="ph" data-ph>جستجو در LignoX…</span><kbd>Esc</kbd></div>
+<p class="ssummary">این عبارت در <b data-n1>۴</b> بخش پیدا شد · <b data-n2>۱۰</b> نتیجه</p>
+<div class="sgroups"><div class="sgroup"><p class="gh"><span>سفارش‌ها</span><span>۳</span></p><div class="srow sel"><span class="code"><mark>AH-947</mark></span><span>سفارش مبل راحتی سه‌نفره</span><span class="meta">در جریان</span></div><div class="srow"><span class="code"><mark>AH-947</mark>-2</span><span>ردیف دوم سفارش</span><span class="meta">در جریان</span></div><div class="srow"><span class="code"><mark>AH-947</mark>-3</span><span>ردیف سوم سفارش</span><span class="meta">تکمیل</span></div></div><div class="sgroup"><p class="gh"><span>تولید</span><span>۳</span></p><div class="srow"><span class="code"><mark>AH-947</mark></span><span>ایستگاه رنگ</span><span class="meta">در حال انجام</span></div><div class="srow"><span class="code"><mark>AH-947</mark></span><span>ایستگاه رویه‌کوبی</span><span class="meta">در صف</span></div><div class="srow"><span class="code"><mark>AH-947</mark></span><span>ایستگاه مونتاژ</span><span class="meta">در انتظار</span></div></div><div class="sgroup"><p class="gh"><span>برنامه‌ریزی</span><span>۲</span></p><div class="srow"><span class="code"><mark>AH-947</mark></span><span>تاریخ تحویل محاسبه‌شده</span><span class="meta">APS</span></div><div class="srow"><span class="code"><mark>AH-947</mark></span><span>گروه ظرفیتی رنگ</span><span class="meta">APS</span></div></div><div class="sgroup"><p class="gh"><span>مشتریان</span><span>۲</span></p><div class="srow"><span class="code"><mark>AH-947</mark></span><span>مشتری نمونه</span><span class="meta">۲ سفارش</span></div><div class="srow"><span class="code"><mark>AH-947</mark></span><span>نمایندگی نمونه</span><span class="meta">۱ سفارش</span></div></div></div>
+</div>
+<div class="snav"><div class="snav-top">سفارش‌ها <span>›</span> <b class="ltr">AH-947</b></div><div class="snav-body"><p class="snav-title">سفارش <span class="code">AH-947</span></p><div class="snav-row"></div><div class="snav-row short"></div><div class="snav-row"></div><div class="snav-row short"></div></div></div>
+</div>
+<p class="visually-hidden">نمایش: کاربر Ctrl و Space را فشار می‌دهد، عبارت AH-947 را می‌نویسد، نتایج در چهار بخش سفارش‌ها، تولید، برنامه‌ریزی و مشتریان با مجموع ده نتیجه نمایش داده می‌شود و با انتخاب نتیجه اول، صفحه همان سفارش باز می‌شود.</p>
+<div class="sdemo-caption"><span>نمایش تعاملی برای توضیح قابلیت · مقادیر نمونه هستند</span><button type="button" class="replay" id="sreplay">&#8635; نمایش دوباره</button></div>
+</div>
+</div>
+</section>
+
+<section class="section section-alt" id="time-tracker" aria-labelledby="tt-title">
+<div class="container tt-grid">
+<div class="reveal">
+<p class="kicker"><span class="num">TIME</span> ردیابی زمان کار</p>
+<h2 class="section-title" id="tt-title">کار انجام‌شده، فقط سفارش تولید نیست.</h2>
+<p class="section-lead">Time Tracker در نوار بالای LignoX همیشه در دسترس است. هر کاربر کار روی یک پروژه و وظیفه، کار روزمره یا کار دیگر را شروع می‌کند؛ تایمر را متوقف یا تمام می‌کند و وقفه‌هایی مثل تماس تلفنی، پاسخ به همکار یا جلسه کوتاه را جدا ثبت می‌کند.</p>
+<ul class="cap-list">
+<li><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>شروع، توقف، ادامه و پایان کار؛ کارهای متوقف‌شده برای ادامه در دسترس می‌مانند.</span></li>
+<li><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>تفکیک کار پروژه‌ای، روزمره، دیگر و وقفه‌ها، و ثبت سریع کار کوتاهی که گذشته است.</span></li>
+<li><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>گزارش هر پروژه: زمان امروز، این هفته، این ماه و مجموع، به تفکیک افراد و روی خط زمان.</span></li>
+<li><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>نمای «زمان کاری تیم» روی داشبورد مدیریت، برای کاربرانی که دسترسی آن را دارند.</span></li>
+</ul>
+<ol class="tt-chain reveal" aria-label="از کار تا دید مدیریتی">
+<li class="tt-node"><p class="en">WORK</p><b>کار</b></li>
+<li class="tt-node"><p class="en">TIME</p><b>زمان</b></li>
+<li class="tt-node"><p class="en">PROJECT</p><b>پروژه</b></li>
+<li class="tt-node"><p class="en">INSIGHT</p><b>دید مدیریتی</b></li>
+</ol>
+</div>
+<div class="tt-visual reveal" style="--d:.1s">
+<div class="pill-wrap"><img src="assets/ui/lignox-ui-time-tracker-pill.webp" width="520" height="72" alt="نوار Time Tracker در بالای LignoX با تایمر در حال اجرا روی پروژه راه‌اندازی LignoX" loading="lazy" decoding="async" sizes="360px" /></div>
+<div class="pop-wrap"><img src="assets/ui/lignox-ui-time-tracker.webp" width="628" height="820" alt="پنل Time Tracker در LignoX: زمان سپری‌شده، پروژه و وظیفه، دکمه‌های توقف، وقفه و پایان، و گزینه‌های شروع کار جدید" loading="lazy" decoding="async" sizes="320px" /></div>
+</div>
+</div>
+<div class="container">
+<figure class="shot tt-team reveal">
+<div class="shot-frame"><div class="shot-bar" aria-hidden="true"><span class="shot-dots"><i></i><i></i><i></i></span><span class="shot-title">LignoX — داشبورد · زمان کاری تیم</span></div>
+<img src="assets/ui/lignox-ui-team-time.webp" width="1200" height="283" alt="بخش زمان کاری تیم در داشبورد LignoX: زمان امروز، این هفته، این ماه و مجموع، به تفکیک افراد و پروژه‌ها" loading="lazy" decoding="async" sizes="(max-width: 1240px) 100vw, 1200px" />
+</div>
+<figcaption><span>Time Tracker در نوار بالا و پنل آن، و نمای زمان کاری تیم در داشبورد · تصاویر واقعی از نرم‌افزار LignoX · داده‌ها نمایشی هستند</span></figcaption>
+</figure>
+</div>
+</section>
+
+<!-- MORE -->
+<section class="section" aria-labelledby="more-title">
+<div class="container">
+<div class="section-head reveal"><h2 class="section-title" id="more-title" style="font-size:clamp(1.4rem,2.4vw,1.8rem)">و بخش‌هایی که کار روزانه کارخانه را کامل می‌کنند</h2></div>
+<div class="more-grid reveal">
+<div class="more-item"><h3>پروژه‌ها و وظایف</h3><p>بورد وظایف، نمودار گانت، تقویم و جلسات پروژه، برای کارهای تیمی مستقل از سفارش‌های تولید.</p></div>
+<div class="more-item"><h3>اعلان‌ها و ارتباطات</h3><p>مرکز قواعد اعلان، اعلان Web Push روی دستگاه کاربر، گفتگو، گروه و کانال اطلاع‌رسانی.</p></div>
+<div class="more-item"><h3>مهندسی تولید</h3><p>محصولات و مسیر تولید، BOM، فرآیندهای استاندارد، مستندات فنی مثل نقشه و فایل CNC، و ثبت تجربه‌های تولید برای جلوگیری از تکرار خطا.</p></div>
+<div class="more-item"><h3>منابع انسانی و بهره‌وری</h3><p>پرسنل، تقویم‌های کاری، مرخصی، غیبت، مأموریت و اضافه‌کاری، و مقایسه ظرفیت مورد انتظار با خروجی واقعی.</p></div>
+<div class="more-item"><h3>چاپ و برچسب</h3><p>قالب‌های چاپ با لوگو، سربرگ و محل امضا؛ کارت رنگ، برچسب QR محصول و حواله تحویل.</p></div>
+<div class="more-item"><h3>فرم‌های سازمانی</h3><p>فرم‌های اداری به تفکیک واحد با تاریخچه نسخه‌ها، و خروجی Excel در بخش‌هایی مانند برنامه‌ریزی تولید.</p></div>
+</div>
+</div>
+</section>
+
+<!-- BEFORE / AFTER -->
+<section class="section section-alt" aria-labelledby="ba-title">
 <div class="container">
 <div class="section-head reveal">
 <p class="kicker"><span class="num">06</span> پیش و پس از LignoX</p>
@@ -1065,8 +1330,8 @@ html { scroll-behavior: auto; }
 </div>
 </section>
 
-<!-- 18 DATA FLOW -->
-<section class="section section-alt" id="architecture" aria-labelledby="arch-title">
+<!-- DATA FLOW -->
+<section class="section" id="architecture" aria-labelledby="arch-title">
 <div class="container">
 <div class="section-head center reveal">
 <p class="kicker"><span class="num">07</span> جریان داده</p>
@@ -1087,8 +1352,8 @@ html { scroll-behavior: auto; }
 </div>
 </section>
 
-<!-- 19 AUDIENCE -->
-<section class="section" id="audience" aria-labelledby="aud-title">
+<!-- AUDIENCE -->
+<section class="section section-alt" id="audience" aria-labelledby="aud-title">
 <div class="container">
 <div class="section-head reveal">
 <p class="kicker"><span class="num">08</span> برای چه کسانی</p>
@@ -1110,8 +1375,8 @@ html { scroll-behavior: auto; }
 </div>
 </section>
 
-<!-- 20 SECURITY -->
-<section class="section section-dark" id="security" aria-labelledby="sec-title">
+<!-- SECURITY -->
+<section class="section" id="security" aria-labelledby="sec-title">
 <div class="container">
 <div class="section-head reveal">
 <p class="kicker"><span class="num">09</span> امنیت، استقرار و داده</p>
@@ -1129,8 +1394,8 @@ html { scroll-behavior: auto; }
 </div>
 </section>
 
-<!-- 21/22 FOUNDER + STORY -->
-<section class="section" id="founder" aria-labelledby="founder-title">
+<!-- FOUNDER + STORY -->
+<section class="section section-alt" id="founder" aria-labelledby="founder-title">
 <div class="container">
 <div class="section-head reveal">
 <p class="kicker"><span class="num">10</span> داستان LignoX</p>
@@ -1194,8 +1459,8 @@ html { scroll-behavior: auto; }
 </div>
 </section>
 
-<!-- 23 FAQ -->
-<section class="section section-alt" id="faq" aria-labelledby="faq-title">
+<!-- FAQ -->
+<section class="section" id="faq" aria-labelledby="faq-title">
 <div class="container">
 <div class="section-head center reveal">
 <p class="kicker"><span class="num">11</span> پرسش‌های متداول</p>
@@ -1263,14 +1528,14 @@ html { scroll-behavior: auto; }
 </div>
 </section>
 
-<!-- 24 CTA -->
+<!-- CTA -->
 <section class="cta" id="demo" aria-labelledby="demo-title">
 <div class="container">
 <h2 id="demo-title">LignoX را با منطق کارخانه خودتان ببینید.</h2>
 <p>در یک جلسه دمو، خود نرم‌افزار را می‌بینید: ثبت سفارش، برنامه‌ریزی ظرفیت، اجرا در ایستگاه‌ها و داشبورد مدیریت. درباره شرایط کارخانه خودتان هم گفتگو می‌کنیم.</p>
 <div class="cta-actions">
-<a class="btn btn-light" href="tel:+989379196117"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 005 5L15 13l5 2v4a2 2 0 01-2 2A16 16 0 013 6a2 2 0 012-2"/></svg> تماس برای هماهنگی دمو</a>
-<a class="btn btn-ghost-light" href="#capabilities">مرور دوباره قابلیت‌ها</a>
+<a class="btn btn-primary" href="tel:+989379196117"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 005 5L15 13l5 2v4a2 2 0 01-2 2A16 16 0 013 6a2 2 0 012-2"/></svg> تماس برای هماهنگی دمو</a>
+<a class="btn btn-secondary" href="#capabilities">مرور دوباره قابلیت‌ها</a>
 </div>
 <p class="cta-phone">شماره تماس: <a href="tel:+989379196117"><span class="ltr">۰۹۳۷ ۹۱۹ ۶۱۱۷</span></a></p>
 </div>
@@ -1283,7 +1548,7 @@ html { scroll-behavior: auto; }
 <div class="footer-grid">
 <div>
 <a class="brand" href="#main" aria-label="LignoX — بازگشت به ابتدای صفحه">
-<img src="assets/img/logo-mark.png" width="34" height="34" alt="" loading="lazy" />
+<span class="brand-tile"><img src="assets/img/logo-mark.png" width="28" height="28" alt="" loading="lazy" /></span>
 <span class="brand-name">Ligno<b>X</b></span>
 </a>
 <p class="footer-about">سیستم‌عامل تولید برای صنعت مبلمان؛ سفارش، برنامه، اجرا، مواد و دید مدیریتی در یک سیستم.</p>
@@ -1294,6 +1559,8 @@ html { scroll-behavior: auto; }
 <a href="#system">LignoX چیست؟</a>
 <a href="#capabilities">قابلیت‌ها</a>
 <a href="#lifecycle">مسیر سفارش در کارخانه</a>
+<a href="#search">جستجوی سراسری</a>
+<a href="#time-tracker">Time Tracker</a>
 <a href="#security">امنیت و استقرار</a>
 <a href="#faq">پرسش‌های متداول</a>
 </div>
@@ -1318,22 +1585,17 @@ html { scroll-behavior: auto; }
 (() => {
 "use strict";
 const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+const finePointer = window.matchMedia("(pointer: fine)").matches;
 
 /* Mobile navigation */
 const nav = document.getElementById("mainNav");
 const toggle = document.getElementById("menuToggle");
-const setMenu = open => {
-nav.classList.toggle("is-open", open);
-toggle.setAttribute("aria-expanded", String(open));
-toggle.setAttribute("aria-label", open ? "بستن منو" : "باز کردن منو");
-};
+const setMenu = open => { nav.classList.toggle("is-open", open); toggle.setAttribute("aria-expanded", String(open)); toggle.setAttribute("aria-label", open ? "بستن منو" : "باز کردن منو"); };
 toggle.addEventListener("click", () => setMenu(!nav.classList.contains("is-open")));
 nav.querySelectorAll("a").forEach(a => a.addEventListener("click", () => setMenu(false)));
-document.addEventListener("keydown", e => {
-if (e.key === "Escape" && nav.classList.contains("is-open")) { setMenu(false); toggle.focus(); }
-});
+document.addEventListener("keydown", e => { if (e.key === "Escape" && nav.classList.contains("is-open")) { setMenu(false); toggle.focus(); } });
 
-/* FAQ accordion: answers are visible without JS; JS collapses them */
+/* FAQ accordion: answers visible without JS; JS collapses them */
 document.querySelectorAll(".faq-btn").forEach((btn, i) => {
 const panel = document.getElementById(btn.getAttribute("aria-controls"));
 const set = open => { btn.setAttribute("aria-expanded", String(open)); panel.hidden = !open; };
@@ -1341,30 +1603,68 @@ set(i === 0);
 btn.addEventListener("click", () => set(btn.getAttribute("aria-expanded") !== "true"));
 });
 
-/* In-page links move keyboard focus with the scroll */
-document.querySelectorAll('a[href^="#"]').forEach(a => {
-a.addEventListener("click", e => {
-const id = a.getAttribute("href");
-const target = id.length > 1 && document.querySelector(id);
-if (!target) return;
-e.preventDefault();
-target.scrollIntoView({ behavior: reduced ? "auto" : "smooth", block: "start" });
-if (!target.hasAttribute("tabindex")) target.setAttribute("tabindex", "-1");
-target.focus({ preventScroll: true });
-history.replaceState(null, "", id);
-});
-});
+/* In-page links move focus with the scroll */
+document.querySelectorAll('a[href^="#"]').forEach(a => a.addEventListener("click", e => {
+const id = a.getAttribute("href"); const t = id.length > 1 && document.querySelector(id);
+if (!t) return; e.preventDefault();
+t.scrollIntoView({ behavior: reduced ? "auto" : "smooth", block: "start" });
+if (!t.hasAttribute("tabindex")) t.setAttribute("tabindex", "-1");
+t.focus({ preventScroll: true }); history.replaceState(null, "", id);
+}));
 
-/* Reveal on scroll (progressive enhancement) */
-const items = document.querySelectorAll(".reveal");
-if (reduced || !("IntersectionObserver" in window)) {
-items.forEach(el => el.classList.add("is-visible"));
-} else {
-const io = new IntersectionObserver(entries => {
-entries.forEach(en => { if (en.isIntersecting) { en.target.classList.add("is-visible"); io.unobserve(en.target); } });
-}, { rootMargin: "0px 0px -8% 0px", threshold: 0.08 });
-items.forEach(el => io.observe(el));
+/* Hero composition: entrance + gentle pointer parallax (desktop, motion allowed) */
+const stage = document.getElementById("stage"), inner = document.getElementById("stageInner");
+requestAnimationFrame(() => stage.classList.add("on"));
+if (!reduced && finePointer && window.innerWidth > 640) {
+let raf = 0, tx = 0, ty = 0;
+stage.addEventListener("pointermove", e => {
+const r = stage.getBoundingClientRect();
+tx = ((e.clientX - r.left) / r.width - .5); ty = ((e.clientY - r.top) / r.height - .5);
+if (!raf) raf = requestAnimationFrame(() => { inner.style.transform = `rotateY(${tx * 5}deg) rotateX(${-ty * 4}deg)`; raf = 0; });
+});
+stage.addEventListener("pointerleave", () => { inner.style.transform = ""; });
 }
+
+/* Reveal + sequenced components */
+const seen = el => el.classList.add("is-visible");
+const targets = document.querySelectorAll(".reveal, .live, .formula, .ai-flow, .tt-chain, .timeline");
+if (reduced || !("IntersectionObserver" in window)) {
+targets.forEach(el => { seen(el); el.classList.add("run"); });
+} else {
+const io = new IntersectionObserver(es => es.forEach(en => {
+if (!en.isIntersecting) return;
+seen(en.target); if (en.target.classList.contains("timeline")) en.target.classList.add("run");
+io.unobserve(en.target);
+}), { rootMargin: "0px 0px -10% 0px", threshold: 0.12 });
+targets.forEach(el => io.observe(el));
+}
+
+/* Universal Search demo (sample values) */
+const demo = document.getElementById("sdemo");
+const q = demo.querySelector("[data-q]"), ph = demo.querySelector("[data-ph]");
+const keys = document.querySelectorAll(".key");
+const fa = n => String(n).replace(/\d/g, d => "۰۱۲۳۴۵۶۷۸۹"[d]);
+const n1 = demo.querySelector("[data-n1]"), n2 = demo.querySelector("[data-n2]");
+let timers = [];
+const at = (ms, fn) => timers.push(setTimeout(fn, ms));
+const finalState = () => { demo.className = "sdemo open results"; q.textContent = "AH-947"; ph.hidden = true; n1.textContent = fa(4); n2.textContent = fa(10); };
+function run() {
+timers.forEach(clearTimeout); timers = [];
+if (reduced) { finalState(); return; }
+demo.className = "sdemo"; q.textContent = ""; ph.hidden = false; keys.forEach(k => k.classList.remove("down"));
+at(300, () => keys[0].classList.add("down"));
+at(650, () => keys[1].classList.add("down"));
+at(950, () => { demo.classList.add("open"); keys.forEach(k => k.classList.remove("down")); });
+"AH-947".split("").forEach((c, i) => at(1500 + i * 170, () => { ph.hidden = true; q.textContent += c; }));
+at(1500 + 6 * 170 + 250, () => {
+demo.classList.add("results");
+let n = 0; const tick = () => { n++; n2.textContent = fa(n); n1.textContent = fa(Math.min(4, Math.ceil(n / 2.5))); if (n < 10) at(40, tick); }; tick();
+});
+at(5200, () => demo.classList.add("nav"));
+}
+document.getElementById("sreplay").addEventListener("click", run);
+if (reduced || !("IntersectionObserver" in window)) { finalState(); }
+else { new IntersectionObserver((es, o) => { if (es[0].isIntersecting) { run(); o.disconnect(); } }, { threshold: .45 }).observe(demo); }
 })();
 </script>
 </body>
