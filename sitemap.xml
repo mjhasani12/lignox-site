@@ -11,12 +11,27 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://lignox.ir/sales/</loc>
+    <lastmod>2026-11-06</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://lignox.ir/order-management/</loc>
     <lastmod>2026-11-06</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://lignox.ir/product-engineering/</loc>
+    <lastmod>2026-11-06</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://lignox.ir/technical-documents/</loc>
+    <lastmod>2026-11-06</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://lignox.ir/3d-ar/</loc>
     <lastmod>2026-11-06</lastmod>
     <priority>0.8</priority>
   </url>
@@ -51,7 +66,12 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://lignox.ir/3d-ar/</loc>
+    <loc>https://lignox.ir/projects-time/</loc>
+    <lastmod>2026-11-06</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://lignox.ir/communication/</loc>
     <lastmod>2026-11-06</lastmod>
     <priority>0.8</priority>
   </url>
@@ -61,17 +81,12 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://lignox.ir/workflow/</loc>
-    <lastmod>2026-11-06</lastmod>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://lignox.ir/hr/</loc>
     <lastmod>2026-11-06</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://lignox.ir/communication/</loc>
+    <loc>https://lignox.ir/workflow/</loc>
     <lastmod>2026-11-06</lastmod>
     <priority>0.8</priority>
   </url>
