@@ -705,23 +705,57 @@ body{font-size:16px}
 .l-more svg{width:15px;height:15px}
 .foot-caps{display:flex;flex-wrap:wrap;gap:8px 22px;width:100%;order:3}
 .foot-caps a{color:var(--muted-d);font-size:13px}
+/* EXTRA-CSS-V8 */
+.main-nav a[aria-current="page"]{color:#fff}
+.cta-actions{gap:12px;flex-wrap:wrap}
+.sp-fig figcaption{font-size:13px;color:var(--muted-l);margin-top:10px;text-align:center}
+.sp-fig img{display:block;width:100%;height:auto}
+.feat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:14px}
+.feat-card{display:flex;flex-direction:column;gap:6px;padding:20px 22px;border-radius:16px;background:#fff;box-shadow:0 0 0 1px var(--line-l);color:#0b1424;transition:box-shadow .2s}
+.feat-card:hover{box-shadow:0 0 0 2px #1559d6;text-decoration:none}
+.feat-card .mono{font-size:12px;letter-spacing:.16em;color:#1559d6;direction:ltr;text-align:right}
+.feat-card b{font-size:18px;font-weight:850}
+.feat-card span:last-child{font-size:14.5px;color:var(--muted-l)}
+.gold-note{display:flex;gap:14px;align-items:center;margin:28px 0 0;padding:18px 22px;border-radius:16px;background:linear-gradient(135deg,#bd9055,#e2bd85);color:#1a1206;font-weight:700}
+.gold-note svg{flex:none}
+.gold-note small{display:block;font-weight:600;font-size:14px}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:22px;align-items:center;margin-top:36px}
+.phone-shot{max-width:300px;margin:auto;border-radius:38px;padding:9px;background:#0d0f14;box-shadow:0 40px 70px -30px rgba(0,0,0,.6),inset 0 0 0 2px #3a3f4a}
+.phone-shot img{border-radius:30px;display:block;width:100%;height:auto}
+.steps-num{counter-reset:s;display:grid;gap:12px;margin-top:8px}
+.steps-num li{counter-increment:s;position:relative;padding:16px 20px;padding-inline-start:64px;background:#fff;border-radius:14px;box-shadow:0 0 0 1px var(--line-l)}
+.steps-num li::before{content:counter(s,persian);position:absolute;inset-inline-start:18px;top:14px;width:32px;height:32px;border-radius:50%;background:#0b1424;color:#d9b47f;display:grid;place-items:center;font-weight:800}
+.steps-num li b{display:block;font-size:16.5px}
+.steps-num li span{color:var(--muted-l);font-size:15px}
+.try-box{margin-top:40px;display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between;padding:22px 24px;border-radius:18px;background:#0b1424;color:#e9eef7}
+.try-box b{font-size:18px}
+.try-box p{color:#aab6cc;margin:4px 0 0;font-size:15px}
+@media (max-width:760px){.two-col{grid-template-columns:1fr}}
+
+.mods{padding:clamp(100px,11vw,150px) 0}
+.mods-in,.arx-in{max-width:var(--wide);margin:auto;padding:0 28px}
+.mods .feat-grid{margin-top:40px}
+.mods .try-box{margin-top:28px}
+.arx{padding:clamp(100px,11vw,150px) 0;background:radial-gradient(80% 80% at 20% 30%,#10214a 0,var(--night) 65%)}
+.arx-in{display:grid;grid-template-columns:1.25fr 1fr;gap:clamp(40px,6vw,90px);align-items:center}
+.arx .lede{margin-top:18px}
+.arx .gold-note{margin-top:26px}
+.arx .btn{margin-top:26px}
+.story-more{margin-top:34px}
+@media (max-width:860px){.arx-in{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
 <a class="skip-link" href="#main">رفتن به محتوای اصلی</a>
 <header class="site-header">
 <div class="header-inner">
-<a class="brand" href="#main" aria-label="LignoX — بازگشت به ابتدای صفحه"><img class="logo" src="assets/p7/logo-white.webp" width="259" height="88" alt="LignoX" /></a>
+<a class="brand" href="/" aria-label="LignoX — صفحه اصلی"><img class="logo" src="/assets/p7/logo-white.webp" width="259" height="88" alt="LignoX" /></a>
 <nav class="main-nav" id="mainNav" aria-label="ناوبری اصلی">
-<a href="#product">محصول</a>
-<a href="#capabilities">قابلیت‌ها</a>
-<a href="#lifecycle">فرایند تولید</a>
-<a href="#founder">داستان LignoX</a>
-<a href="#faq">پرسش‌های متداول</a>
-<a class="nav-demo" href="#demo">درخواست دمو</a>
+<a href="#product">محصول</a><a href="/features/">قابلیت‌ها</a><a href="/docs/">مستندات</a><a href="/docs/demo/">شبیه‌ساز</a><a href="/about/">درباره ما</a><a href="/contact/">تماس</a>
+<a class="nav-demo" href="/contact/">درخواست دمو</a>
 </nav>
 <div class="header-cta">
-<a class="btn btn-primary btn-sm" href="#demo">درخواست دمو</a>
+<a class="btn btn-primary btn-sm" href="/contact/">درخواست دمو</a>
 <button type="button" class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="mainNav" aria-label="باز کردن منو"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 9h16M4 15h16"/></svg></button>
 </div>
 </div>
@@ -865,24 +899,34 @@ body{font-size:16px}
 <ol class="order-list"><li style="--d:0"><span class="dot"></span>دید</li><li style="--d:1"><span class="dot"></span>برنامه</li><li style="--d:2"><span class="dot"></span>اجرا</li><li style="--d:3"><span class="dot"></span>داده</li><li style="--d:4"><span class="dot"></span>تصمیم</li></ol></div>
 </div>
 </section>
+<section class="mods light" id="modules" aria-labelledby="mods-title">
+<div class="mods-in">
+<p class="kicker">همه قابلیت‌ها</p>
+<h2 class="h2" id="mods-title">هر آنچه یک کارخانه مبلمان لازم دارد، در یک سیستم.</h2>
+<div class="feat-grid"><a class="feat-card" href="/manufacturing-dashboard/"><span class="mono">VISION</span><b>داشبورد مدیریت تولید</b><span>وضعیت واقعی کارخانه، شاخص‌ها و هشدارها در یک نگاه</span></a><a class="feat-card" href="/order-management/"><span class="mono">ORDERS</span><b>سفارش‌ها و پروژه‌ها</b><span>هر سفارش از ثبت تا تحویل با خط زمانی و پیشرفت واقعی</span></a><a class="feat-card" href="/product-engineering/"><span class="mono">BOM</span><b>محصول، BOM و فرآیند</b><span>فهرست مواد درختی، مسیر تولید و زمان استاندارد</span></a><a class="feat-card" href="/production-planning/"><span class="mono">PLAN</span><b>برنامه‌ریزی تولید (APS)</b><span>زمان‌بندی روی ظرفیت واقعی ایستگاه‌ها</span></a><a class="feat-card" href="/production-control/"><span class="mono">FLOW</span><b>کنترل تولید (MES)</b><span>صف ایستگاه و ثبت کار با اسکن QR</span></a><a class="feat-card" href="/shop-floor-display/"><span class="mono">DISPLAY</span><b>تابلوی سالن تولید</b><span>وضعیت زنده تولید روی تلویزیون سالن</span></a><a class="feat-card" href="/material-planning/"><span class="mono">MATERIAL</span><b>مواد و انبار (MRP)</b><span>نیاز مواد، رزرو و کسری پیش از توقف تولید</span></a><a class="feat-card" href="/warehouse/"><span class="mono">WAREHOUSE</span><b>انبار و محصول نهایی</b><span>رسید، حواله، برچسب بسته و تحویل</span></a><a class="feat-card" href="/outsourcing/"><span class="mono">OUTSOURCE</span><b>برون‌سپاری</b><span>ارسال و دریافت قطعات با کد رهگیری</span></a><a class="feat-card" href="/3d-ar/"><span class="mono">3D · AR</span><b>مدل سه‌بعدی و نمایش در محیط</b><span>محصول با ابعاد واقعی در خانه مشتری — با موبایل</span></a><a class="feat-card" href="/ai/"><span class="mono">AI</span><b>هوش مصنوعی (LignoX AI)</b><span>پرسش فارسی و پیشنهاد اقدام با داده‌های کارخانه</span></a><a class="feat-card" href="/workflow/"><span class="mono">PROCESS</span><b>فرآیندها و کارتابل (BPMN)</b><span>طراحی فرآیند، فرم سازمانی و کارتابل</span></a><a class="feat-card" href="/hr/"><span class="mono">PEOPLE</span><b>منابع انسانی و کارکرد</b><span>پرسنل، شیفت، کارکرد، مرخصی و بهره‌وری</span></a><a class="feat-card" href="/communication/"><span class="mono">CHAT</span><b>ارتباطات و اعلان‌ها</b><span>کانال‌های گفتگو و قوانین اعلان</span></a><a class="feat-card" href="/print-templates/"><span class="mono">PRINT</span><b>سازنده قالب چاپ</b><span>کارت کار، برچسب و حواله با هویت سازمان</span></a><a class="feat-card" href="/security/"><span class="mono">SECURITY</span><b>امنیت و استقرار</b><span>نقش‌ها، تاریخچه فعالیت و نصب روی سرور کارخانه</span></a></div>
+<div class="try-box"><div><b>همین حالا امتحان کنید</b><p>در شبیه‌ساز آنلاین سفارش ثبت کنید، کسری مواد را ببینید، برنامه را روی ظرفیت ایستگاه‌ها بسازید و نتیجه را در داشبورد ببینید.</p></div><a class="btn btn-primary" href="/docs/demo/">شبیه‌ساز LignoX <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></a></div>
+</div>
+</section>
+<section class="arx dark" id="ar" aria-labelledby="ar-title">
+<div class="arx-in">
+<div>
+<p class="kicker">3D MODEL · AR</p>
+<h2 class="h2" id="ar-title">مبل را پیش از خرید، در خانه مشتری ببینید.</h2>
+<p class="lede">مدل سه‌بعدی هر محصول با ابعاد واقعی در کارت محصول؛ و با «نمایش در محیط»، مشتری دوربین گوشی را به سمت اتاقش می‌گیرد و مبل را در فضای واقعی خودش می‌بیند.</p>
+<div class="gold-note"><svg aria-hidden="true" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="6.5" y="2.5" width="11" height="19" rx="2.5"/><path d="M10.5 18.5h3"/></svg><div>فقط با موبایل<small>نمایش در محیط تنها روی گوشی همراه دارای دوربین قابل استفاده است.</small></div></div>
+<a class="btn btn-ghost" href="/3d-ar/">مدل سه‌بعدی و نمایش در محیط <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></a>
+</div>
+<div class="phone-shot"><img src="/assets/cat/m_ar.webp" width="780" height="1688" alt="نمایش مبل سه‌بعدی در یک اتاق واقعی روی صفحه موبایل" loading="lazy" decoding="async" /></div>
+</div>
+</section>
 <section class="story light" id="founder" aria-labelledby="founder-title">
-<div class="story-grid">
-<figure class="portrait reveal">
-<span class="portrait-light" aria-hidden="true"></span>
-<img src="assets/img/mohammad-javad-hassani.webp" width="760" height="916" alt="محمدجواد حسنی، بنیان‌گذار و معمار محصول LignoX" loading="lazy" decoding="async" />
-<figcaption><b>محمدجواد حسنی</b><span class="mono">Founder &amp; Product Architect</span><a href="https://www.linkedin.com/in/mjhasani12/" target="_blank" rel="noopener noreferrer">LinkedIn <span class="visually-hidden">(در پنجره جدید)</span></a></figcaption>
-</figure>
+<div class="story-grid" style="grid-template-columns:1fr">
 <div class="story-copy">
-<p class="kicker reveal">داستان LignoX</p>
-<h2 class="h2 reveal" id="founder-title">LignoX از دل کارخانه آمده است، نه از یک ایده نرم‌افزاری.</h2>
-<ol class="story-path reveal">
-<li style="--d:0"><span class="s-n mono">01</span><b>کارگاه</b><p>شروع با طراحی و ساخت مبلمان؛ کنار قطعه، دستگاه و سفارش.</p></li>
-<li style="--d:1"><span class="s-n mono">02</span><b>کارخانه</b><p>کنترل کیفیت، طراحی فرآیند، برنامه‌ریزی تولید و مدیریت عملیات.</p></li>
-<li style="--d:2"><span class="s-n mono">03</span><b>مسئله</b><p>دلیل تأخیر یک سفارش، معمولاً جای دیگری از کارخانه بود.</p></li>
-<li style="--d:3"><span class="s-n mono">04</span><b>ایده</b><p>کارخانه، نه مجموعه‌ای از ابزارها؛ یک سیستم به‌هم‌پیوسته.</p></li>
-<li style="--d:4"><span class="s-n mono">05</span><b>ساختن</b><p>ساخته‌شده با کمک ابزارهای توسعه مبتنی بر هوش مصنوعی.</p></li>
-</ol>
-<p class="credo reveal">«نرم‌افزار باید از منطق کارخانه پیروی کند، نه کارخانه از منطق نرم‌افزار.»</p>
+<p class="kicker">داستان LignoX</p>
+<h2 class="h2" id="founder-title">LignoX از دل کارخانه آمده است، نه از یک ایده نرم‌افزاری.</h2>
+<ol class="story-path"><li style="--d:0"><span class="s-n mono">01</span><b>کارگاه</b><p>شروع با طراحی و ساخت مبلمان؛ کنار قطعه، دستگاه و سفارش.</p></li><li style="--d:1"><span class="s-n mono">02</span><b>کارخانه</b><p>کنترل کیفیت، طراحی فرآیند، برنامه‌ریزی تولید و مدیریت عملیات.</p></li><li style="--d:2"><span class="s-n mono">03</span><b>مسئله</b><p>دلیل تأخیر یک سفارش، معمولاً جای دیگری از کارخانه بود.</p></li><li style="--d:3"><span class="s-n mono">04</span><b>ایده</b><p>کارخانه، نه مجموعه‌ای از ابزارها؛ یک سیستم به‌هم‌پیوسته.</p></li><li style="--d:4"><span class="s-n mono">05</span><b>ساختن</b><p>ساخته‌شده با کمک ابزارهای توسعه مبتنی بر هوش مصنوعی.</p></li></ol>
+<p class="credo">«نرم‌افزار باید از منطق کارخانه پیروی کند، نه کارخانه از منطق نرم‌افزار.»</p>
+<div class="story-more"><a class="btn btn-primary" href="/about/">داستان کامل و درباره ما <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></a></div>
 </div>
 </div>
 </section>
@@ -960,7 +1004,7 @@ body{font-size:16px}
 <div class="cta-inner">
 <h2 class="reveal" id="demo-title">LignoX را با منطق کارخانه خودتان ببینید.</h2>
 <p class="reveal">در یک جلسه دمو، مسیر یک سفارش را از ثبت تا داشبورد مدیریت می‌بینید.</p>
-<div class="cta-actions reveal"><a class="btn btn-primary btn-lg" href="tel:+989379196117">درخواست دمو <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></a></div>
+<div class="cta-actions reveal"><a class="btn btn-primary btn-lg" href="tel:+989379196117">درخواست دمو <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></a><a class="btn btn-ghost btn-lg" href="/docs/demo/">امتحان شبیه‌ساز</a></div>
 <p class="cta-phone reveal">یا تماس مستقیم: <a href="tel:+989379196117"><span class="ltr">۰۹۳۷ ۹۱۹ ۶۱۱۷</span></a></p>
 </div>
 <div class="cta-device" aria-hidden="true"><img src="assets/p7/dash-hero-1200.webp" width="1200" height="454" alt="" loading="lazy" decoding="async" /></div>
@@ -968,12 +1012,13 @@ body{font-size:16px}
 </main>
 <footer class="site-footer dark">
 <div class="foot">
-<a class="brand" href="#main" aria-label="LignoX — بازگشت به ابتدای صفحه"><img class="logo" src="assets/p7/logo-white.webp" width="259" height="88" alt="LignoX" loading="lazy" /></a>
+<a class="brand" href="/" aria-label="LignoX — صفحه اصلی"><img class="logo" src="/assets/p7/logo-white.webp" width="259" height="88" alt="LignoX" loading="lazy" /></a>
 <p>LignoX (لیگنوکس / لیگنواکس) — نرم‌افزار مدیریت تولید برای صنعت مبلمان</p>
-<nav class="foot-caps" aria-label="قابلیت‌ها"><a href="/production-control/">کنترل تولید (MES)</a><a href="/production-planning/">برنامه‌ریزی تولید (APS)</a><a href="/material-planning/">مواد و انبار (MRP)</a><a href="/manufacturing-dashboard/">داشبورد مدیریت تولید</a><a href="/ai/">هوش مصنوعی (LignoX AI)</a><a href="/workflow/">فرآیندها و کارتابل (BPMN)</a></nav>
+<nav class="foot-caps" aria-label="قابلیت‌ها"><a href="/manufacturing-dashboard/">داشبورد مدیریت تولید</a><a href="/order-management/">سفارش‌ها و پروژه‌ها</a><a href="/product-engineering/">محصول، BOM و فرآیند</a><a href="/production-planning/">برنامه‌ریزی تولید (APS)</a><a href="/production-control/">کنترل تولید (MES)</a><a href="/shop-floor-display/">تابلوی سالن تولید</a><a href="/material-planning/">مواد و انبار (MRP)</a><a href="/warehouse/">انبار و محصول نهایی</a><a href="/outsourcing/">برون‌سپاری</a><a href="/3d-ar/">مدل سه‌بعدی و نمایش در محیط</a><a href="/ai/">هوش مصنوعی (LignoX AI)</a><a href="/workflow/">فرآیندها و کارتابل (BPMN)</a><a href="/hr/">منابع انسانی و کارکرد</a><a href="/communication/">ارتباطات و اعلان‌ها</a><a href="/print-templates/">سازنده قالب چاپ</a><a href="/security/">امنیت و استقرار</a></nav>
+<nav class="foot-caps" aria-label="صفحه‌ها"><a href="/features/">همه قابلیت‌ها</a><a href="/docs/">مستندات</a><a href="/docs/demo/">شبیه‌ساز تعاملی</a><a href="/about/">درباره ما</a><a href="/contact/">تماس و درخواست دمو</a></nav>
 <nav aria-label="پیوندهای پایانی"><a href="tel:+989379196117">تماس</a><a href="https://www.linkedin.com/in/mjhasani12/" target="_blank" rel="noopener noreferrer">LinkedIn <span class="visually-hidden">(در پنجره جدید)</span></a><a href="https://instagram.com/mjhasani12" target="_blank" rel="noopener noreferrer">Instagram <span class="visually-hidden">(در پنجره جدید)</span></a></nav>
 </div>
-<p class="foot-note">© LignoX · تصاویر محصول از رابط واقعی LignoX با داده‌های نمایشی تهیه شده‌اند.</p>
+<p class="foot-note">© LignoX · تصاویر محصول نمایشی هستند و با داده‌های فرضی تهیه شده‌اند.</p>
 </footer>
 <script>
 (() => {
